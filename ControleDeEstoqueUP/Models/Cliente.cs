@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ControleDeEstoqueUP.Models {
+    [Table("Clientes")]
     class Cliente {
         public Cliente() {
             this.Venda = new HashSet<Venda>();
         }
 
+        [Key]
         public int Codigo { get; set; }
         public string Nome { get; set; }
         public string CPFCNPJ { get; set; }

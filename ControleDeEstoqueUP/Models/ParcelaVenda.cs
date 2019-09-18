@@ -1,7 +1,11 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ControleDeEstoqueUP.Models {
+    [Table("ParcelasVenda")]
     class ParcelaVenda {
+        [Key]
         public int ven_Codigo { get; set; }
         public virtual Venda Venda { get; set; }
         public int Codigo { get; set; }

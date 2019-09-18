@@ -7,6 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Menu Margin="0,0,0,0" VerticalAlignment="Top">
+            <MenuItem Name="miCadastros" Header="Cadastros">
+                <MenuItem Header="Clientes"/>
+                <MenuItem Header="Fornecedores"/>
+                <Separator/>
+                <MenuItem Header="Produtos"/>
+                <MenuItem Header="Categorias"/>
+                <MenuItem Header="Subcategorias"/>
+                <MenuItem Header="Unidades"/>
+            </MenuItem>
+        </Menu>
+
     </Grid>
 </Window>

@@ -1,11 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ControleDeEstoqueUP.Models {
+
+    [Table("Fornecedores")]
     class Fornecedor {
         public Fornecedor() {
             this.Compra = new HashSet<Compra>();
         }
 
+        [Key]
         public int Codigo { get; set; }
         public string Nome { get; set; }
         public string RazaoSocial { get; set; }
