@@ -27,7 +27,6 @@
             </DockPanel>
         </Button>
         <DataGrid Name="gridResultados" AutoGenerateColumns="True" ColumnWidth="*" Height="355" Margin="10,110,10,0" AlternatingRowBackground="Azure" MouseDoubleClick="BtnAbrir_Click" VerticalAlignment="Top" SelectionMode="Single" IsReadOnly="True">
-
         </DataGrid>
 
 
