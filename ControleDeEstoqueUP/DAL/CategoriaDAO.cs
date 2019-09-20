@@ -32,7 +32,7 @@ namespace ControleDeEstoqueUP.DAL {
          */
         public void Editar(Categoria categoria) {
             try {
-                Categoria categoriaBanco = database.Categorias.First(c => c.Id == categoria.Id);
+                Categoria categoriaBanco = database.Categorias.FirstOrDefault(c => c.Id == categoria.Id);
                 categoriaBanco.Nome = categoria.Nome;
                 database.SaveChanges();
 
@@ -45,16 +45,27 @@ namespace ControleDeEstoqueUP.DAL {
         /**
          * Método que recebe uma categoria (editada) e realiza as edições da mesma no banco de dados.
          */
-        public void Inativar(int id) {
+        public void Excluir(int id) {
             try {
-                Categoria categoriaBanco = database.Categorias.First(c => c.Id == id);
-                categoriaBanco.Status = false;
+                var categoria = database.Categorias.FirstOrDefault(c => c.Id == id);
+                database.Categorias.Remove(categoria);
                 database.SaveChanges();
 
             } catch (Exception e) {
                 throw new Exception("Ocorreu um erro ao inativar:\n" + e.Message);
             }
 
+        }
+
+        /**
+        * Método que recebe uma categoria (editada) e realiza as edições da mesma no banco de dados.
+        */
+        public List<Categoria> ListarCategorias() {
+                return database.Categorias.ToList();
+        }
+
+        public Categoria BuscarCategoriaPeloId(int id) {
+            return database.Categorias.FirstOrDefault(c => c.Id == id);
         }
     }
 }

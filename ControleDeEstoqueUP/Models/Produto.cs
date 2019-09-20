@@ -24,6 +24,5 @@ namespace ControleDeEstoqueUP.Models{
 
         public virtual ICollection<ProdutoVenda> ProdutosVenda { get; set; }
 
-        public bool Status { get; set; }
     }
 }

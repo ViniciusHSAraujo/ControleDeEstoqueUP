@@ -5,17 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ControleDeEstoqueUP"
         mc:Ignorable="d"
+        ResizeMode="CanMinimize"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Image Margin="0,0,0,0" Source="Resources/ImagemInicioCEUP.png" Stretch="UniformToFill" VerticalAlignment="Bottom"/>
         <Menu Margin="0,0,0,0" VerticalAlignment="Top">
             <MenuItem Name="miCadastros" Header="Cadastros">
-                <MenuItem Header="Clientes"/>
-                <MenuItem Header="Fornecedores"/>
+                <MenuItem Name="miClientes" Header="Clientes" Click="MiClientes_Click" />
+                <MenuItem Name="miFornecedores" Header="Fornecedores" Click="MiFornecedores_Click"/>
+                <MenuItem Name="miFuncionarios" Header="Funcionários" Click="MiFuncionarios_Click" />
                 <Separator/>
-                <MenuItem Header="Produtos"/>
-                <MenuItem Header="Categorias" Click="MenuItem_Click"/>
-                <MenuItem Header="Subcategorias"/>
-                <MenuItem Header="Unidades"/>
+                <MenuItem Name="miProdutos" Header="Produtos" Click="MiProdutos_Click" />
+                <MenuItem Name="miCategorias" Header="Categorias" Click="MiCategorias_Click" />
+                <MenuItem Name="miUnidades" Header="Unidades" HorizontalAlignment="Right" Width="157" Click="MiUnidades_Click" />
             </MenuItem>
         </Menu>
 

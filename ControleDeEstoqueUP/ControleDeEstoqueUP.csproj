@@ -67,6 +67,9 @@
     <Compile Include="DAL\CategoriaDAO.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Data\SingletonContext.cs" />
+    <Compile Include="frmPesquisaCategoria.xaml.cs">
+      <DependentUpon>frmPesquisaCategoria.xaml</DependentUpon>
+    </Compile>
     <Compile Include="frmBasePesquisa.xaml.cs">
       <DependentUpon>frmBasePesquisa.xaml</DependentUpon>
     </Compile>
@@ -79,6 +82,10 @@
     <Compile Include="Migrations\201909191230185_InitialMigration.cs" />
     <Compile Include="Migrations\201909191230185_InitialMigration.Designer.cs">
       <DependentUpon>201909191230185_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909201653186_RemocaoDosStatus.cs" />
+    <Compile Include="Migrations\201909201653186_RemocaoDosStatus.Designer.cs">
+      <DependentUpon>201909201653186_RemocaoDosStatus.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -95,6 +102,10 @@
     <Compile Include="Models\Venda.cs" />
     <Compile Include="Utils\ModificaFormulario.cs" />
     <Compile Include="Utils\WPFUtils.cs" />
+    <Page Include="frmPesquisaCategoria.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="frmBasePesquisa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,6 +148,9 @@
     <EmbeddedResource Include="Migrations\201909191230185_InitialMigration.resx">
       <DependentUpon>201909191230185_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909201653186_RemocaoDosStatus.resx">
+      <DependentUpon>201909201653186_RemocaoDosStatus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -160,6 +174,12 @@
     <Resource Include="Resources\edit.png" />
     <Resource Include="Resources\save.png" />
     <Resource Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ImagemInicioCEUP.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

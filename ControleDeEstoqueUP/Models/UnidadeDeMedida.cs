@@ -12,6 +12,5 @@ namespace ControleDeEstoqueUP.Models{
 
         public string Simbolo { get; set; }
 
-        public bool Status { get; set; }
     }
 }

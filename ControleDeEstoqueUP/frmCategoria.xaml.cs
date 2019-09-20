@@ -30,6 +30,9 @@ namespace ControleDeEstoqueUP {
          */
         int operacao;
         CategoriaDAO categoriaDAO = new CategoriaDAO();
+
+        public int CategoriaPesquisa;
+
         public frmCategoria() {
             InitializeComponent();
             MudarOperacao(0);
@@ -45,7 +48,19 @@ namespace ControleDeEstoqueUP {
         }
 
         private void BtnLocalizar_Click(object sender, RoutedEventArgs e) {
-            MudarOperacao(2);
+            var pesquisa = new frmPesquisaCategoria();
+            pesquisa.ShowDialog();
+
+            CategoriaPesquisa = pesquisa.categoriaId;
+            // Se vier 0, então a pessoa fechou sem escolher nenhum item. Então ele não vai fazer nada.
+            if (CategoriaPesquisa != 0) {
+
+                Categoria categoria = categoriaDAO.BuscarCategoriaPeloId(CategoriaPesquisa);
+                txtCodigo.Text = categoria.Id.ToString();
+                txtNome.Text = categoria.Nome;
+
+                MudarOperacao(2);
+            }
         }
 
         
@@ -58,7 +73,7 @@ namespace ControleDeEstoqueUP {
                 WPFUtils.MostrarCaixaDeTextoDeAlerta("Nenhum item selecionado!");
             } else {
                 if (WPFUtils.MostrarCaixaDeTextoDeConfirmação("Tem certeza que deseja excluir essa categoria? Essa operação não poderá ser desfeita!")) {
-                    categoriaDAO.Inativar(Convert.ToInt32(txtCodigo.Text));
+                    categoriaDAO.Excluir(Convert.ToInt32(txtCodigo.Text));
                     WPFUtils.MostrarCaixaDeTextoDeInformação("Item excluído com sucesso!");
                     operacao = 0;
                     ModificarBotoesFormulario(operacao);
