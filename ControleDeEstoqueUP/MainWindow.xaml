@@ -13,7 +13,7 @@
                 <MenuItem Header="Fornecedores"/>
                 <Separator/>
                 <MenuItem Header="Produtos"/>
-                <MenuItem Header="Categorias"/>
+                <MenuItem Header="Categorias" Click="MenuItem_Click"/>
                 <MenuItem Header="Subcategorias"/>
                 <MenuItem Header="Unidades"/>
             </MenuItem>

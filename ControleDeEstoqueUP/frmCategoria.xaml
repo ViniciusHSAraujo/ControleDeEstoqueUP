@@ -5,9 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ControleDeEstoqueUP"
         mc:Ignorable="d"
-        Title="frmCategoria" Height="450" Width="800">
+        Title="Cadastro de Categorias" Height="600" Width="850">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="395,145,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <StackPanel Name="panelContent" Orientation="Vertical" Margin="15,15,15,100">
+            <Label Name="lblCodigo" Content="Código:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18"/>
+            <TextBox Name="txtCodigo" TextWrapping="Wrap" Text="" VerticalAlignment="Top" IsEnabled="False" Width="85" HorizontalAlignment="Left" FontSize="16"/>
+            <Label Name="lblNome" Content="Nome da Categoria:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18"/>
+            <TextBox Name="txtNome" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="385" HorizontalAlignment="Left" FontSize="16"/>
+        </StackPanel>
 
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10" Height="75" VerticalAlignment="Bottom">
+            <Button Name="btnAdicionar" Width="100" Margin="10" Click="BtnAdicionar_Click" >
+                <DockPanel>
+                    <Label Content="Adicionar" DockPanel.Dock="Right" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <Image  Source="resources/add.png" Margin="0,0,0,0" Width="30" DockPanel.Dock="Left" />
+                </DockPanel>
+            </Button>
+            <Button Name="btnLocalizar" Width="100" Margin="10" Click="BtnLocalizar_Click" >
+                <DockPanel>
+                    <Label Content="Localizar" DockPanel.Dock="Right" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <Image  Source="resources/search.png" Margin="0,0,0,0" Width="30" DockPanel.Dock="Left" />
+                </DockPanel>
+            </Button>
+            <Button Name="btnEditar" Width="100" Margin="10" Click="BtnEditar_Click" >
+                <DockPanel>
+                    <Label Content="Editar" DockPanel.Dock="Right" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <Image  Source="resources/edit.png" Margin="0,0,0,0" Width="30" DockPanel.Dock="Left" />
+                </DockPanel>
+            </Button>
+            <Button Name="btnExcluir" Width="100" Margin="10" Click="BtnExcluir_Click" >
+                <DockPanel>
+                    <Label Content="Excluir" DockPanel.Dock="Right" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <Image  Source="resources/delete.png" Margin="0,0,0,0" Width="30" DockPanel.Dock="Left" />
+                </DockPanel>
+            </Button>
+            <Button Name="btnSalvar" Width="100" Margin="10" Click="BtnSalvar_Click" >
+                <DockPanel>
+                    <Label Content="Salvar" DockPanel.Dock="Right" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <Image  Source="resources/save.png" Margin="0,0,0,0" Width="30" DockPanel.Dock="Left" />
+                </DockPanel>
+            </Button>
+            <Button Name="btnCancelar" Width="100" Margin="10" Click="BtnCancelar_Click" >
+                <DockPanel>
+                    <Label Content="Cancelar" DockPanel.Dock="Right" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <Image  Source="resources/cancel.png" Margin="0,0,0,0" Width="30" DockPanel.Dock="Left" />
+                </DockPanel>
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>

@@ -22,7 +22,7 @@ namespace ControleDeEstoqueUP {
             ModificarBotoesFormulario(0);
         }
 
-        private void BtnAdicinoar_Click(object sender, RoutedEventArgs e) {
+        private void BtnAdicionar_Click(object sender, RoutedEventArgs e) {
             ModificarBotoesFormulario(1);
         }
 
@@ -32,6 +32,11 @@ namespace ControleDeEstoqueUP {
 
         private void BtnCancelar_Click(object sender, RoutedEventArgs e) {
             ModificarBotoesFormulario(0);
+        }
+
+        private void LimparCampos() {
+            txtCodigo.Clear();
+            txtNome.Clear();
         }
 
         private void ModificarBotoesFormulario(int operacao) {

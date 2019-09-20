@@ -64,34 +64,46 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DAL\CategoriaDAO.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
+    <Compile Include="Data\SingletonContext.cs" />
+    <Compile Include="frmBasePesquisa.xaml.cs">
+      <DependentUpon>frmBasePesquisa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCategoria.xaml.cs">
+      <DependentUpon>frmCategoria.xaml</DependentUpon>
+    </Compile>
     <Compile Include="frmBaseCadastro.xaml.cs">
       <DependentUpon>frmBaseCadastro.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909182210422_InitialMigration.cs" />
-    <Compile Include="Migrations\201909182210422_InitialMigration.Designer.cs">
-      <DependentUpon>201909182210422_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201909191230185_InitialMigration.cs" />
+    <Compile Include="Migrations\201909191230185_InitialMigration.Designer.cs">
+      <DependentUpon>201909191230185_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Compra.cs" />
     <Compile Include="Models\Fornecedor.cs" />
-    <Compile Include="Models\ItemCompra.cs" />
-    <Compile Include="Models\ItemVenda.cs" />
-    <Compile Include="Models\ParcelaCompra.cs" />
-    <Compile Include="Models\ParcelaVenda.cs" />
+    <Compile Include="Models\Funcionario.cs" />
+    <Compile Include="Models\Movimentacao.cs" />
+    <Compile Include="Models\Pessoa.cs" />
     <Compile Include="Models\Produto.cs" />
-    <Compile Include="Models\SubCategoria.cs" />
-    <Compile Include="Models\TipoPagamento.cs" />
+    <Compile Include="Models\ProdutoCompra.cs" />
+    <Compile Include="Models\ProdutoVenda.cs" />
     <Compile Include="Models\UnidadeDeMedida.cs" />
     <Compile Include="Models\Venda.cs" />
     <Compile Include="Utils\ModificaFormulario.cs" />
-    <Page Include="frmBaseCadastro.xaml">
+    <Compile Include="Utils\WPFUtils.cs" />
+    <Page Include="frmBasePesquisa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="frmCategoria.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmBaseCadastro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -102,9 +114,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="frmCategoria.xaml.cs">
-      <DependentUpon>frmCategoria.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -125,8 +134,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201909182210422_InitialMigration.resx">
-      <DependentUpon>201909182210422_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909191230185_InitialMigration.resx">
+      <DependentUpon>201909191230185_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

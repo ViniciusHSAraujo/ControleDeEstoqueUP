@@ -15,13 +15,10 @@ namespace ControleDeEstoqueUP.Data {
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Compra> Compras { get; set; }
         public DbSet<Fornecedor> Fornecedores { get; set; }
-        public DbSet<ItemCompra> ItensCompra { get; set; }
-        public DbSet<ItemVenda> ItensVenda { get; set; }
-        public DbSet<ParcelaCompra> ParcelasCompra { get; set; }
-        public DbSet<ParcelaVenda> ParcelasVenda { get; set; }
+        public DbSet<Funcionario> Funcionarios{ get; set; }
         public DbSet<Produto> Produtos { get; set; }
-        public DbSet<SubCategoria> SubCategorias { get; set; }
-        public DbSet<TipoPagamento> TipoPagamentos { get; set; }
+        public DbSet<ProdutoCompra> ProdutosCompra { get; set; }
+        public DbSet<ProdutoVenda> ProdutosVenda { get; set; }
         public DbSet<UnidadeDeMedida> UnidadeDeMedidas { get; set; }
         public DbSet<Venda> Vendas { get; set; }
     }

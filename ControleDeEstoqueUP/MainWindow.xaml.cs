@@ -8,5 +8,10 @@ namespace ControleDeEstoqueUP {
         public MainWindow() {
             InitializeComponent();
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e) {
+            var w = new frmCategoria();
+            w.ShowDialog();
+        }
     }
 }

@@ -1,31 +1,29 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
 
-namespace ControleDeEstoqueUP.Models {
+namespace ControleDeEstoqueUP.Models{
     [Table("Produtos")]
-    class Produto {
-        public Produto() {
-            this.ItensCompra = new HashSet<ItemCompra>();
-            this.ItensVenda = new HashSet<ItemVenda>();
-        }
+    public class Produto{
+		public int Id { get; set; }
 
-        [Key]
-        public int Codigo { get; set; }
         public string Nome { get; set; }
-        public string Descricao { get; set; }
-        public byte[] Foto { get; set; }
-        public Nullable<decimal> ValorPago { get; set; }
-        public Nullable<decimal> ValorVenda { get; set; }
-        public Nullable<double> Quantidade { get; set; }
-        public Nullable<int> umed_Codigo { get; set; }
+
+        public decimal ValorPago { get; set; }
+
+        public decimal ValorVenda { get; set; }
+
+        public double Quantidade { get; set; }
+
         public virtual UnidadeDeMedida UnidadeDeMedida { get; set; }
-        public Nullable<int> cat_Codigo { get; set; }
+
         public virtual Categoria Categoria { get; set; }
-        public Nullable<int> scat_Codigo { get; set; }
-        public virtual SubCategoria SubCategoria { get; set; }
-        public virtual ICollection<ItemCompra> ItensCompra { get; set; }
-        public virtual ICollection<ItemVenda> ItensVenda { get; set; }
+
+        public virtual ICollection<ProdutoCompra> ProdutosCompra { get; set; }
+
+        public virtual ICollection<ProdutoVenda> ProdutosVenda { get; set; }
+
+        public bool Status { get; set; }
     }
 }

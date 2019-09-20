@@ -1,18 +1,26 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
 
-namespace ControleDeEstoqueUP.Models {
+namespace ControleDeEstoqueUP.Models{
     [Table("Categorias")]
-    class Categoria {
+	public class Categoria{
         public Categoria() {
-            this.SubCategoria = new HashSet<SubCategoria>();
-            this.Produto = new HashSet<Produto>();
         }
-        [Key]
-        public int Codigo { get; set; }
+        public Categoria(string nome, int id) {
+            this.Id = id;
+            this.Nome = nome;
+            this.Status = true;
+            this.Produtos = new HashSet<Produto>();
+        }
+
+        public int Id { get; set; }
+
         public string Nome { get; set; }
-        public virtual ICollection<SubCategoria> SubCategoria { get; set; }
-        public virtual ICollection<Produto> Produto { get; set; }
+
+        public virtual ICollection<Produto> Produtos { get; set; }
+
+        public bool Status { get; set; }
     }
 }
