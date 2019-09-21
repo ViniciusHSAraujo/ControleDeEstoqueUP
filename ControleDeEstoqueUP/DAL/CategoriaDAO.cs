@@ -23,7 +23,7 @@ namespace ControleDeEstoqueUP.DAL {
             } catch (Exception e) {
                 throw new Exception("Ocorreu um erro ao cadastrar:\n" + e.Message);
             }
-            
+
         }
 
 
@@ -61,11 +61,14 @@ namespace ControleDeEstoqueUP.DAL {
         * Método que recebe uma categoria (editada) e realiza as edições da mesma no banco de dados.
         */
         public List<Categoria> ListarCategorias() {
-                return database.Categorias.ToList();
+            return database.Categorias.ToList();
         }
 
         public Categoria BuscarCategoriaPeloId(int id) {
             return database.Categorias.FirstOrDefault(c => c.Id == id);
+        }
+        public Categoria BuscarCategoriaPeloNome(string nome) {
+            return database.Categorias.FirstOrDefault(c => c.Nome == nome);
         }
     }
 }

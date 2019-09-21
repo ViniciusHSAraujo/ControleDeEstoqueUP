@@ -6,6 +6,20 @@ using System.Text;
 namespace ControleDeEstoqueUP.Models{
     [Table("Produtos")]
     public class Produto{
+
+        public Produto() {
+        }
+
+        public Produto(string nome, decimal valorvenda, UnidadeDeMedida unidadeDeMedida, Categoria categoria, int id = 0, decimal valorPago = 0, double quantidade = 0) {
+            this.Nome = nome;
+            this.ValorVenda = valorvenda;
+            this.UnidadeDeMedida = unidadeDeMedida;
+            this.Categoria = categoria;
+            this.Id = id;
+            this.ValorPago = valorPago;
+            this.Quantidade = quantidade;
+        }
+
 		public int Id { get; set; }
 
         public string Nome { get; set; }
@@ -19,10 +33,5 @@ namespace ControleDeEstoqueUP.Models{
         public virtual UnidadeDeMedida UnidadeDeMedida { get; set; }
 
         public virtual Categoria Categoria { get; set; }
-
-        public virtual ICollection<ProdutoCompra> ProdutosCompra { get; set; }
-
-        public virtual ICollection<ProdutoVenda> ProdutosVenda { get; set; }
-
     }
 }

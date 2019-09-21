@@ -25,8 +25,8 @@ namespace ControleDeEstoqueUP {
         }
 
         private void MiProdutos_Click(object sender, RoutedEventArgs e) {
-            //var w = new frmProduto();
-            //w.ShowDialog();
+            var w = new frmProduto();
+            w.ShowDialog();
         }
 
         private void MiCategorias_Click(object sender, RoutedEventArgs e) {
