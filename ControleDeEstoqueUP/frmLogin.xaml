@@ -1,0 +1,20 @@
+﻿<Window x:Class="ControleDeEstoqueUP.frmLogin"
+        Name="formLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ControleDeEstoqueUP"
+        mc:Ignorable="d"
+        Title="Acesso ao Sistema" Height="462" Width="400">
+    <Grid>
+        <Image Source="Resources/ImagemInicioCEUP.png" Stretch="UniformToFill" Height="229" VerticalAlignment="Bottom"/>
+        <Label Name="lblAcessoAoSistema" Content="Acesso ao Sistema" Margin="50,10,50,0" HorizontalContentAlignment="Center" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Black"/>
+        <Label Name="lblCodFuncionario" Content="Código de Funcionário:" HorizontalAlignment="Left" Margin="15,60,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Segoe UI Semilight"/>
+        <TextBox Name="txtCodigoFuncionario" Margin="15,90,15,0" Height ="30" VerticalAlignment="Top" FontSize="14" />
+        <Label Name="lblSenhaFuncionario" Content="Senha:" HorizontalAlignment="Left" Margin="15,120,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Segoe UI Semilight"/>
+        <PasswordBox Name="txtSenha" Margin="15,150,15,0" Height ="30" VerticalAlignment="Top" FontSize="14" />
+        <Button x:Name="btnLogin" Content="Entrar" Margin="146,195,146,0" VerticalAlignment="Top" Height="35" Click="btnLogin_Click"/>
+
+    </Grid>
+</Window>

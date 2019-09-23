@@ -43,5 +43,10 @@ namespace ControleDeEstoqueUP {
             var w = new frmSobre();
             w.ShowDialog();
         }
+
+        private void MiCompras_Click(object sender, RoutedEventArgs e) {
+            var w = new frmCompra();
+            w.ShowDialog();
+        }
     }
 }

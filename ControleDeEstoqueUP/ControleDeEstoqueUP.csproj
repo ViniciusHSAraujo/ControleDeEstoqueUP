@@ -68,11 +68,17 @@
     <Compile Include="DAL\CategoriaDAO.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Data\SingletonContext.cs" />
+    <Compile Include="frmLogin.xaml.cs">
+      <DependentUpon>frmLogin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="frmMovimentacaoProduto.xaml.cs">
       <DependentUpon>frmMovimentacaoProduto.xaml</DependentUpon>
     </Compile>
     <Compile Include="frmPesquisaProduto.xaml.cs">
       <DependentUpon>frmPesquisaProduto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCompra.xaml.cs">
+      <DependentUpon>frmCompra.xaml</DependentUpon>
     </Compile>
     <Compile Include="frmProduto.xaml.cs">
       <DependentUpon>frmProduto.xaml</DependentUpon>
@@ -113,13 +119,20 @@
     <Compile Include="Models\ProdutoVenda.cs" />
     <Compile Include="Models\UnidadeDeMedida.cs" />
     <Compile Include="Models\Venda.cs" />
-    <Compile Include="Utils\ModificaFormulario.cs" />
     <Compile Include="Utils\WPFUtils.cs" />
+    <Page Include="frmLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="frmMovimentacaoProduto.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="frmPesquisaProduto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmCompra.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

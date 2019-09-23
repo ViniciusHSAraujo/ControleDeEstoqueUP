@@ -20,7 +20,7 @@
                 <MenuItem Name="miUnidades" Header="Unidades" HorizontalAlignment="Right" Width="157" Click="MiUnidades_Click" />
             </MenuItem>
             <MenuItem Name="miMovimentacoes" Header="Movimentações">
-                <MenuItem Name="miCompras" Header="Compras" HorizontalAlignment="Right" Width="157"/>
+                <MenuItem Name="miCompras" Header="Compras" HorizontalAlignment="Right" Width="157" Click="MiCompras_Click"/>
                 <Separator/>
                 <MenuItem Name="miVendas" Header="Vendas" HorizontalAlignment="Right" Width="157" />
             </MenuItem>
