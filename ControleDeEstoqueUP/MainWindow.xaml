@@ -20,6 +20,5 @@
                 <MenuItem Name="miUnidades" Header="Unidades" HorizontalAlignment="Right" Width="157" Click="MiUnidades_Click" />
             </MenuItem>
         </Menu>
-
     </Grid>
 </Window>
