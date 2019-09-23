@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ControleDeEstoqueUP"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
         Title="Lançamento de Compras" Height="600" Width="1000">
     <Grid>
         <StackPanel Name="panelContent" Orientation="Vertical" Margin="15,15,15,100">
@@ -14,12 +16,12 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Name="lblFornecedor" Content="Fornecedor:" VerticalAlignment="center" HorizontalAlignment="Left" FontSize="18"/>
-                <TextBox Name="txtFornecedorID" TextWrapping="Wrap" Text="" VerticalAlignment="center" Width="85" HorizontalAlignment="Left" FontSize="16"/>
+                <TextBox Name="txtFornecedorID" PreviewTextInput="ApenasNumerosValidationTextBox" TextWrapping="Wrap" Text="" VerticalAlignment="center" Width="85" HorizontalAlignment="Left" FontSize="16"/>
                 <TextBox Name="txtFornecedorNome" TextWrapping="Wrap" Text="" Margin="10,0,0,0" VerticalAlignment="center" IsEnabled="False" Width="250" HorizontalAlignment="Left" FontSize="16"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Name="lblFuncionario" Content="Funcionário:" VerticalAlignment="center" HorizontalAlignment="Left" FontSize="18"/>
-                <TextBox Name="txtFuncionarioID" TextWrapping="Wrap" Text="" VerticalAlignment="center" Width="85" HorizontalAlignment="Left" FontSize="16"/>
+                <TextBox Name="txtFuncionarioID" PreviewTextInput="ApenasNumerosValidationTextBox" TextWrapping="Wrap" Text="" VerticalAlignment="center" Width="85" HorizontalAlignment="Left" FontSize="16"/>
                 <TextBox Name="txtFuncionarioNome" TextWrapping="Wrap" Text="" Margin="10,0,0,0" VerticalAlignment="center" IsEnabled="False" Width="250" HorizontalAlignment="Left" FontSize="16"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
@@ -28,7 +30,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Name="lblTotal" Content="Valor total:" VerticalAlignment="center" HorizontalAlignment="Left" FontSize="18"/>
-                <TextBox Name="txtTotal"  VerticalAlignment="center" Width="125" IsEnabled="False" HorizontalAlignment="Left" FontSize="16"/>
+                <TextBox Name="txtTotal" PreviewTextInput="ApenasNumerosEVirgulaValidationTextBox" VerticalAlignment="center" Width="125" IsEnabled="False" HorizontalAlignment="Left" FontSize="16"/>
             </StackPanel>
             <DockPanel LastChildFill="True">
                 <Label Name="lblProdutos" DockPanel.Dock="Top" Content="Produtos:" VerticalAlignment="center" HorizontalAlignment="Left" FontSize="18"/>
@@ -37,18 +39,18 @@
                 <StackPanel Name="panelAdicionarProdutos" Background="LightGray" Margin="20,0,0,0" DockPanel.Dock="Right" Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Margin="3">
                         <Label Name="lblCodigoProduto" Content="Código do Produto:" VerticalAlignment="center" HorizontalAlignment="Left" FontSize="18"/>
-                        <TextBox Name="txtCodigoProduto" TextWrapping="Wrap" Text="" VerticalAlignment="center" Width="85" HorizontalAlignment="Left" FontSize="16"/>
+                        <TextBox Name="txtCodigoProduto" PreviewTextInput="ApenasNumerosValidationTextBox" TextWrapping="Wrap" Text="" VerticalAlignment="center" Width="85" HorizontalAlignment="Left" FontSize="16"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="3">
                         <TextBox Name="txtNomeProduto" TextWrapping="Wrap" Text="" VerticalAlignment="center" IsEnabled="False" Width="251" HorizontalAlignment="Left" FontSize="16"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="3">
                         <Label Name="lblQuantidade" Content="Quantidade:   " VerticalAlignment="center" HorizontalAlignment="Left" FontSize="18"/>
-                        <TextBox Name="txtQuantidade" TextWrapping="Wrap" Text="" VerticalAlignment="center" Width="85" HorizontalAlignment="Left" FontSize="16"/>
+                        <TextBox Name="txtQuantidade" PreviewTextInput="ApenasNumerosEVirgulaValidationTextBox" TextWrapping="Wrap" Text="" VerticalAlignment="center" Width="85" HorizontalAlignment="Left" FontSize="16"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="3">
                         <Label Name="lblValor" Content="Valor unitário:" VerticalAlignment="center" HorizontalAlignment="Left" FontSize="18"/>
-                        <TextBox Name="txtValor" TextWrapping="Wrap" Text="" VerticalAlignment="center" Width="85" HorizontalAlignment="Left" FontSize="16"/>
+                        <TextBox Name="txtValor" PreviewTextInput="ApenasNumerosEVirgulaValidationTextBox" TextWrapping="Wrap" Text="" VerticalAlignment="center" Width="85" HorizontalAlignment="Left" FontSize="16"/>
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="3">
                         <Button Name="btnAddItem" Width="100" Margin="10" Click="BtnSalvar_Click" >

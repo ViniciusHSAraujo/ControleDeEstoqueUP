@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ControleDeEstoqueUP"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
         Title="Cadastro de Produtos" Height="600" Width="850">
     <Grid>
         <StackPanel Name="panelContent" Orientation="Vertical" Margin="15,15,15,100">
@@ -15,7 +17,7 @@
             <Label Name="lblPrecoCusto" Content="Preço de Custo:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18"/>
             <TextBox Name="txtPrecoCusto" TextWrapping="Wrap" IsEnabled="False" Text="" VerticalAlignment="Top" Width="385" HorizontalAlignment="Left" FontSize="16"/>
             <Label Name="lblPrecoVenda" Content="Preço de Venda:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18"/>
-            <TextBox Name="txtPrecoVenda" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="385" HorizontalAlignment="Left" FontSize="16"/>
+            <TextBox Name="txtPrecoVenda" PreviewTextInput="ApenasNumerosEVirgulaValidationTextBox" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="385" HorizontalAlignment="Left" FontSize="16"/>
             <Label Name="lblQuantidadeDisponivel"  Content="Saldo disponível:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18"/>
             <TextBox Name="txtQuantidadeDisponivel" TextWrapping="Wrap" IsEnabled="False" Text="" VerticalAlignment="Top" Width="385" HorizontalAlignment="Left" FontSize="16"/>
             <Label Name="lblCategoria"  Content="Categoria:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18"/>

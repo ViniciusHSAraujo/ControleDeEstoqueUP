@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ControleDeEstoqueUP"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
         Title="Pesquisa de Produtos" Height="512" Width="329">
     <Grid>
         <Button x:Name="btnLocalizar" Height="28" Margin="0,32,10,0" Click="BtnLocalizar_Click" VerticalAlignment="Top" HorizontalAlignment="Right" Width="96" >

@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ControleDeEstoqueUP"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
         Title="Sobre o Controle de Estoque UP" Height="572" Width="500">
     <Grid>
         <Image Name="imgSobre" Source="Resources/ImagemInicioCEUP.png" Margin="0,0,0,0" VerticalAlignment="Bottom" />

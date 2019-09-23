@@ -5,8 +5,12 @@ namespace ControleDeEstoqueUP {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+        public static System.Windows.Rect WorkArea { get; }
+
         public MainWindow() {
             InitializeComponent();
+            TelaPrincipal.Width = System.Windows.SystemParameters.WorkArea.Width;
+            TelaPrincipal.Height = System.Windows.SystemParameters.WorkArea.Height;
         }
 
         private void MiClientes_Click(object sender, RoutedEventArgs e) {

@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\CEUP.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -119,6 +122,7 @@
     <Compile Include="Models\ProdutoVenda.cs" />
     <Compile Include="Models\UnidadeDeMedida.cs" />
     <Compile Include="Models\Venda.cs" />
+    <Compile Include="Utils\TextBoxValidations.cs" />
     <Compile Include="Utils\WPFUtils.cs" />
     <Page Include="frmLogin.xaml">
       <SubType>Designer</SubType>
@@ -228,6 +232,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\entrada.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CEUP.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
