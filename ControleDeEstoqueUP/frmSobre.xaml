@@ -1,0 +1,22 @@
+﻿<Window x:Class="ControleDeEstoqueUP.frmSobre"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ControleDeEstoqueUP"
+        mc:Ignorable="d"
+        Title="Sobre o Controle de Estoque UP" Height="572" Width="500">
+    <Grid>
+        <Image Name="imgSobre" Source="Resources/ImagemInicioCEUP.png" Margin="0,0,0,0" VerticalAlignment="Bottom" />
+        <Label Name="lblTitulo" Content="Sobre o sistema:" HorizontalAlignment="Left" Margin="0,5,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Segoe UI Black"/>
+        <TextBlock TextWrapping="WrapWithOverflow" Margin="10,35,10,0" FontSize="13" FontFamily="Segoe UI Semilight" >
+            O Controle de Estoque UP é um sistema voltado para pequenas empresas para que possam fazer o controle de seu estoque a partir do lançamento de suas compras e vendas.<LineBreak/>
+            O sistema conta também com o controle de clientes, fornecedores, funcionários, e o cadastro de produtos com suas categorias e unidades de medidas para facilitar a busca e organização de seu estoque.<LineBreak/>
+            Com nosso sistema, você tem acesso fácil aos dados de seus funcionários, clientes e fornecedores, além de poder atualizar os dados dos mesmos de maneira bem simplificada.<LineBreak/>
+            O controle de acesso do sistema se dará por meio de uma senha que deverá ser definida no cadastro do funcionário no sistema.<LineBreak/>
+            Além de ter de forma automatizada a atualização dos saldos dos itens no estoque, o usuário consegue saber qual é custo médio de seus produtos, e com isso definir com melhor precisão o preço de venda de seus itens, evitando prejuízos e aumentando a lucratividade.<LineBreak/>
+        </TextBlock>
+
+
+    </Grid>
+</Window>

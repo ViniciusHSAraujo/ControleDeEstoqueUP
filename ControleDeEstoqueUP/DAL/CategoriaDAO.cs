@@ -67,8 +67,5 @@ namespace ControleDeEstoqueUP.DAL {
         public Categoria BuscarCategoriaPeloId(int id) {
             return database.Categorias.FirstOrDefault(c => c.Id == id);
         }
-        public Categoria BuscarCategoriaPeloNome(string nome) {
-            return database.Categorias.FirstOrDefault(c => c.Nome == nome);
-        }
     }
 }

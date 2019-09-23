@@ -101,6 +101,7 @@ namespace ControleDeEstoqueUP {
                 case 3: //EDIÇÃO
                     if (!ValidarCamposObrigatorios()) {
                         var produto = CriarProdutoComOsDadosDaTela();
+                        cbUnidadeDeMedida.IsEnabled = false;
                         produtoDAO.Editar(produto);
                         WPFUtils.MostrarCaixaDeTextoDeInformação("Produto atualizado com sucesso!");
                         MudarOperacao(2);
@@ -109,6 +110,16 @@ namespace ControleDeEstoqueUP {
             }
         }
 
+        private void BtnCancelar_Click(object sender, RoutedEventArgs e) {
+            MudarOperacao(0);
+            LimparCampos();
+
+        }
+
+        /**
+         * Método que valida se todos os campos obrigatórios foram ou não preenchidos.
+         * Retorna verdadeiro se a validação for positiva, ou falso caso algum campo não tenha sido preenchido/escolhido.
+         */
         private bool ValidarCamposObrigatorios() {
             if (string.IsNullOrWhiteSpace(txtNome.Text)) {
                 WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe o nome do produto!");
@@ -128,12 +139,6 @@ namespace ControleDeEstoqueUP {
                 return false;
             }
             return true;
-        }
-
-        private void BtnCancelar_Click(object sender, RoutedEventArgs e) {
-            MudarOperacao(0);
-            LimparCampos();
-
         }
 
         /**
@@ -162,6 +167,8 @@ namespace ControleDeEstoqueUP {
                     btnSalvar.IsEnabled = false;
                     btnCancelar.IsEnabled = false;
                     panelContent.IsEnabled = false;
+                    panelBotoesCompraEVenda.Visibility = Visibility.Hidden;
+                    panelBotoesCompraEVenda.IsEnabled = false;
                     break;
                 case 1: //ADIÇÃO: BOTÕES DE SALVAR E CANCELAR ATIVOS. TELA ATIVA.
                     btnAdicionar.IsEnabled = false;
@@ -171,6 +178,8 @@ namespace ControleDeEstoqueUP {
                     btnSalvar.IsEnabled = true;
                     btnCancelar.IsEnabled = true;
                     panelContent.IsEnabled = true;
+                    panelBotoesCompraEVenda.Visibility = Visibility.Hidden;
+                    panelBotoesCompraEVenda.IsEnabled = false;
                     break;
                 case 2: //PRODUTO EM TELA: BOTÕES DE EXCLUIR, EDITAR, CANCELAR ATIVOS. TELA BLOQUEADA.
                     btnAdicionar.IsEnabled = false;
@@ -180,6 +189,8 @@ namespace ControleDeEstoqueUP {
                     btnSalvar.IsEnabled = false;
                     btnCancelar.IsEnabled = true;
                     panelContent.IsEnabled = false;
+                    panelBotoesCompraEVenda.Visibility = Visibility.Visible;
+                    panelBotoesCompraEVenda.IsEnabled = true;
                     break;
                 case 3: //EDIÇÃO: BOTÕES DE SALVAR E CANCELAR ATIVOS. TELA ATIVA.
                     btnAdicionar.IsEnabled = false;
@@ -189,6 +200,8 @@ namespace ControleDeEstoqueUP {
                     btnSalvar.IsEnabled = true;
                     btnCancelar.IsEnabled = true;
                     panelContent.IsEnabled = true;
+                    panelBotoesCompraEVenda.Visibility = Visibility.Visible;
+                    panelBotoesCompraEVenda.IsEnabled = false;
                     break;
 
             }
@@ -226,6 +239,9 @@ namespace ControleDeEstoqueUP {
             //cbUnidadeDeMedida.ItemsSource = unidades;
         }
 
+        /**
+         * Método que recebe um produto e preenche na tela os campos com suas informações.
+         */
         private void PopularCamposPeloProduto(Produto produto) {
             txtCodigo.Text = produto.Id.ToString();
             txtNome.Text = produto.Nome;
@@ -236,5 +252,16 @@ namespace ControleDeEstoqueUP {
             cbUnidadeDeMedida.SelectedItem = produto.UnidadeDeMedida;
         }
 
+        private void BtnCompras_Click(object sender, RoutedEventArgs e) {
+            Produto p = CriarProdutoComOsDadosDaTela();
+            var w = new frmMovimentacaoProduto(p, 1);
+            w.ShowDialog();
+        }
+
+        private void BtnVendas_Click(object sender, RoutedEventArgs e) {
+            Produto p = CriarProdutoComOsDadosDaTela();
+            var w = new frmMovimentacaoProduto(p, 2);
+            w.ShowDialog();
+        }
     }
 }

@@ -19,6 +19,12 @@
                 <MenuItem Name="miCategorias" Header="Categorias" Click="MiCategorias_Click" />
                 <MenuItem Name="miUnidades" Header="Unidades" HorizontalAlignment="Right" Width="157" Click="MiUnidades_Click" />
             </MenuItem>
+            <MenuItem Name="miMovimentacoes" Header="Movimentações">
+                <MenuItem Name="miCompras" Header="Compras" HorizontalAlignment="Right" Width="157"/>
+                <Separator/>
+                <MenuItem Name="miVendas" Header="Vendas" HorizontalAlignment="Right" Width="157" />
+            </MenuItem>
+            <MenuItem Name="miSobre" Header="Sobre" Click="MiSobre_Click"/>
         </Menu>
 
     </Grid>
