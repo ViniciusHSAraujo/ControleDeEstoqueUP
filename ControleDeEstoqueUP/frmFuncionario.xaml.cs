@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ControleDeEstoqueUP.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,15 @@ namespace ControleDeEstoqueUP
     /// </summary>
     public partial class frmFuncionario : Window
     {
+        /**
+         * Operações:
+         *  0: Nenhuma operação.
+         *  1: Inserção
+         *  2: Busca
+         *  3: Edição
+         */
+        int operacao;
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         public frmFuncionario()
         {
             InitializeComponent();
