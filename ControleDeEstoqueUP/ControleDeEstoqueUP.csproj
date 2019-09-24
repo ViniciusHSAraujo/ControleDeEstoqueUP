@@ -87,6 +87,9 @@
       <DependentUpon>frmBaseCadastro.xaml</DependentUpon>
     </Compile>
     <Compile Include="DAL\FuncionarioDAO.cs" />
+    <Compile Include="frmPesquisaFuncionario.xaml.cs">
+      <DependentUpon>frmPesquisaFuncionario.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201909191230185_InitialMigration.cs" />
     <Compile Include="Migrations\201909191230185_InitialMigration.Designer.cs">
       <DependentUpon>201909191230185_InitialMigration.cs</DependentUpon>
@@ -131,6 +134,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="frmBaseCadastro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmPesquisaFuncionario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
