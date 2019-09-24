@@ -67,6 +67,12 @@
     <Compile Include="DAL\CategoriaDAO.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Data\SingletonContext.cs" />
+    <Compile Include="frmCliente.xaml.cs">
+      <DependentUpon>frmCliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmFuncionario.xaml.cs">
+      <DependentUpon>frmFuncionario.xaml</DependentUpon>
+    </Compile>
     <Compile Include="frmPesquisaCategoria.xaml.cs">
       <DependentUpon>frmPesquisaCategoria.xaml</DependentUpon>
     </Compile>
@@ -102,6 +108,14 @@
     <Compile Include="Models\Venda.cs" />
     <Compile Include="Utils\ModificaFormulario.cs" />
     <Compile Include="Utils\WPFUtils.cs" />
+    <Page Include="frmCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmFuncionario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="frmPesquisaCategoria.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
