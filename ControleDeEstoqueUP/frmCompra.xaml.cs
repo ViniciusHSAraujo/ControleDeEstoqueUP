@@ -45,8 +45,8 @@ namespace ControleDeEstoqueUP {
         private void BtnAdicionar_Click(object sender, RoutedEventArgs e) {
             MudarOperacao(1);
             LimparCampos();
-            txtFuncionarioID.Text = frmLogin.funcionarioLogado.Id.ToString();
-            txtFuncionarioNome.Text = frmLogin.funcionarioLogado.Nome.ToString();
+            //txtFuncionarioID.Text = frmLogin.funcionarioLogado.Id.ToString();
+            //txtFuncionarioNome.Text = frmLogin.funcionarioLogado.Nome.ToString();
         }
 
         private void BtnLocalizar_Click(object sender, RoutedEventArgs e) {

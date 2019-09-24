@@ -30,15 +30,16 @@ namespace ControleDeEstoqueUP {
 
         private void btnLogin_Click(object sender, RoutedEventArgs e) {
 
+            var senha = txtSenha.Password;
+
             if (string.IsNullOrWhiteSpace(txtCodigoFuncionario.Text)) {
                 WPFUtils.MostrarCaixaDeTextoDeErro("É necessário preencher o código do funcionário!");
-            } else if (txtSenha.SecurePassword.Length == 0) {
+            } else if (string.IsNullOrWhiteSpace(senha)) {
                 WPFUtils.MostrarCaixaDeTextoDeErro("É necessário preencher a senha!");
             } else {
                 int usuario = Convert.ToInt32(txtCodigoFuncionario.Text);
-                SecureString senha = txtSenha.SecurePassword;
 
-                funcionarioLogado = null; // FuncionarioDAO.LoginDeUsuario(usuario, senha);
+                funcionarioLogado = null; // FuncionarioDAO.LoginDeUsuario(usuario, senha); SecureString.Equals(secstringone, secstringtwo)
 
                 if (funcionarioLogado == null) {
                     var w = new MainWindow();
