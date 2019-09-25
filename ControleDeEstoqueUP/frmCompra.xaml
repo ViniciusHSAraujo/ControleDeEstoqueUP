@@ -53,13 +53,13 @@
                         <TextBox Name="txtValor" PreviewTextInput="ApenasNumerosEVirgulaValidationTextBox" TextWrapping="Wrap" Text="" VerticalAlignment="center" Width="85" HorizontalAlignment="Left" FontSize="16"/>
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="3">
-                        <Button Name="btnAddItem" Width="100" Margin="10" Click="BtnSalvar_Click" >
+                        <Button Name="btnAddItem" Width="100" Margin="10" Click="BtnAddItem_Click" >
                             <DockPanel>
                                 <Label Content="Adicionar" DockPanel.Dock="Right" VerticalAlignment="Center" FontWeight="Bold"/>
                                 <Image  Source="resources/save.png" Margin="0,0,0,0" Width="30" DockPanel.Dock="Left" />
                             </DockPanel>
                         </Button>
-                        <Button Name="btnRemoveItem" Width="100" Margin="10" Click="BtnSalvar_Click" >
+                        <Button Name="btnRemoveItem" Width="100" Margin="10" Click="BtnRemoveItem_Click" >
                             <DockPanel>
                                 <Label Content="Remover" DockPanel.Dock="Right" VerticalAlignment="Center" FontWeight="Bold"/>
                                 <Image  Source="resources/delete.png" Margin="0,0,0,0" Width="30" DockPanel.Dock="Left" />
@@ -69,7 +69,15 @@
                 </StackPanel>
                 <!-- Grid do lado esquerdo onde aparecem os itens adicionados no painel que tem do lado direito (Model: ProdutoCompra)-->
                 <StackPanel Name="panelGridProdutos" DockPanel.Dock="Left" Orientation="Vertical">
-                    <DataGrid Name="gridProdutos" Height="215"/>
+                    <DataGrid Name="gridProdutos" Height="215" AutoGenerateColumns="False" AlternatingRowBackground="Azure" SelectionMode="Single">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Cod. Produto" Width="80" Binding="{Binding ProdutoID, StringFormat=000000}"/>
+                            <DataGridTextColumn Header="Desc. Produto" Width="*" Binding="{Binding ProdutoNome}"/>
+                            <DataGridTextColumn Header="Quantidade" Width="80" Binding="{Binding Quantidade}"/>
+                            <DataGridTextColumn Header="Valor unitário" Width="82" Binding="{Binding Valor, StringFormat=C2}"/>
+                            <DataGridTextColumn Header="Subtotal" Width="80" Binding="{Binding Subtotal, StringFormat=C2}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </StackPanel>
             </DockPanel>
         </StackPanel>

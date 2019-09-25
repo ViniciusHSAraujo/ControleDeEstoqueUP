@@ -12,6 +12,7 @@ namespace ControleDeEstoqueUP.DAL {
 
         private static ApplicationDbContext database = SingletonContext.GetInstance();
 
+        ProdutoDAO produtoDAO = new ProdutoDAO();
         /*
          * Método que Realiza a inserção do Fornecedor no Banco de Dados
          */
@@ -19,10 +20,16 @@ namespace ControleDeEstoqueUP.DAL {
             try {
                 database.Compras.Add(compra);
                 database.SaveChanges();
+                var produtosCompra = compra.ProdutosCompra;
+                foreach (var produtoCompra in produtosCompra) {
+                    produtoCompra.Compra = compra;
+                }
+                database.ProdutosCompra.AddRange(produtosCompra);
+                database.SaveChanges();
 
-                foreach (var produtoCompra in compra.ProdutosCompra) {
-                    database.ProdutosCompra.Add(new ProdutoCompra() { Compra = compra, Produto = produtoCompra.Produto, Quantidade = produtoCompra.Quantidade, Valor = produtoCompra.Valor });
-                    database.SaveChanges();
+                foreach (var produtoCompra in produtosCompra) {
+                produtoDAO.AtualizarCustoDoProduto(produtoCompra.Produto);
+                produtoDAO.AtualizarSaldoDoProduto(produtoCompra.Produto);
                 }
 
                 return compra;

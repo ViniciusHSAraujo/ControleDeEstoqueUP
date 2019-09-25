@@ -10,6 +10,14 @@ namespace ControleDeEstoqueUP.Models{
         public Compra() {
         }
 
+        public Compra(Fornecedor fornecedor, Funcionario funcionario, DateTime data, decimal valorTotal, ICollection<ProdutoCompra> produtosCompra, int id = 0) {
+            Fornecedor = fornecedor;
+            Funcionario = funcionario;
+            Data = data;
+            Total = valorTotal;
+            ProdutosCompra = produtosCompra;
+        }
+
 		public virtual ICollection<ProdutoCompra> ProdutosCompra { get; set; }
 
         public virtual Fornecedor Fornecedor { get; set; }

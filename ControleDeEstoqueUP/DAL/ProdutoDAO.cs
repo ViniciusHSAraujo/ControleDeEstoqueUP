@@ -72,20 +72,19 @@ namespace ControleDeEstoqueUP.DAL {
             return database.Produtos.FirstOrDefault(p => p.Id == id);
         }
 
-        public void AtualizarSaldoDosProdutos(List<Produto> produtos) {
-            foreach (var produto in produtos) {
-                var compras = database.ProdutosCompra.Where(pc => pc.Produto == produto).Sum(pc => pc.Quantidade);
-                var vendas = database.ProdutosVenda.Where(pv => pv.Produto == produto).Sum(pv => pv.Quantidade);
+        public void AtualizarSaldoDoProduto(Produto produto) {
+            //TODO
+                var compras = database.ProdutosCompra.Where(pc => pc.Produto.Id == produto.Id).Select(pc => pc.Quantidade).DefaultIfEmpty(0).Sum();
+                var vendas = database.ProdutosVenda.Where(pv => pv.Produto.Id == produto.Id).Select(pv => pv.Quantidade).DefaultIfEmpty(0).Sum();
                 produto.Quantidade = compras - vendas;
                 database.SaveChanges();
-            }
         }
-        public void AtualizarCustoDosProdutos(List<Produto> produtos) {
-            foreach (var produto in produtos) {
+        public void AtualizarCustoDoProduto(Produto produto) {
+            //TODO
                 var custoTotal = 0.00;
                 var quantidadeComprada = 0.00;
 
-                var compras = database.ProdutosCompra.Where(pc => pc.Produto == produto).ToList();
+                var compras = database.ProdutosCompra.Where(pc => pc.Produto.Id == produto.Id).ToList();
                 foreach (var compra in compras) {
                     custoTotal += compra.Quantidade * Convert.ToDouble(compra.Valor);
                     quantidadeComprada += compra.Quantidade;
@@ -93,7 +92,6 @@ namespace ControleDeEstoqueUP.DAL {
 
                 produto.ValorPago = Convert.ToDecimal(custoTotal / quantidadeComprada);
                 database.SaveChanges();
-            }
         }
     }
 }

@@ -6,7 +6,26 @@ using System.Text;
 namespace ControleDeEstoqueUP.Models{
     [Table("ProdutosCompra")]
     public class ProdutoCompra{
-		public int Id { get; set; }
+
+        public ProdutoCompra() {
+        }
+
+        public ProdutoCompra(Produto produto, double quantidade, decimal valor) {
+            Produto = produto;
+            Quantidade = quantidade;
+            Valor = valor;
+        }
+
+        public ProdutoCompra(Produto produto, double quantidade, decimal valor, Compra compra, int id = 0) {
+            Produto = produto;
+            Quantidade = quantidade;
+            Valor = valor;
+            Compra = compra;
+            Id = id;
+        }
+
+
+        public int Id { get; set; }
 
         public double Quantidade { get; set; }
 
