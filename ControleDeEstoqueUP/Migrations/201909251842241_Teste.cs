@@ -1,9 +1,9 @@
-namespace ControleDeEstoqueUP.Migrations
+﻿namespace ControleDeEstoqueUP.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialMigration : DbMigration
+    public partial class Teste : DbMigration
     {
         public override void Up()
         {
@@ -13,44 +13,29 @@ namespace ControleDeEstoqueUP.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Nome = c.String(),
-                        Status = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Produtos",
+                "dbo.Clientes",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Nome = c.String(),
-                        ValorPago = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        ValorVenda = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Quantidade = c.Double(nullable: false),
-                        Status = c.Boolean(nullable: false),
-                        Categoria_Id = c.Int(),
-                        UnidadeDeMedida_Id = c.Int(),
+                        CPFCNPJ = c.String(),
+                        RGIE = c.String(),
+                        RazaoSocial = c.String(),
+                        Tipo = c.Int(nullable: false),
+                        CEP = c.String(),
+                        Endereco = c.String(),
+                        Bairro = c.String(),
+                        Cidade = c.String(),
+                        UF = c.String(),
+                        Telefone = c.String(),
+                        Celular = c.String(),
+                        Email = c.String(),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Categorias", t => t.Categoria_Id)
-                .ForeignKey("dbo.UnidadesDeMedida", t => t.UnidadeDeMedida_Id)
-                .Index(t => t.Categoria_Id)
-                .Index(t => t.UnidadeDeMedida_Id);
-            
-            CreateTable(
-                "dbo.ProdutosCompra",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Quantidade = c.Double(nullable: false),
-                        Valor = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Compra_Id = c.Int(),
-                        Produto_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Compras", t => t.Compra_Id)
-                .ForeignKey("dbo.Produtos", t => t.Produto_Id)
-                .Index(t => t.Compra_Id)
-                .Index(t => t.Produto_Id);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Compras",
@@ -87,7 +72,6 @@ namespace ControleDeEstoqueUP.Migrations
                         Telefone = c.String(),
                         Celular = c.String(),
                         Email = c.String(),
-                        Status = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -114,7 +98,50 @@ namespace ControleDeEstoqueUP.Migrations
                         Telefone = c.String(),
                         Celular = c.String(),
                         Email = c.String(),
-                        Status = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.ProdutosCompra",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Quantidade = c.Double(nullable: false),
+                        Valor = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Compra_Id = c.Int(),
+                        Produto_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Compras", t => t.Compra_Id)
+                .ForeignKey("dbo.Produtos", t => t.Produto_Id)
+                .Index(t => t.Compra_Id)
+                .Index(t => t.Produto_Id);
+            
+            CreateTable(
+                "dbo.Produtos",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Nome = c.String(),
+                        ValorPago = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        ValorVenda = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Quantidade = c.Double(nullable: false),
+                        Categoria_Id = c.Int(),
+                        UnidadeDeMedida_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Categorias", t => t.Categoria_Id)
+                .ForeignKey("dbo.UnidadesDeMedida", t => t.UnidadeDeMedida_Id)
+                .Index(t => t.Categoria_Id)
+                .Index(t => t.UnidadeDeMedida_Id);
+            
+            CreateTable(
+                "dbo.UnidadesDeMedida",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Nome = c.String(),
+                        Simbolo = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -151,72 +178,39 @@ namespace ControleDeEstoqueUP.Migrations
                 .Index(t => t.Cliente_Id)
                 .Index(t => t.Funcionario_Id);
             
-            CreateTable(
-                "dbo.Clientes",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Nome = c.String(),
-                        CPFCNPJ = c.String(),
-                        RGIE = c.String(),
-                        RazaoSocial = c.String(),
-                        Tipo = c.Int(nullable: false),
-                        CEP = c.String(),
-                        Endereco = c.String(),
-                        Bairro = c.String(),
-                        Cidade = c.String(),
-                        UF = c.String(),
-                        Telefone = c.String(),
-                        Celular = c.String(),
-                        Email = c.String(),
-                        Status = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.UnidadesDeMedida",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Nome = c.String(),
-                        Simbolo = c.String(),
-                        Status = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Produtos", "UnidadeDeMedida_Id", "dbo.UnidadesDeMedida");
             DropForeignKey("dbo.ProdutosVenda", "Venda_Id", "dbo.Vendas");
             DropForeignKey("dbo.Vendas", "Funcionario_Id", "dbo.Funcionario");
             DropForeignKey("dbo.Vendas", "Cliente_Id", "dbo.Clientes");
             DropForeignKey("dbo.ProdutosVenda", "Produto_Id", "dbo.Produtos");
             DropForeignKey("dbo.ProdutosCompra", "Produto_Id", "dbo.Produtos");
+            DropForeignKey("dbo.Produtos", "UnidadeDeMedida_Id", "dbo.UnidadesDeMedida");
+            DropForeignKey("dbo.Produtos", "Categoria_Id", "dbo.Categorias");
             DropForeignKey("dbo.ProdutosCompra", "Compra_Id", "dbo.Compras");
             DropForeignKey("dbo.Compras", "Funcionario_Id", "dbo.Funcionario");
             DropForeignKey("dbo.Compras", "Fornecedor_Id", "dbo.Fornecedores");
-            DropForeignKey("dbo.Produtos", "Categoria_Id", "dbo.Categorias");
             DropIndex("dbo.Vendas", new[] { "Funcionario_Id" });
             DropIndex("dbo.Vendas", new[] { "Cliente_Id" });
             DropIndex("dbo.ProdutosVenda", new[] { "Venda_Id" });
             DropIndex("dbo.ProdutosVenda", new[] { "Produto_Id" });
-            DropIndex("dbo.Compras", new[] { "Funcionario_Id" });
-            DropIndex("dbo.Compras", new[] { "Fornecedor_Id" });
-            DropIndex("dbo.ProdutosCompra", new[] { "Produto_Id" });
-            DropIndex("dbo.ProdutosCompra", new[] { "Compra_Id" });
             DropIndex("dbo.Produtos", new[] { "UnidadeDeMedida_Id" });
             DropIndex("dbo.Produtos", new[] { "Categoria_Id" });
-            DropTable("dbo.UnidadesDeMedida");
-            DropTable("dbo.Clientes");
+            DropIndex("dbo.ProdutosCompra", new[] { "Produto_Id" });
+            DropIndex("dbo.ProdutosCompra", new[] { "Compra_Id" });
+            DropIndex("dbo.Compras", new[] { "Funcionario_Id" });
+            DropIndex("dbo.Compras", new[] { "Fornecedor_Id" });
             DropTable("dbo.Vendas");
             DropTable("dbo.ProdutosVenda");
+            DropTable("dbo.UnidadesDeMedida");
+            DropTable("dbo.Produtos");
+            DropTable("dbo.ProdutosCompra");
             DropTable("dbo.Funcionario");
             DropTable("dbo.Fornecedores");
             DropTable("dbo.Compras");
-            DropTable("dbo.ProdutosCompra");
-            DropTable("dbo.Produtos");
+            DropTable("dbo.Clientes");
             DropTable("dbo.Categorias");
         }
     }
