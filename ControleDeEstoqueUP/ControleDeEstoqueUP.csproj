@@ -79,6 +79,12 @@
     <Compile Include="frmPesquisaFornecedor.xaml.cs">
       <DependentUpon>frmPesquisaFornecedor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="frmPesquisaFuncionario.xaml.cs">
+      <DependentUpon>frmPesquisaFuncionario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPesquisarCliente.xaml.cs">
+      <DependentUpon>frmPesquisarCliente.xaml</DependentUpon>
+    </Compile>
     <Compile Include="frmPesquisaUnidadeMed.xaml.cs">
       <DependentUpon>frmPesquisaUnidadeMed.xaml</DependentUpon>
     </Compile>
@@ -148,6 +154,14 @@
     <Compile Include="Utils\TextBoxValidations.cs" />
     <Compile Include="Utils\WPFUtils.cs" />
     <Page Include="frmPesquisaFornecedor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPesquisaFuncionario.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPesquisarCliente.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
