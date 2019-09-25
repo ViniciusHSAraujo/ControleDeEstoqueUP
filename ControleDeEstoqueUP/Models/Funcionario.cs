@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace ControleDeEstoqueUP.Models{
+namespace ControleDeEstoqueUP.Models {
     [Table("Funcionario")]
-    public class Funcionario : Pessoa{
-        public Funcionario() {
-        }
+    public class Funcionario : Pessoa {
 
         public string Senha { get; set; }
 
-        public string CNPJ { get; set; }
+        public string CPF { get; set; }
 
         public string Cargo { get; set; }
 
@@ -20,5 +18,25 @@ namespace ControleDeEstoqueUP.Models{
         public DateTime Admissao { get; set; }
 
         public DateTime Demissao { get; set; }
+        public Funcionario() {
+        }
+
+        public Funcionario(string nome, string cpf, string cep, string endereco, string bairro, string cidade, string uf, string telefone, string celular, string email, string senha, string cargo, double salario, DateTime admissao, DateTime demissao) {
+            Nome = nome;
+            CPF = cpf;
+            CEP = cep;
+            Endereco = endereco;
+            Bairro = bairro;
+            Cidade = cidade;
+            UF = uf;
+            Telefone = telefone;
+            Celular = celular;
+            Email = email;
+            Senha = senha;
+            Cargo = cargo;
+            Salario = salario;
+            Admissao = admissao;
+            Demissao = demissao;
+        }
     }
 }

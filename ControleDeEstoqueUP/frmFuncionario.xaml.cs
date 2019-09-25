@@ -132,7 +132,7 @@ namespace ControleDeEstoqueUP {
                     btnExcluir.IsEnabled = false;
                     btnSalvar.IsEnabled = false;
                     btnCancelar.IsEnabled = false;
-                    panelContent.IsEnabled = false;
+                    gridTela.IsEnabled = false;
                     break;
                 case 1: //ADIÇÃO: BOTÕES DE SALVAR E CANCELAR ATIVOS. TELA ATIVA.
                     btnAdicionar.IsEnabled = false;
@@ -141,7 +141,7 @@ namespace ControleDeEstoqueUP {
                     btnExcluir.IsEnabled = false;
                     btnSalvar.IsEnabled = true;
                     btnCancelar.IsEnabled = true;
-                    panelContent.IsEnabled = true;
+                    gridTela.IsEnabled = true;
                     break;
                 case 2: //FUNCIONARIO EM TELA: BOTÕES DE EXCLUIR, EDITAR, CANCELAR ATIVOS. TELA BLOQUEADA.
                     btnAdicionar.IsEnabled = false;
@@ -150,7 +150,7 @@ namespace ControleDeEstoqueUP {
                     btnExcluir.IsEnabled = true;
                     btnSalvar.IsEnabled = false;
                     btnCancelar.IsEnabled = true;
-                    panelContent.IsEnabled = false;
+                    gridTela.IsEnabled = false;
                     break;
                 case 3: //EDIÇÃO: BOTÕES DE SALVAR E CANCELAR ATIVOS. TELA ATIVA.
                     btnAdicionar.IsEnabled = false;
@@ -159,7 +159,7 @@ namespace ControleDeEstoqueUP {
                     btnExcluir.IsEnabled = false;
                     btnSalvar.IsEnabled = true;
                     btnCancelar.IsEnabled = true;
-                    panelContent.IsEnabled = true;
+                    gridTela.IsEnabled = true;
                     break;
 
             }
@@ -172,7 +172,21 @@ namespace ControleDeEstoqueUP {
             //O código está nulo ou vazio? A variável recebe 0, se está preenchido, recebe o valor que está lá.
             int id = string.IsNullOrEmpty(txtCodigo.Text) ? 0 : Convert.ToInt32(txtCodigo.Text);
             string nome = txtNome.Text;
-            return new Funcionario();
+            string cep = txtCEP.Text;
+            string cpf = txtCpf.Text;
+            string endereco = txtEndereco.Text;
+            string bairro = txtBairro.Text;
+            string cidade = txtCidade.Text;
+            string uf = txtUF.Text;
+            string telefone = txtTelefone.Text;
+            string celular = txtCelular.Text;
+            string email = txtEmail.Text;
+            string senha = txtSenha.Text;
+            string cargo = txtCargo.Text;
+            double salario = Convert.ToInt64(txtSalario.Text);
+            DateTime admissao = (DateTime)txtAdmissao.SelectedDate;
+            DateTime demissao = (DateTime)txtDemissao.SelectedDate;
+            return new Funcionario(nome, cpf, cep, endereco, bairro, cidade, uf, telefone, celular, email, senha, cargo, salario, admissao, demissao);
         }
 
         private void MudarOperacao(int op) {
