@@ -30,6 +30,7 @@ namespace ControleDeEstoqueUP {
          *  3: Edição
          */
         int operacao;
+        FornecedorDAO fornecedorDAO = new FornecedorDAO();
 
         public int CompraPesquisa;
 
@@ -233,6 +234,21 @@ namespace ControleDeEstoqueUP {
         private void ApenasNumerosEVirgulaValidationTextBox(object sender, TextCompositionEventArgs e) {
             Regex regex = new Regex("[^0-9,-]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void TxtFornecedorID_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
+            int IdFornecedor;
+            var pesquisa = new frmPesquisaFornecedor();
+            pesquisa.ShowDialog();
+            IdFornecedor = pesquisa.fornecedorId;
+            txtFornecedorID.Text = IdFornecedor.ToString();
+            if (string.IsNullOrWhiteSpace(txtFornecedorID.Text)) {
+                WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum fornecedor escolhido!");
+            } else {
+                var fornecedor = fornecedorDAO.BuscarFornecedorPorId(IdFornecedor);
+                txtFornecedorNome.Text = fornecedor.RazaoSocial;
+            }
+            
         }
     }
 }

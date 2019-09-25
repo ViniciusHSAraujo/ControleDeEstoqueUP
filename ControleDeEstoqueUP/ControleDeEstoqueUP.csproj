@@ -68,6 +68,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DAL\ClienteDAO.cs" />
+    <Compile Include="DAL\CompraDAO.cs" />
     <Compile Include="DAL\FornecedorDAO.cs" />
     <Compile Include="DAL\FuncionarioDAO.cs" />
     <Compile Include="DAL\ProdutoDAO.cs" />
