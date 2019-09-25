@@ -32,7 +32,7 @@ namespace ControleDeEstoqueUP.DAL {
          */
         public void Editar(Cliente cliente) {
             try {
-                Funcionario clienteBuscado = database.Funcionarios.FirstOrDefault(c => c.Id == cliente.Id);
+                Cliente clienteBuscado = database.Clientes.FirstOrDefault(c => c.Id == cliente.Id);
                 clienteBuscado.Nome = cliente.Nome;
                 database.SaveChanges();
 
@@ -60,11 +60,11 @@ namespace ControleDeEstoqueUP.DAL {
         /**
         * Método que recebe um cliente (editado) e realiza as edições do mesmo no banco de dados.
         */
-        public List<Cliente> ListarFuncionarios() {
+        public List<Cliente> ListarClientes() {
             return database.Clientes.ToList();
         }
 
-        public Cliente BuscarFuncionarioPeloId(int id) {
+        public Cliente BuscarClientePeloId(int id) {
             return database.Clientes.FirstOrDefault(c => c.Id == id);
         }
     }

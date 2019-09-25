@@ -28,6 +28,5 @@
             </MenuItem>
             <MenuItem Name="miSobre" Header="Sobre" Click="MiSobre_Click"/>
         </Menu>
-
     </Grid>
 </Window>
