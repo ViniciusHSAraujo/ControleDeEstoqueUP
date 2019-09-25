@@ -31,8 +31,11 @@ namespace ControleDeEstoqueUP {
          */
         int operacao;
         FornecedorDAO fornecedorDAO = new FornecedorDAO();
+        Fornecedor fornecedor;
 
         public int CompraPesquisa;
+        int IdFornecedor;
+
 
         public frmCompra() {
             InitializeComponent();
@@ -237,18 +240,40 @@ namespace ControleDeEstoqueUP {
         }
 
         private void TxtFornecedorID_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
-            int IdFornecedor;
             var pesquisa = new frmPesquisaFornecedor();
             pesquisa.ShowDialog();
             IdFornecedor = pesquisa.fornecedorId;
-            txtFornecedorID.Text = IdFornecedor.ToString();
-            if (string.IsNullOrWhiteSpace(txtFornecedorID.Text)) {
-                WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum fornecedor escolhido!");
-            } else {
-                var fornecedor = fornecedorDAO.BuscarFornecedorPorId(IdFornecedor);
+            if (IdFornecedor != 0) {
+                fornecedor = fornecedorDAO.BuscarFornecedorPorId(IdFornecedor);
+                txtFornecedorID.Text = fornecedor.Id.ToString();
                 txtFornecedorNome.Text = fornecedor.RazaoSocial;
+            } else {
+                WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum fornecedor escolhido!");
+                fornecedor = null;
+                txtFornecedorNome.Clear();
+                txtFornecedorID.Clear();
             }
             
+        }
+
+        private void TxtFornecedorID_LostFocus(object sender, RoutedEventArgs e) {
+            if (string.IsNullOrEmpty(txtFornecedorID.Text)) {
+                WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum fornecedor escolhido!");
+                fornecedor = null;
+                txtFornecedorNome.Clear();
+                txtFornecedorID.Clear();
+            } else {
+                IdFornecedor = Convert.ToInt32(txtFornecedorID.Text);
+                fornecedor = fornecedorDAO.BuscarFornecedorPorId(IdFornecedor);
+                if (fornecedor == null) {
+                    WPFUtils.MostrarCaixaDeTextoDeErro("Código de fornecedor inválido!");
+                    fornecedor = null;
+                    txtFornecedorNome.Clear();
+                    txtFornecedorID.Clear();
+                } else {
+                    txtFornecedorNome.Text = fornecedor.RazaoSocial;
+                }
+            }
         }
     }
 }
