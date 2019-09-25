@@ -44,9 +44,9 @@ namespace ControleDeEstoqueUP {
 
         private void btnLocalizar_Click(object sender, RoutedEventArgs e) {
             var pesquisa = new frmPesquisarCliente();
-            //pesquisa.ShowDialog();
+            pesquisa.ShowDialog();
 
-           // ClientePesquisa = pesquisa.clienteId;
+            ClientePesquisa = pesquisa.clienteId;
             // Se vier 0, então a pessoa fechou sem escolher nenhum item. Então ele não vai fazer nada.
             if (ClientePesquisa != 0) {
                 Cliente cliente = clienteDAO.BuscarClientePeloId(ClientePesquisa);
