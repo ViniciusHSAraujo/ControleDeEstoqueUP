@@ -141,6 +141,10 @@
     <Compile Include="Migrations\201909252045427_Banco2.designer.cs">
       <DependentUpon>201909252045427_Banco2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909252056114_Banco3.cs" />
+    <Compile Include="Migrations\201909252056114_Banco3.designer.cs">
+      <DependentUpon>201909252056114_Banco3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -260,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909252045427_Banco2.resx">
       <DependentUpon>201909252045427_Banco2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909252056114_Banco3.resx">
+      <DependentUpon>201909252056114_Banco3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -29,7 +29,6 @@ namespace ControleDeEstoqueUP {
          */
         int operacao;
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-        List<Funcionario> funcionarios;
         private int FuncionarioPesquisa;
 
         public frmFuncionario() {
@@ -117,7 +116,20 @@ namespace ControleDeEstoqueUP {
         private void LimparCampos() {
             txtCodigo.Clear();
             txtNome.Clear();
+            txtCpf.Clear();
             txtCEP.Clear();
+            txtEndereco.Clear();
+            txtBairro.Clear();
+            txtCidade.Clear();
+            txtUF.Clear();
+            txtTelefone.Clear();
+            txtCelular.Clear();
+            txtEmail.Clear();
+            txtSalario.Clear();
+            txtCargo.Clear();
+            txtSenha.Clear();
+            txtDemissao.SelectedDate = null;
+            txtAdmissao.SelectedDate = null;
         }
 
         /**
@@ -183,7 +195,7 @@ namespace ControleDeEstoqueUP {
             string email = txtEmail.Text;
             string senha = txtSenha.Text;
             string cargo = txtCargo.Text;
-            double salario = Convert.ToInt64(txtSalario.Text);
+            double salario = Convert.ToDouble(txtSalario.Text);
             DateTime admissao = (DateTime)txtAdmissao.SelectedDate;
             DateTime demissao = (DateTime)txtDemissao.SelectedDate;
             return new Funcionario(nome, cpf, cep, endereco, bairro, cidade, uf, telefone, celular, email, senha, cargo, salario, admissao, demissao);
@@ -193,17 +205,26 @@ namespace ControleDeEstoqueUP {
             operacao = op;
             ModificarBotoesFormulario(operacao);
         }
-
-        private void AtualizarFuncionario() {
-            funcionarios = funcionarioDAO.ListarFuncionarios();
-        }
-
         /**
        * Método que recebe um funcionário e preenche na tela os campos com suas informações.
        */
         private void PopularCamposPeloFuncionario(Funcionario funcionario) {
             txtCodigo.Text = funcionario.Id.ToString();
-            txtNome.Text = funcionario.Nome;
+            txtNome.Text = funcionario.Nome.ToString();
+            txtCEP.Text = funcionario.CEP.ToString();
+            txtCpf.Text = funcionario.CPF.ToString();
+            txtEndereco.Text = funcionario.Endereco.ToString();
+            txtBairro.Text = funcionario.Bairro.ToString();
+            txtCidade.Text = funcionario.Cidade.ToString();
+            txtUF.Text = funcionario.UF.ToString();
+            txtTelefone.Text = funcionario.Telefone.ToString();
+            txtCelular.Text = funcionario.Celular.ToString();
+            txtEmail.Text = funcionario.Email.ToString();
+            txtSenha.Text = funcionario.Senha.ToString();
+            txtCargo.Text = funcionario.Cargo.ToString();
+            txtSalario.Text = funcionario.Salario.ToString();
+            //txtAdmissao.ToString() = funcionario.Admissao.ToString();
+            //txtDemissao.ToString() = funcionario.Demissao.ToString();
         }
     }
 }

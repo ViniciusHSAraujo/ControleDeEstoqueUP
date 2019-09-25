@@ -29,7 +29,6 @@ namespace ControleDeEstoqueUP {
          */
         int operacao;
         ClienteDAO clienteDAO = new ClienteDAO();
-        List<Cliente> clientes;
         private int ClientePesquisa;
         public frmCliente() {
             InitializeComponent();
@@ -117,6 +116,15 @@ namespace ControleDeEstoqueUP {
         private void LimparCampos() {
             txtCodigo.Clear();
             txtNome.Clear();
+            txtCpf.Clear();
+            txtCEP.Clear();
+            txtEndereco.Clear();
+            txtBairro.Clear();
+            txtCidade.Clear();
+            txtUF.Clear();
+            txtTelefone.Clear();
+            txtCelular.Clear();
+            txtEmail.Clear();
         }
 
         /**
@@ -131,7 +139,7 @@ namespace ControleDeEstoqueUP {
                     btnExcluir.IsEnabled = false;
                     btnSalvar.IsEnabled = false;
                     btnCancelar.IsEnabled = false;
-                    panelContent.IsEnabled = false;
+                    gridTela.IsEnabled = false;
                     break;
                 case 1: //ADIÇÃO: BOTÕES DE SALVAR E CANCELAR ATIVOS. TELA ATIVA.
                     btnAdicionar.IsEnabled = false;
@@ -140,7 +148,7 @@ namespace ControleDeEstoqueUP {
                     btnExcluir.IsEnabled = false;
                     btnSalvar.IsEnabled = true;
                     btnCancelar.IsEnabled = true;
-                    panelContent.IsEnabled = true;
+                    gridTela.IsEnabled = true;
                     break;
                 case 2: //CLIENTE EM TELA: BOTÕES DE EXCLUIR, EDITAR, CANCELAR ATIVOS. TELA BLOQUEADA.
                     btnAdicionar.IsEnabled = false;
@@ -149,7 +157,7 @@ namespace ControleDeEstoqueUP {
                     btnExcluir.IsEnabled = true;
                     btnSalvar.IsEnabled = false;
                     btnCancelar.IsEnabled = true;
-                    panelContent.IsEnabled = false;
+                    gridTela.IsEnabled = false;
                     break;
                 case 3: //EDIÇÃO: BOTÕES DE SALVAR E CANCELAR ATIVOS. TELA ATIVA.
                     btnAdicionar.IsEnabled = false;
@@ -158,7 +166,7 @@ namespace ControleDeEstoqueUP {
                     btnExcluir.IsEnabled = false;
                     btnSalvar.IsEnabled = true;
                     btnCancelar.IsEnabled = true;
-                    panelContent.IsEnabled = true;
+                    gridTela.IsEnabled = true;
                     break;
 
             }
@@ -168,9 +176,17 @@ namespace ControleDeEstoqueUP {
              */
         private Cliente CriarClienteComOsDadosDaTela() {
             //O código está nulo ou vazio? A variável recebe 0, se está preenchido, recebe o valor que está lá.
-            int id = string.IsNullOrEmpty(txtCodigo.Text) ? 0 : Convert.ToInt32(txtCodigo.Text);
             string nome = txtNome.Text;
-            return new Cliente();
+            string cep = txtCEP.Text;
+            string cpf = txtCpf.Text;
+            string endereco = txtEndereco.Text;
+            string bairro = txtBairro.Text;
+            string cidade = txtCidade.Text;
+            string uf = txtUF.Text;
+            string telefone = txtTelefone.Text;
+            string celular = txtCelular.Text;
+            string email = txtEmail.Text;
+            return new Cliente(nome, cpf, cep, endereco, bairro, cidade, uf, telefone, celular, email);
         }
 
         private void MudarOperacao(int op) {
@@ -178,16 +194,21 @@ namespace ControleDeEstoqueUP {
             ModificarBotoesFormulario(operacao);
         }
 
-        private void AtualizarFuncionario() {
-            clientes = clienteDAO.ListarClientes();
-        }
-
         /**
       * Método que recebe um funcionário e preenche na tela os campos com suas informações.
       */
         private void PopularCamposPeloCliente(Cliente cliente) {
             txtCodigo.Text = cliente.Id.ToString();
-            txtNome.Text = cliente.Nome;
+            txtNome.Text = cliente.Nome.ToString();
+            txtCEP.Text = cliente.CEP.ToString();
+            txtCpf.Text = cliente.CPF.ToString();
+            txtEndereco.Text = cliente.Endereco.ToString();
+            txtBairro.Text = cliente.Bairro.ToString();
+            txtCidade.Text = cliente.Cidade.ToString();
+            txtUF.Text = cliente.UF.ToString();
+            txtTelefone.Text = cliente.Telefone.ToString();
+            txtCelular.Text = cliente.Celular.ToString();
+            txtEmail.Text = cliente.Email.ToString();
         }
     }
 }
