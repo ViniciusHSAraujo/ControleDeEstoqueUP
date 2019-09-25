@@ -49,7 +49,7 @@ namespace ControleDeEstoqueUP {
         }
 
         private void BtnAbrir_Click(object sender, RoutedEventArgs e) {
-            if(gridResultados.SelectedItems == null) {
+            if(gridResultados.SelectedItem == null) {
                 WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum Fornecedor Selecionado!");
             } else {
                 var selecao = gridResultados.SelectedItem;
