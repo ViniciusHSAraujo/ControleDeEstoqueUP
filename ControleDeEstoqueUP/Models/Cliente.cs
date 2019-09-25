@@ -19,5 +19,8 @@ namespace ControleDeEstoqueUP.Models {
             Celular = celular;
             Email = email;
         }
+
+        public Cliente() {
+        }
     }
 }

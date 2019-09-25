@@ -77,7 +77,7 @@ namespace ControleDeEstoqueUP {
         private void btnSalvar_Click(object sender, RoutedEventArgs e) {
             switch (operacao) {
                 case 1: //ADIÇÃO
-                    if (!ValidarCamposObrigatorios()) {
+                    if (ValidarCamposObrigatorios()) {
                         var cliente = CriarClienteComOsDadosDaTela();
                         cliente = clienteDAO.Inserir(cliente);
                         PopularCamposPeloCliente(cliente);
@@ -86,7 +86,7 @@ namespace ControleDeEstoqueUP {
                     }
                     break;
                 case 3: //EDIÇÃO
-                    if (!ValidarCamposObrigatorios()) {
+                    if (ValidarCamposObrigatorios()) {
                         var cliente = CriarClienteComOsDadosDaTela();
                         clienteDAO.Editar(cliente);
                         WPFUtils.MostrarCaixaDeTextoDeInformação("Cliente atualizado com sucesso!");
