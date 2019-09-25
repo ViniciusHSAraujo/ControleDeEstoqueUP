@@ -39,7 +39,7 @@
                 <StackPanel Name="panelAdicionarProdutos" Background="LightGray" Margin="20,0,0,0" DockPanel.Dock="Right" Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Margin="3">
                         <Label Name="lblCodigoProduto" Content="Código do Produto:" VerticalAlignment="center" HorizontalAlignment="Left" FontSize="18"/>
-                        <TextBox Name="txtCodigoProduto" PreviewTextInput="ApenasNumerosValidationTextBox" TextWrapping="Wrap" Text="" VerticalAlignment="center" Width="85" HorizontalAlignment="Left" FontSize="16"/>
+                        <TextBox Name="txtCodigoProduto" LostFocus="TxtCodigoProduto_LostFocus" MouseDoubleClick="TxtCodigoProduto_MouseDoubleClick" PreviewTextInput="ApenasNumerosValidationTextBox" TextWrapping="Wrap" Text="" VerticalAlignment="center" Width="85" HorizontalAlignment="Left" FontSize="16"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="3">
                         <TextBox Name="txtNomeProduto" TextWrapping="Wrap" Text="" VerticalAlignment="center" IsEnabled="False" Width="251" HorizontalAlignment="Left" FontSize="16"/>
