@@ -30,9 +30,18 @@ namespace ControleDeEstoqueUP {
          *  3: Edição
          */
         int operacao;
+        CompraDAO compraDAO = new CompraDAO();
+
         FornecedorDAO fornecedorDAO = new FornecedorDAO();
+        Fornecedor fornecedor;
+
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        Produto produto;
 
         public int CompraPesquisa;
+        int IdFornecedor;
+        int IdProduto;
+
 
         public frmCompra() {
             InitializeComponent();
@@ -57,7 +66,7 @@ namespace ControleDeEstoqueUP {
             CompraPesquisa = pesquisa.produtoId;
             // Se vier 0, então a pessoa fechou sem escolher nenhum item. Então ele não vai fazer nada.
             if (CompraPesquisa != 0) {
-                //Compra compra = compraDAO.BuscarProdutoPeloId(CompraPesquisa);
+                Compra compra = compraDAO.BuscarCompraPorId(CompraPesquisa);
                 //PopularCamposPeloProduto(compra);
                 MudarOperacao(2);
             }
@@ -236,19 +245,89 @@ namespace ControleDeEstoqueUP {
             e.Handled = regex.IsMatch(e.Text);
         }
 
+        /**
+         * Quando se clica duas vezes no campo de ID do Fornecedor
+         */
         private void TxtFornecedorID_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
-            int IdFornecedor;
             var pesquisa = new frmPesquisaFornecedor();
             pesquisa.ShowDialog();
             IdFornecedor = pesquisa.fornecedorId;
-            txtFornecedorID.Text = IdFornecedor.ToString();
-            if (string.IsNullOrWhiteSpace(txtFornecedorID.Text)) {
-                WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum fornecedor escolhido!");
-            } else {
-                var fornecedor = fornecedorDAO.BuscarFornecedorPorId(IdFornecedor);
+            if (IdFornecedor != 0) {
+                fornecedor = fornecedorDAO.BuscarFornecedorPorId(IdFornecedor);
+                txtFornecedorID.Text = fornecedor.Id.ToString();
                 txtFornecedorNome.Text = fornecedor.RazaoSocial;
+            } else {
+                WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum fornecedor escolhido!");
+                fornecedor = null;
+                txtFornecedorNome.Clear();
+                txtFornecedorID.Clear();
             }
             
+        }
+
+        /**
+         * Quando o campo de ID do Fornecedor perde o foco.
+         */
+        private void TxtFornecedorID_LostFocus(object sender, RoutedEventArgs e) {
+            if (string.IsNullOrEmpty(txtFornecedorID.Text)) {
+                WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum fornecedor escolhido!");
+                fornecedor = null;
+                txtFornecedorNome.Clear();
+                txtFornecedorID.Clear();
+            } else {
+                IdFornecedor = Convert.ToInt32(txtFornecedorID.Text);
+                fornecedor = fornecedorDAO.BuscarFornecedorPorId(IdFornecedor);
+                if (fornecedor == null) {
+                    WPFUtils.MostrarCaixaDeTextoDeErro("Código de fornecedor inválido!");
+                    fornecedor = null;
+                    txtFornecedorNome.Clear();
+                    txtFornecedorID.Clear();
+                } else {
+                    txtFornecedorNome.Text = fornecedor.RazaoSocial;
+                }
+            }
+        }
+
+        /**
+         * Quando se clica duas vezes no campo de ID do Produto
+         */
+        private void TxtCodigoProduto_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
+            var pesquisa = new frmPesquisaProduto();
+            pesquisa.ShowDialog();
+            IdProduto = pesquisa.produtoId;
+            if (IdProduto != 0) {
+                produto = produtoDAO.BuscarProdutoPeloId(IdProduto);
+                txtCodigoProduto.Text = produto.Id.ToString();
+                txtNomeProduto.Text = produto.Nome;
+            } else {
+                WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum produto escolhido!");
+                produto = null;
+                txtCodigoProduto.Clear();
+                txtNomeProduto.Clear();
+            }
+        }
+
+        /**
+         * Quando o campo de ID do Produto perde o foco.
+         */
+        private void TxtCodigoProduto_LostFocus(object sender, RoutedEventArgs e) {
+            if (string.IsNullOrEmpty(txtCodigoProduto.Text)) {
+                WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum produto escolhido!");
+                produto = null;
+                txtCodigoProduto.Clear();
+                txtNomeProduto.Clear();
+            } else {
+                IdProduto = Convert.ToInt32(txtCodigoProduto.Text);
+                produto = produtoDAO.BuscarProdutoPeloId(IdProduto);
+                if (produto == null) {
+                    WPFUtils.MostrarCaixaDeTextoDeErro("Código de produto inválido!");
+                    produto = null;
+                    txtCodigoProduto.Clear();
+                    txtNomeProduto.Clear();
+                } else {
+                    txtNomeProduto.Text = produto.Nome;
+                }
+            }
         }
     }
 }
