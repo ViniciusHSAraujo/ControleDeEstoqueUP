@@ -44,9 +44,9 @@ namespace ControleDeEstoqueUP {
 
         private void btnLocalizar_Click(object sender, RoutedEventArgs e) {
             var pesquisa = new frmPesquisaFuncionario();
-            pesquisa.ShowDialog();
+           // pesquisa.ShowDialog();
 
-            FuncionarioPesquisa = pesquisa.funcionarioId;
+            //FuncionarioPesquisa = pesquisa.funcionarioId;
             // Se vier 0, então a pessoa fechou sem escolher nenhum item. Então ele não vai fazer nada.
             if (FuncionarioPesquisa != 0) {
                 Funcionario funcionario = funcionarioDAO.BuscarFuncionarioPeloId(FuncionarioPesquisa);

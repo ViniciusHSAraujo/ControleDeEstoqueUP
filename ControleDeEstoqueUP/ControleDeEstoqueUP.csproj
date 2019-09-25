@@ -79,6 +79,8 @@
     <Compile Include="frmPesquisaFornecedor.xaml.cs">
       <DependentUpon>frmPesquisaFornecedor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="frmPesquisaFuncionario.cs" />
+    <Compile Include="frmPesquisarCliente.cs" />
     <Compile Include="frmPesquisaUnidadeMed.xaml.cs">
       <DependentUpon>frmPesquisaUnidadeMed.xaml</DependentUpon>
     </Compile>
