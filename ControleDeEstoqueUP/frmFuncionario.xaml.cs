@@ -106,7 +106,7 @@ namespace ControleDeEstoqueUP {
 
         private bool ValidarCamposObrigatorios() {
             if (string.IsNullOrWhiteSpace(txtNome.Text)) {
-                WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe o nome do produto!");
+                WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe o nome do funcionário!");
                 txtNome.Focus();
                 return false;
             }
