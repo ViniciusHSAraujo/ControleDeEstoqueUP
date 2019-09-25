@@ -10,8 +10,8 @@ namespace ControleDeEstoqueUP {
         }
 
         private void MiClientes_Click(object sender, RoutedEventArgs e) {
-            //var w = new frmCliente();
-            //w.ShowDialog();
+            var w = new frmCliente();
+            w.ShowDialog();
         }
 
         private void MiFornecedores_Click(object sender, RoutedEventArgs e) {
@@ -20,8 +20,8 @@ namespace ControleDeEstoqueUP {
         }
 
         private void MiFuncionarios_Click(object sender, RoutedEventArgs e) {
-            //var w = new frmFuncionario();
-            //w.ShowDialog();
+            var w = new frmFuncionario();
+            w.ShowDialog();
         }
 
         private void MiProdutos_Click(object sender, RoutedEventArgs e) {

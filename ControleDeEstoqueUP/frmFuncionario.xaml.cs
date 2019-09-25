@@ -38,7 +38,6 @@ namespace ControleDeEstoqueUP {
         }
 
         private void btnAdicionar_Click(object sender, RoutedEventArgs e) {
-            AtualizarFuncionario();
             MudarOperacao(1);
             LimparCampos();
         }
@@ -57,7 +56,6 @@ namespace ControleDeEstoqueUP {
         }
 
         private void btnEditar_Click(object sender, RoutedEventArgs e) {
-            AtualizarFuncionario();
             MudarOperacao(3);
         }
 

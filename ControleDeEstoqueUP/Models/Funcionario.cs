@@ -6,7 +6,10 @@ using System.Text;
 namespace ControleDeEstoqueUP.Models{
     [Table("Funcionario")]
     public class Funcionario : Pessoa{
-		public string Senha { get; set; }
+        public Funcionario() {
+        }
+
+        public string Senha { get; set; }
 
         public string Cargo { get; set; }
 

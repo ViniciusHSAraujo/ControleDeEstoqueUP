@@ -52,9 +52,9 @@ namespace ControleDeEstoqueUP {
                 WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum item selecionado.");
             } else {
                 var selecao = gridResultados.SelectedItem;
-                Produto pro = selecao as Produto;
+                Cliente cli = selecao as Cliente;
 
-                clienteId = pro.Id;
+                clienteId = cli.Id;
                 Close();
             }
         }
