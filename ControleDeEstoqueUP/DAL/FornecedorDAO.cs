@@ -31,9 +31,8 @@ namespace ControleDeEstoqueUP.DAL {
         public void Editar(Fornecedor fornecedor) {
             try {
                 Fornecedor fornecedorBanco = database.Fornecedores.FirstOrDefault(f => f.Id == fornecedor.Id);
-                fornecedorBanco.RazaoSocial = fornecedor.RazaoSocial;
-                fornecedorBanco.RGIE = fornecedor.RGIE;
-                fornecedorBanco.CPFCNPJ = fornecedor.CPFCNPJ;
+                fornecedorBanco.Nome = fornecedor.Nome;
+                fornecedorBanco.CNPJ = fornecedor.CNPJ;
                 fornecedorBanco.Endereco = fornecedor.Endereco;
                 fornecedorBanco.Bairro = fornecedor.Bairro;
                 fornecedorBanco.Cidade = fornecedor.Cidade;

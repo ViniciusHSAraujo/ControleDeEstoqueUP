@@ -133,9 +133,9 @@
     <Compile Include="frmSobre.xaml.cs">
       <DependentUpon>frmSobre.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909251842241_Teste.cs" />
-    <Compile Include="Migrations\201909251842241_Teste.designer.cs">
-      <DependentUpon>201909251842241_Teste.cs</DependentUpon>
+    <Compile Include="Migrations\201909251951116_BancoAtual.cs" />
+    <Compile Include="Migrations\201909251951116_BancoAtual.designer.cs">
+      <DependentUpon>201909251951116_BancoAtual.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -251,8 +251,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201909251842241_Teste.resx">
-      <DependentUpon>201909251842241_Teste.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909251951116_BancoAtual.resx">
+      <DependentUpon>201909251951116_BancoAtual.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -11,6 +11,8 @@ namespace ControleDeEstoqueUP.Models{
 
         public string Senha { get; set; }
 
+        public string CNPJ { get; set; }
+
         public string Cargo { get; set; }
 
         public double Salario { get; set; }

@@ -255,7 +255,7 @@ namespace ControleDeEstoqueUP {
             if (IdFornecedor != 0) {
                 fornecedor = fornecedorDAO.BuscarFornecedorPorId(IdFornecedor);
                 txtFornecedorID.Text = fornecedor.Id.ToString();
-                txtFornecedorNome.Text = fornecedor.RazaoSocial;
+                txtFornecedorNome.Text = fornecedor.Nome;
             } else {
                 WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum fornecedor escolhido!");
                 fornecedor = null;
@@ -283,7 +283,7 @@ namespace ControleDeEstoqueUP {
                     txtFornecedorNome.Clear();
                     txtFornecedorID.Clear();
                 } else {
-                    txtFornecedorNome.Text = fornecedor.RazaoSocial;
+                    txtFornecedorNome.Text = fornecedor.Nome;
                 }
             }
         }

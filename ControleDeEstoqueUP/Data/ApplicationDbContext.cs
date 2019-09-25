@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace ControleDeEstoqueUP.Data {
     class ApplicationDbContext : DbContext {
-        protected ApplicationDbContext(DbCompiledModel model) : base(model) {
-        }
+        //protected ApplicationDbContext(DbCompiledModel model) : base(model) {
+        //}
 
         public ApplicationDbContext() {
         }

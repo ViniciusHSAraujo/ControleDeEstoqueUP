@@ -7,13 +7,13 @@ namespace ControleDeEstoqueUP.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.3.0")]
-    public sealed partial class Teste : IMigrationMetadata
+    public sealed partial class BancoAtual : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Teste));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(BancoAtual));
         
         string IMigrationMetadata.Id
         {
-            get { return "201909251842241_Teste"; }
+            get { return "201909251951116_BancoAtual"; }
         }
         
         string IMigrationMetadata.Source

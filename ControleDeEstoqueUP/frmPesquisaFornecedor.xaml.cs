@@ -41,7 +41,7 @@ namespace ControleDeEstoqueUP {
                     gridResultados.ItemsSource = fornecedores.ToList().Where(f => f.Id.ToString().Contains(txtPesquisa.Text));
                     break;
                 case 2:
-                    gridResultados.ItemsSource = fornecedores.Where(f => f.RazaoSocial.ToLower().Contains(txtPesquisa.Text.ToLower()));
+                    gridResultados.ItemsSource = fornecedores.Where(f => f.Nome.ToLower().Contains(txtPesquisa.Text.ToLower()));
                     break;
                 default:
                     break;

@@ -3,19 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace ControleDeEstoqueUP.Models{
+namespace ControleDeEstoqueUP.Models {
     [Table("Fornecedores")]
     public class Fornecedor : Pessoa {
-
+        public string CNPJ { get; set; }
         public Fornecedor() {
-
         }
 
-        public Fornecedor(string cnpj, string razaoSocial, string inscricaoestadual, string cep, string endereco, string bairro, string cidade, string uf, string telefone, string celular, string email, int id = 0) {
-            Id = id;
-            CPFCNPJ = cnpj;
-            RazaoSocial = razaoSocial;
-            RGIE = inscricaoestadual;
+        public Fornecedor(string cnpj, string nome, string cep, string endereco, string bairro, string cidade, string uf, string telefone, string celular, string email) {
+            CNPJ = cnpj;
+            Nome = nome;
             CEP = cep;
             Endereco = endereco;
             Bairro = bairro;
