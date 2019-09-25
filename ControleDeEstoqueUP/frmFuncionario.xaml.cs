@@ -223,8 +223,8 @@ namespace ControleDeEstoqueUP {
             txtSenha.Text = funcionario.Senha.ToString();
             txtCargo.Text = funcionario.Cargo.ToString();
             txtSalario.Text = funcionario.Salario.ToString();
-            //txtAdmissao.ToString() = funcionario.Admissao.ToString();
-            //txtDemissao.ToString() = funcionario.Demissao.ToString();
+            txtAdmissao.SelectedDate = funcionario.Admissao;
+            txtDemissao.SelectedDate = funcionario.Demissao;
         }
     }
 }
