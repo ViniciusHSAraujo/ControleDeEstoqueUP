@@ -32,9 +32,10 @@ namespace ControleDeEstoqueUP {
         int operacao;
         ProdutoDAO produtoDAO = new ProdutoDAO();
         CategoriaDAO categoriaDAO = new CategoriaDAO();
-        //UnidadeDeMedidaDAO unidadeDeMedidaDAO = new UnidadeDeMedidaDAO();
+        UnidadeMedidaDAO unidadeDeMedidaDAO = new UnidadeMedidaDAO();
 
         List<Categoria> categorias;
+        List<UnidadeDeMedida> unidades;
 
         public int ProdutoPesquisa;
 
@@ -91,7 +92,7 @@ namespace ControleDeEstoqueUP {
         private void BtnSalvar_Click(object sender, RoutedEventArgs e) {
             switch (operacao) {
                 case 1: //ADIÇÃO
-                    if (!ValidarCamposObrigatorios()) {
+                    if (ValidarCamposObrigatorios()) {
                         var produto = CriarProdutoComOsDadosDaTela();
                         produto = produtoDAO.Inserir(produto);
                         PopularCamposPeloProduto(produto);
@@ -100,7 +101,7 @@ namespace ControleDeEstoqueUP {
                     }
                     break;
                 case 3: //EDIÇÃO
-                    if (!ValidarCamposObrigatorios()) {
+                    if (ValidarCamposObrigatorios()) {
                         var produto = CriarProdutoComOsDadosDaTela();
                         cbUnidadeDeMedida.IsEnabled = false;
                         produtoDAO.Editar(produto);
@@ -217,8 +218,7 @@ namespace ControleDeEstoqueUP {
             string nome = txtNome.Text;
             decimal valorPago = string.IsNullOrEmpty(txtPrecoCusto.Text) ? 0 : Convert.ToDecimal(txtPrecoCusto.Text);
             decimal valorvenda = string.IsNullOrEmpty(txtPrecoVenda.Text) ? 0 : Convert.ToDecimal(txtPrecoVenda.Text);
-            //UnidadeDeMedida unidadeDeMedida = UnidadeDeMedidaDAO.;
-            UnidadeDeMedida unidadeDeMedida = null;
+            UnidadeDeMedida unidadeDeMedida = (UnidadeDeMedida) cbUnidadeDeMedida.SelectedValue;
             Categoria categoria = (Categoria) cbCategoria.SelectedValue;
             double quantidade = string.IsNullOrEmpty(txtCodigo.Text) ? 0 : Convert.ToDouble(txtQuantidadeDisponivel.Text);
             return new Produto(nome, valorvenda, unidadeDeMedida,categoria,id,valorPago,quantidade);
@@ -234,10 +234,10 @@ namespace ControleDeEstoqueUP {
 
         private void AtualizarCategoriasEUnidades() {
             categorias = categoriaDAO.ListarCategorias();
-            //unidades = unidadesDeMedidasDAO.ListarCategorias();
+            unidades = unidadeDeMedidaDAO.ListadeUnidades();
 
             cbCategoria.ItemsSource = categorias;
-            //cbUnidadeDeMedida.ItemsSource = unidades;
+            cbUnidadeDeMedida.ItemsSource = unidades;
         }
 
         /**

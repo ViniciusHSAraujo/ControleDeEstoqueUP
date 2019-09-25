@@ -67,10 +67,32 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DAL\ClienteDAO.cs" />
+    <Compile Include="DAL\FornecedorDAO.cs" />
+    <Compile Include="DAL\FuncionarioDAO.cs" />
     <Compile Include="DAL\ProdutoDAO.cs" />
     <Compile Include="DAL\CategoriaDAO.cs" />
+    <Compile Include="DAL\UnidadeMedidaDAO.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Data\SingletonContext.cs" />
+    <Compile Include="frmPesquisaFornecedor.xaml.cs">
+      <DependentUpon>frmPesquisaFornecedor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmPesquisaUnidadeMed.xaml.cs">
+      <DependentUpon>frmPesquisaUnidadeMed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmUnidadeMed.xaml.cs">
+      <DependentUpon>frmUnidadeMed.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmCliente.xaml.cs">
+      <DependentUpon>frmCliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmFornecedor.xaml.cs">
+      <DependentUpon>frmFornecedor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmFuncionario.xaml.cs">
+      <DependentUpon>frmFuncionario.xaml</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.xaml.cs">
       <DependentUpon>frmLogin.xaml</DependentUpon>
     </Compile>
@@ -124,6 +146,30 @@
     <Compile Include="Models\Venda.cs" />
     <Compile Include="Utils\TextBoxValidations.cs" />
     <Compile Include="Utils\WPFUtils.cs" />
+    <Page Include="frmPesquisaFornecedor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPesquisaUnidadeMed.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmUnidadeMed.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmCliente.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmFornecedor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmFuncionario.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="frmLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

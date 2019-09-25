@@ -12,5 +12,19 @@ namespace ControleDeEstoqueUP.Models{
 
         public string Simbolo { get; set; }
 
+        public UnidadeDeMedida() {
+
+        }
+
+        public UnidadeDeMedida(string nome, string simbolo, int id = 0) {
+            Id = id;
+            Nome = nome;
+            Simbolo = simbolo;
+        }
+
+        public override string ToString() {
+            return Simbolo;
+        }
+
     }
 }

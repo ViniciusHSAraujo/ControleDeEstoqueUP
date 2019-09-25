@@ -26,6 +26,7 @@ namespace ControleDeEstoqueUP {
 
         public frmLogin() {
             InitializeComponent();
+            txtCodigoFuncionario.Focus();
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e) {
