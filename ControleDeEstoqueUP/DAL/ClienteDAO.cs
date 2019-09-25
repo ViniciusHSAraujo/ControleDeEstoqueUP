@@ -52,7 +52,7 @@ namespace ControleDeEstoqueUP.DAL {
                 database.SaveChanges();
 
             } catch (Exception e) {
-                throw new Exception("Ocorreu um erro ao inativar:\n" + e.Message);
+                throw new Exception("Ocorreu um erro ao excluir:\n" + e.Message);
             }
 
         }

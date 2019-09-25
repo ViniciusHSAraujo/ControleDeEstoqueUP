@@ -151,9 +151,7 @@ namespace ControleDeEstoqueUP {
 
 
         private Fornecedor CriarFornecedorComOsDadosTela() {
-            int id = string.IsNullOrEmpty(txtCodigo.Text) ? 0 : Convert.ToInt32(txtCodigo.Text);
-            string razaoSocial = txtRazaoSocial.Text;
-            string inscricaoestadual = txtIE.Text;
+            string nome = txtRazaoSocial.Text;
             string cnpj = txtCnpj.Text;
             string cep = txtCEP.Text;
             string endereco = txtEndereco.Text;
@@ -164,15 +162,14 @@ namespace ControleDeEstoqueUP {
             string celular = txtCelular.Text;
             string email = txtEmail.Text;
 
-            return new Fornecedor(cnpj, razaoSocial, inscricaoestadual, cep, endereco, bairro, cidade, uf, telefone, celular, email, id);
+            return new Fornecedor(cnpj, nome, cep, endereco, bairro, cidade, uf, telefone, celular, email);
         }
 
         private void PreencherTelaPeloFornecedor(Fornecedor fornecedor) {
             txtCodigo.Text = fornecedor.Id.ToString();
-            txtRazaoSocial.Text = fornecedor.RazaoSocial;
-            txtIE.Text = fornecedor.RGIE;
-            txtCnpj.Text = fornecedor.CPFCNPJ;
-            txtCEP.Text = fornecedor.Celular;
+            txtRazaoSocial.Text = fornecedor.Nome;
+            txtCnpj.Text = fornecedor.CNPJ;
+            txtCEP.Text = fornecedor.CEP;
             txtEndereco.Text = fornecedor.Endereco;
             txtBairro.Text = fornecedor.Bairro;
             txtCidade.Text = fornecedor.Cidade;

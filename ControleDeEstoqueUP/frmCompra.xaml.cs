@@ -321,7 +321,7 @@ namespace ControleDeEstoqueUP {
                     txtFornecedorNome.Clear();
                     txtFornecedorID.Clear();
                 } else {
-                    txtFornecedorNome.Text = fornecedorCompra.RazaoSocial;
+                    txtFornecedorNome.Text = fornecedor.Nome;
                 }
             }
         }
