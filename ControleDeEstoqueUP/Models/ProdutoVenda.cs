@@ -5,7 +5,10 @@ using System.Text;
 
 namespace ControleDeEstoqueUP.Models{
     [Table("ProdutosVenda")]
-    public class ProdutoVenda{
+    public class ProdutoVenda {
+        public ProdutoVenda() {
+        }
+
         public ProdutoVenda(Produto produto, double quantidade, decimal valor) {
             Produto = produto;
             Quantidade = quantidade;

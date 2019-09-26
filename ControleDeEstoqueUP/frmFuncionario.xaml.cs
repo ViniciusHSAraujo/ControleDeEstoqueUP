@@ -239,7 +239,7 @@ namespace ControleDeEstoqueUP {
             double salario = Convert.ToDouble(txtSalario.Text);
             DateTime admissao = txtAdmissao.SelectedDate.Value;
             DateTime? demissao = txtDemissao.SelectedDate;
-            return new Funcionario(nome, cpf, cep, endereco, bairro, cidade, uf, telefone, celular, email, senha, cargo, salario, admissao, demissao);
+            return new Funcionario(nome, cpf, cep, endereco, bairro, cidade, uf, telefone, celular, email, senha, cargo, salario, admissao, demissao,id);
         }
 
         private void MudarOperacao(int op) {

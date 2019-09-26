@@ -37,8 +37,8 @@ namespace ControleDeEstoqueUP {
 
         Funcionario funcionarioCompra = frmLogin.funcionarioLogado;
 
-        ICollection<ProdutoCompra> produtosDaCompra= new List<ProdutoCompra>();
-        List<dynamic> produtosDaCompraGrid= new List<dynamic>();
+        ICollection<ProdutoCompra> produtosDaCompra = new List<ProdutoCompra>();
+        List<dynamic> produtosDaCompraGrid = new List<dynamic>();
 
         ProdutoDAO produtoDAO = new ProdutoDAO();
         Produto produtoEscolhido;
@@ -78,7 +78,7 @@ namespace ControleDeEstoqueUP {
             }
         }
 
-        
+
         private void BtnEditar_Click(object sender, RoutedEventArgs e) {
             MudarOperacao(3);
         }
@@ -150,7 +150,7 @@ namespace ControleDeEstoqueUP {
             } else {
                 return true;
             }
-        }  
+        }
 
         /**
          * Método que limpa os campos da tela.
@@ -297,13 +297,14 @@ namespace ControleDeEstoqueUP {
                 fornecedorCompra = fornecedorDAO.BuscarFornecedorPorId(IdFornecedor);
                 txtFornecedorID.Text = fornecedorCompra.Id.ToString();
                 txtFornecedorNome.Text = fornecedorCompra.Nome;
+                txtValor.Text = produtoEscolhido.ValorPago.ToString("2F");
             } else {
                 WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum fornecedor escolhido!");
                 fornecedorCompra = null;
                 txtFornecedorNome.Clear();
                 txtFornecedorID.Clear();
             }
-            
+
         }
 
         /**
@@ -325,6 +326,7 @@ namespace ControleDeEstoqueUP {
                     txtFornecedorID.Clear();
                 } else {
                     txtFornecedorNome.Text = fornecedorCompra.Nome;
+                    txtValor.Text = produtoEscolhido.ValorPago.ToString("2F");
                 }
             }
         }

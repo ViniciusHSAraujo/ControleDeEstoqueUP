@@ -34,6 +34,15 @@ namespace ControleDeEstoqueUP.DAL {
             try {
                 Cliente clienteBuscado = database.Clientes.FirstOrDefault(c => c.Id == cliente.Id);
                 clienteBuscado.Nome = cliente.Nome;
+                clienteBuscado.CPF = cliente.CPF;
+                clienteBuscado.CEP = cliente.CEP;
+                clienteBuscado.Endereco = cliente.Endereco;
+                clienteBuscado.Bairro = cliente.Bairro;
+                clienteBuscado.Cidade = cliente.Cidade;
+                clienteBuscado.UF = cliente.UF;
+                clienteBuscado.Telefone = cliente.Telefone;
+                clienteBuscado.Celular = cliente.Celular;
+                clienteBuscado.Email = cliente.Email;
                 database.SaveChanges();
 
             } catch (Exception e) {

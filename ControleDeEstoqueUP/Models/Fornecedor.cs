@@ -10,7 +10,8 @@ namespace ControleDeEstoqueUP.Models {
         public Fornecedor() {
         }
 
-        public Fornecedor(string cnpj, string nome, string cep, string endereco, string bairro, string cidade, string uf, string telefone, string celular, string email) {
+        public Fornecedor(string cnpj, string nome, string cep, string endereco, string bairro, string cidade, string uf, string telefone, string celular, string email, int id) {
+            Id = id;
             CNPJ = cnpj;
             Nome = nome;
             CEP = cep;

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -191,6 +192,7 @@ namespace ControleDeEstoqueUP {
              */
         private Cliente CriarClienteComOsDadosDaTela() {
             //O código está nulo ou vazio? A variável recebe 0, se está preenchido, recebe o valor que está lá.
+            int id = string.IsNullOrEmpty(txtCodigo.Text) ? 0 : Convert.ToInt32(txtCodigo.Text);
             string nome = txtNome.Text;
             string cep = txtCEP.Text;
             string cpf = txtCpf.Text;
@@ -201,7 +203,7 @@ namespace ControleDeEstoqueUP {
             string telefone = txtTelefone.Text;
             string celular = txtCelular.Text;
             string email = txtEmail.Text;
-            return new Cliente(nome, cpf, cep, endereco, bairro, cidade, uf, telefone, celular, email);
+            return new Cliente(nome, cpf, cep, endereco, bairro, cidade, uf, telefone, celular, email, id);
         }
 
         private void MudarOperacao(int op) {

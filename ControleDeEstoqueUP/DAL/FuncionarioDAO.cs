@@ -34,6 +34,20 @@ namespace ControleDeEstoqueUP.DAL {
             try {
                 Funcionario funcionarioBuscado = database.Funcionarios.FirstOrDefault(f => f.Id == funcionario.Id);
                 funcionarioBuscado.Nome = funcionario.Nome;
+                funcionarioBuscado.Salario = funcionario.Salario;
+                funcionarioBuscado.Senha = funcionario.Senha;
+                funcionarioBuscado.Cargo = funcionario.Cargo;
+                funcionarioBuscado.CPF = funcionario.CPF;
+                funcionarioBuscado.Celular = funcionario.Celular;
+                funcionarioBuscado.Telefone = funcionario.Telefone;
+                funcionarioBuscado.Admissao = funcionario.Admissao;
+                funcionarioBuscado.Demissao = funcionario.Demissao;
+                funcionarioBuscado.Tipo = funcionario.Tipo;
+                funcionarioBuscado.Email = funcionario.Email;
+                funcionarioBuscado.CEP = funcionario.CEP;
+                funcionarioBuscado.Bairro = funcionario.Bairro;
+                funcionarioBuscado.UF = funcionario.UF;
+                funcionarioBuscado.Cidade = funcionario.Cidade;
                 database.SaveChanges();
 
             } catch (Exception e) {

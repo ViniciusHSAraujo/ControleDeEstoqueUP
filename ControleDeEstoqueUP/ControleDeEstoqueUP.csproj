@@ -140,13 +140,9 @@
     <Compile Include="frmSobre.xaml.cs">
       <DependentUpon>frmSobre.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909261914264_Banco.cs" />
-    <Compile Include="Migrations\201909261914264_Banco.designer.cs">
-      <DependentUpon>201909261914264_Banco.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909262011179_Banco1.cs" />
-    <Compile Include="Migrations\201909262011179_Banco1.designer.cs">
-      <DependentUpon>201909262011179_Banco1.cs</DependentUpon>
+    <Compile Include="Migrations\201909262208389_Banco.cs" />
+    <Compile Include="Migrations\201909262208389_Banco.designer.cs">
+      <DependentUpon>201909262208389_Banco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -270,11 +266,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201909261914264_Banco.resx">
-      <DependentUpon>201909261914264_Banco.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909262011179_Banco1.resx">
-      <DependentUpon>201909262011179_Banco1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909262208389_Banco.resx">
+      <DependentUpon>201909262208389_Banco.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

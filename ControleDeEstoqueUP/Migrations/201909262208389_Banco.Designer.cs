@@ -13,7 +13,7 @@ namespace ControleDeEstoqueUP.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201909261914264_Banco"; }
+            get { return "201909262208389_Banco"; }
         }
         
         string IMigrationMetadata.Source
