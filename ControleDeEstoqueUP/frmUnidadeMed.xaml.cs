@@ -107,7 +107,7 @@ namespace ControleDeEstoqueUP {
         private void LimparCampos() {
             txtCodigo.Clear();
             txtNome.Clear();
-            txtCodigo.Clear();
+            txtSimbolo.Clear();
         }
         private void ModificarBotoesFormulario(int operacao) {
             switch (operacao) {

@@ -35,7 +35,7 @@ namespace ControleDeEstoqueUP {
         FornecedorDAO fornecedorDAO = new FornecedorDAO();
         Fornecedor fornecedorCompra;
 
-        Funcionario funcionarioCompra;
+        Funcionario funcionarioCompra = frmLogin.funcionarioLogado;
 
         ICollection<ProdutoCompra> produtosDaCompra= new List<ProdutoCompra>();
         List<dynamic> produtosDaCompraGrid= new List<dynamic>();
@@ -61,8 +61,8 @@ namespace ControleDeEstoqueUP {
         private void BtnAdicionar_Click(object sender, RoutedEventArgs e) {
             MudarOperacao(1);
             LimparCampos();
-            //txtFuncionarioID.Text = frmLogin.funcionarioLogado.Id.ToString();
-            //txtFuncionarioNome.Text = frmLogin.funcionarioLogado.Nome.ToString();
+            txtFuncionarioID.Text = funcionarioCompra.Id.ToString();
+            txtFuncionarioNome.Text = funcionarioCompra.Nome.ToString();
         }
 
         private void BtnLocalizar_Click(object sender, RoutedEventArgs e) {
@@ -73,7 +73,7 @@ namespace ControleDeEstoqueUP {
             // Se vier 0, então a pessoa fechou sem escolher nenhum item. Então ele não vai fazer nada.
             if (CompraPesquisa != 0) {
                 Compra compra = compraDAO.BuscarCompraPorId(CompraPesquisa);
-                //PopularCamposPeloProduto(compra);
+                PopularCamposPelaCompra(compra);
                 MudarOperacao(2);
             }
         }
@@ -243,9 +243,9 @@ namespace ControleDeEstoqueUP {
         private void PopularCamposPelaCompra(Compra compra) {
             txtCodigo.Text = compra.Id.ToString();
             txtFornecedorID.Text = compra.Fornecedor.Id.ToString();
-            txtFornecedorNome.Text = compra.Fornecedor.RazaoSocial.ToString();
-            //txtFuncionarioID.Text = compra.Funcionario.Id.ToString();
-            //txtFuncionarioNome.Text = compra.Funcionario.Nome.ToString();
+            txtFornecedorNome.Text = compra.Fornecedor.Nome.ToString();
+            txtFuncionarioID.Text = compra.Funcionario.Id.ToString();
+            txtFuncionarioNome.Text = compra.Funcionario.Nome.ToString();
             txtData.SelectedDate = compra.Data;
             txtTotal.Text = compra.Total.ToString();
             PopularGridDeItensPelaCompra(compra);
@@ -293,7 +293,7 @@ namespace ControleDeEstoqueUP {
             if (IdFornecedor != 0) {
                 fornecedorCompra = fornecedorDAO.BuscarFornecedorPorId(IdFornecedor);
                 txtFornecedorID.Text = fornecedorCompra.Id.ToString();
-                txtFornecedorNome.Text = fornecedorCompra.RazaoSocial;
+                txtFornecedorNome.Text = fornecedorCompra.Nome;
             } else {
                 WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum fornecedor escolhido!");
                 fornecedorCompra = null;
@@ -321,7 +321,7 @@ namespace ControleDeEstoqueUP {
                     txtFornecedorNome.Clear();
                     txtFornecedorID.Clear();
                 } else {
-                    txtFornecedorNome.Text = fornecedor.Nome;
+                    txtFornecedorNome.Text = fornecedorCompra.Nome;
                 }
             }
         }

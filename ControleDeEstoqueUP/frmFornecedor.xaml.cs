@@ -91,7 +91,6 @@ namespace ControleDeEstoqueUP {
         private void LimparCampos() {
             txtCodigo.Clear();
             txtRazaoSocial.Clear();
-            txtIE.Clear();
             txtCnpj.Clear();
             txtCEP.Clear();
             txtEndereco.Clear();

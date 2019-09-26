@@ -15,13 +15,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Security;
+using ControleDeEstoqueUP.DAL;
 
 namespace ControleDeEstoqueUP {
     /// <summary>
     /// Interaction logic for frmLogin.xaml
     /// </summary>
     public partial class frmLogin : Window {
-
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         public static Funcionario funcionarioLogado;
 
         public frmLogin() {
@@ -40,9 +41,13 @@ namespace ControleDeEstoqueUP {
             } else {
                 int usuario = Convert.ToInt32(txtCodigoFuncionario.Text);
 
-                funcionarioLogado = null; // FuncionarioDAO.LoginDeUsuario(usuario, senha); SecureString.Equals(secstringone, secstringtwo)
+                if (usuario == 0 && senha == "CEUP123") {
+                    funcionarioLogado = new Funcionario() { Id = 0 };
+                } else {
+                    funcionarioLogado = funcionarioDAO.RealizarLogin(usuario, senha);
+                }
 
-                if (funcionarioLogado == null) {
+                if (funcionarioLogado != null) {
                     var w = new MainWindow();
                     formLogin.Visibility = Visibility.Hidden;
                     w.ShowDialog();

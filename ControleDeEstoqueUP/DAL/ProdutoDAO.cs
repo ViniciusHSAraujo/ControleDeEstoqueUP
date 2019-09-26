@@ -72,15 +72,13 @@ namespace ControleDeEstoqueUP.DAL {
             return database.Produtos.FirstOrDefault(p => p.Id == id);
         }
 
-        public void AtualizarSaldoDoProduto(Produto produto) {
-            //TODO
-                var compras = database.ProdutosCompra.Where(pc => pc.Produto.Id == produto.Id).Select(pc => pc.Quantidade).DefaultIfEmpty(0).Sum();
-                var vendas = database.ProdutosVenda.Where(pv => pv.Produto.Id == produto.Id).Select(pv => pv.Quantidade).DefaultIfEmpty(0).Sum();
-                produto.Quantidade = compras - vendas;
-                database.SaveChanges();
+        public double CalcularSaldoDoProduto(Produto produto) {
+            var compras = database.ProdutosCompra.Where(pc => pc.Produto.Id == produto.Id).Select(pc => pc.Quantidade).DefaultIfEmpty(0).Sum();
+            var vendas = database.ProdutosVenda.Where(pv => pv.Produto.Id == produto.Id).Select(pv => pv.Quantidade).DefaultIfEmpty(0).Sum();
+            return compras - vendas;
         }
         public void AtualizarCustoDoProduto(Produto produto) {
-            //TODO
+                //TODO
                 var custoTotal = 0.00;
                 var quantidadeComprada = 0.00;
 

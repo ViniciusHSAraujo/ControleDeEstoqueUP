@@ -193,11 +193,11 @@ namespace ControleDeEstoqueUP {
             string telefone = txtTelefone.Text;
             string celular = txtCelular.Text;
             string email = txtEmail.Text;
-            string senha = txtSenha.Text;
+            string senha = txtSenha.Password;
             string cargo = txtCargo.Text;
             double salario = Convert.ToDouble(txtSalario.Text);
-            DateTime admissao = (DateTime)txtAdmissao.SelectedDate;
-            DateTime demissao = (DateTime)txtDemissao.SelectedDate;
+            DateTime admissao = txtAdmissao.SelectedDate.Value;
+            DateTime? demissao = txtDemissao.SelectedDate;
             return new Funcionario(nome, cpf, cep, endereco, bairro, cidade, uf, telefone, celular, email, senha, cargo, salario, admissao, demissao);
         }
 
@@ -220,7 +220,7 @@ namespace ControleDeEstoqueUP {
             txtTelefone.Text = funcionario.Telefone.ToString();
             txtCelular.Text = funcionario.Celular.ToString();
             txtEmail.Text = funcionario.Email.ToString();
-            txtSenha.Text = funcionario.Senha.ToString();
+            txtSenha.Password = funcionario.Senha.ToString();
             txtCargo.Text = funcionario.Cargo.ToString();
             txtSalario.Text = funcionario.Salario.ToString();
             txtAdmissao.SelectedDate = funcionario.Admissao;

@@ -15,7 +15,7 @@
             <Label Name="lblNome" Content="Descrição do Produto:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18"/>
             <TextBox Name="txtNome" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="385" HorizontalAlignment="Left" FontSize="16"/>
             <Label Name="lblPrecoCusto" Content="Preço de Custo:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18"/>
-            <TextBox Name="txtPrecoCusto" TextWrapping="Wrap" IsEnabled="False" Text="" VerticalAlignment="Top" Width="385" HorizontalAlignment="Left" FontSize="16"/>
+            <TextBox Name="txtPrecoCusto" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="385" HorizontalAlignment="Left" FontSize="16"/>
             <Label Name="lblPrecoVenda" Content="Preço de Venda:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18"/>
             <TextBox Name="txtPrecoVenda" PreviewTextInput="ApenasNumerosEVirgulaValidationTextBox" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="385" HorizontalAlignment="Left" FontSize="16"/>
             <Label Name="lblQuantidadeDisponivel"  Content="Saldo disponível:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18"/>

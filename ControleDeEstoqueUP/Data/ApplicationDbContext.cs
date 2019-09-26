@@ -12,15 +12,15 @@ namespace ControleDeEstoqueUP.Data {
         //protected ApplicationDbContext(DbCompiledModel model) : base(model) {
         //}
 
-        public ApplicationDbContext() {
-        }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder) {
-            base.OnModelCreating(modelBuilder);
-        }
-
-        //public ApplicationDbContext() : base("ControleDeEstoqueUP") {
+        //public ApplicationDbContext() {
         //}
+
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder) {
+        //    base.OnModelCreating(modelBuilder);
+        //}
+
+        public ApplicationDbContext() : base("ControleDeEstoqueUP") {
+        }
 
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Cliente> Clientes { get; set; }

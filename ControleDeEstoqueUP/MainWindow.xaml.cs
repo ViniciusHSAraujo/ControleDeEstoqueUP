@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using ControleDeEstoqueUP.Models;
+using ControleSeuEstoque.Utils;
+using System.Windows;
 
 namespace ControleDeEstoqueUP {
     /// <summary>
@@ -11,6 +13,18 @@ namespace ControleDeEstoqueUP {
             InitializeComponent();
             TelaPrincipal.Width = System.Windows.SystemParameters.WorkArea.Width;
             TelaPrincipal.Height = System.Windows.SystemParameters.WorkArea.Height;
+
+            if (isUsuarioZero()) {
+                miClientes.IsEnabled = false;
+                miFornecedores.IsEnabled = false;
+                miProdutos.IsEnabled = false;
+                miUnidades.IsEnabled = false;
+                miCategorias.IsEnabled = false;
+                miCompras.IsEnabled = false;
+                miVendas.IsEnabled = false;
+
+                WPFUtils.MostrarCaixaDeTextoDeInformação("Olá! Bem vindo ao nosso sistema!\nPara ter acesso completo, é necessário que você entre com as credenciais válidas de um funcionário.\nPor favor, realize o cadastro de um novo funcionário e acesse novamente o sistema com o ID gerado e a senha cadastrada.");
+            }
         }
 
         private void MiClientes_Click(object sender, RoutedEventArgs e) {
@@ -51,6 +65,14 @@ namespace ControleDeEstoqueUP {
         private void MiCompras_Click(object sender, RoutedEventArgs e) {
             var w = new frmCompra();
             w.ShowDialog();
+        }
+
+        private bool isUsuarioZero() {
+            if (frmLogin.funcionarioLogado.Id == 0) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 }

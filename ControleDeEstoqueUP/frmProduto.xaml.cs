@@ -220,8 +220,7 @@ namespace ControleDeEstoqueUP {
             decimal valorvenda = string.IsNullOrEmpty(txtPrecoVenda.Text) ? 0 : Convert.ToDecimal(txtPrecoVenda.Text);
             UnidadeDeMedida unidadeDeMedida = (UnidadeDeMedida) cbUnidadeDeMedida.SelectedValue;
             Categoria categoria = (Categoria) cbCategoria.SelectedValue;
-            double quantidade = string.IsNullOrEmpty(txtCodigo.Text) ? 0 : Convert.ToDouble(txtQuantidadeDisponivel.Text);
-            return new Produto(nome, valorvenda, unidadeDeMedida,categoria,id,valorPago,quantidade);
+            return new Produto(nome, valorvenda, unidadeDeMedida,categoria,id,valorPago);
         }
 
         /**
@@ -248,7 +247,9 @@ namespace ControleDeEstoqueUP {
             txtNome.Text = produto.Nome;
             txtPrecoCusto.Text = produto.ValorPago.ToString();
             txtPrecoVenda.Text = produto.ValorVenda.ToString();
-            txtQuantidadeDisponivel.Text = produto.Quantidade.ToString();
+
+            txtQuantidadeDisponivel.Text = produtoDAO.CalcularSaldoDoProduto(produto).ToString();
+
             cbCategoria.SelectedItem = produto.Categoria;
             cbUnidadeDeMedida.SelectedItem = produto.UnidadeDeMedida;
         }

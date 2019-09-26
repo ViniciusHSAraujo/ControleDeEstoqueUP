@@ -67,5 +67,9 @@ namespace ControleDeEstoqueUP.DAL {
         public Funcionario BuscarFuncionarioPeloId(int id) {
             return database.Funcionarios.FirstOrDefault(f => f.Id == id);
         }
+
+        public Funcionario RealizarLogin(int id, string senha) {
+            return database.Funcionarios.FirstOrDefault(f => f.Id == id && f.Senha.Equals(senha));
+        }
     }
 }

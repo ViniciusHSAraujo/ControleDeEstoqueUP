@@ -15,7 +15,7 @@
             <Label Content="CPF: " HorizontalAlignment="Left" Margin="30,110,0,0" VerticalAlignment="Top" Width="58" FontSize="18" RenderTransformOrigin="0.417,-0.838"/>
             <TextBox x:Name="txtCpf"  HorizontalAlignment="Left" Height="34" Margin="93,110,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="180"/>
             <Label Content="Senha: " HorizontalAlignment="Left" Margin="302,110,0,0" VerticalAlignment="Top" Width="78" FontSize="18"/>
-            <TextBox x:Name="txtSenha"  HorizontalAlignment="Left" Height="34" Margin="380,110,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="252"/>
+            <PasswordBox x:Name="txtSenha"  HorizontalAlignment="Left" Height="34" Margin="380,110,0,0" FontSize="18" VerticalAlignment="Top" Width="252"/>
             <Label Content="Endereço: " HorizontalAlignment="Left" Margin="27,172,0,0" VerticalAlignment="Top" Width="91" FontSize="18"/>
             <TextBox x:Name="txtEndereco"  HorizontalAlignment="Left" Height="34" Margin="123,172,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="326"/>
             <Label Content="Bairro: " HorizontalAlignment="Left" Margin="471,172,0,0" VerticalAlignment="Top" Width="67" FontSize="18"/>

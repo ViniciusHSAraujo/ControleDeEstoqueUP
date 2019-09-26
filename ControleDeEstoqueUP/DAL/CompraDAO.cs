@@ -27,10 +27,9 @@ namespace ControleDeEstoqueUP.DAL {
                 database.ProdutosCompra.AddRange(produtosCompra);
                 database.SaveChanges();
 
-                foreach (var produtoCompra in produtosCompra) {
-                produtoDAO.AtualizarCustoDoProduto(produtoCompra.Produto);
-                produtoDAO.AtualizarSaldoDoProduto(produtoCompra.Produto);
-                }
+                /*foreach (var produtoCompra in produtosCompra) {
+                    produtoDAO.AtualizarCustoDoProduto(produtoCompra.Produto);
+                }*/
 
                 return compra;
             } catch (Exception e){

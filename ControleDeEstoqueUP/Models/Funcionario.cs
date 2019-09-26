@@ -17,11 +17,11 @@ namespace ControleDeEstoqueUP.Models {
 
         public DateTime Admissao { get; set; }
 
-        public DateTime Demissao { get; set; }
+        public Nullable<DateTime> Demissao { get; set; }
         public Funcionario() {
         }
 
-        public Funcionario(string nome, string cpf, string cep, string endereco, string bairro, string cidade, string uf, string telefone, string celular, string email, string senha, string cargo, double salario, DateTime admissao, DateTime demissao) {
+        public Funcionario(string nome, string cpf, string cep, string endereco, string bairro, string cidade, string uf, string telefone, string celular, string email, string senha, string cargo, double salario, DateTime admissao, DateTime? demissao) {
             Nome = nome;
             CPF = cpf;
             CEP = cep;
