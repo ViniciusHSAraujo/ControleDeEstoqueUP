@@ -67,6 +67,11 @@ namespace ControleDeEstoqueUP {
             w.ShowDialog();
         }
 
+        private void MiVendas_Click(object sender, RoutedEventArgs e) {
+            var w = new frmVenda();
+            w.ShowDialog();
+        }
+
         private bool isUsuarioZero() {
             if (frmLogin.funcionarioLogado.Id == 0) {
                 return true;
