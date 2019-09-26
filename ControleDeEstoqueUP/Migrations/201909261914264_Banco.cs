@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AjustesNoProdutoParaControleDeEstoqueEAjustesNosCamposDasPessoas : DbMigration
+    public partial class Banco : DbMigration
     {
         public override void Up()
         {
@@ -42,7 +42,6 @@
                         Id = c.Int(nullable: false, identity: true),
                         Data = c.DateTime(nullable: false),
                         Total = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Status = c.Int(nullable: false),
                         Fornecedor_Id = c.Int(),
                         Funcionario_Id = c.Int(),
                     })
@@ -81,7 +80,7 @@
                         Cargo = c.String(),
                         Salario = c.Double(nullable: false),
                         Admissao = c.DateTime(nullable: false),
-                        Demissao = c.DateTime(nullable: false),
+                        Demissao = c.DateTime(),
                         Nome = c.String(),
                         Tipo = c.Int(nullable: false),
                         CEP = c.String(),
@@ -161,7 +160,6 @@
                         Id = c.Int(nullable: false, identity: true),
                         Data = c.DateTime(nullable: false),
                         Total = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Status = c.Int(nullable: false),
                         Cliente_Id = c.Int(),
                         Funcionario_Id = c.Int(),
                     })

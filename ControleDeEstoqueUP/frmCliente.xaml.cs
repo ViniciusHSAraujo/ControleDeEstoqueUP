@@ -107,6 +107,21 @@ namespace ControleDeEstoqueUP {
                 txtNome.Focus();
                 return false;
             }
+            if (string.IsNullOrWhiteSpace(txtCpf.Text)) {
+                WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe o CPF do cliente!");
+                txtCpf.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtTelefone.Text)) {
+                WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe o telefone do cliente!");
+                txtTelefone.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtCEP.Text)) {
+                WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe o CEP do cliente!");
+                txtCEP.Focus();
+                return false;
+            }
             return true;
         }
 

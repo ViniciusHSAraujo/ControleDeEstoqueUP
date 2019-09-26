@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -105,6 +106,46 @@ namespace ControleDeEstoqueUP {
             if (string.IsNullOrWhiteSpace(txtNome.Text)) {
                 WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe o nome do funcionário!");
                 txtNome.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtCpf.Text)) {
+                WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe o CPF do funcionário!");
+                txtCpf.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtTelefone.Text)) {
+                WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe o telefone do funcionário!");
+                txtTelefone.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtCEP.Text)) {
+                WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe o CEP do funcionário!");
+                txtCEP.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtSenha.Password)) {
+                WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe a senha do funcionário!");
+                txtSenha.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtCargo.Text)) {
+                WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe o cargo do funcionário!");
+                txtCargo.Focus();
+                return false;
+            }
+            if (!txtAdmissao.SelectedDate.HasValue) {
+                WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe a data de admissão do funcionário!");
+                txtAdmissao.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtEmail.Text)) {
+                WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe o email do funcionário!");
+                txtEmail.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtSalario.Text)) {
+                WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe o salario do funcionário!");
+                txtSalario.Focus();
                 return false;
             }
             return true;
@@ -225,6 +266,21 @@ namespace ControleDeEstoqueUP {
             txtSalario.Text = funcionario.Salario.ToString();
             txtAdmissao.SelectedDate = funcionario.Admissao;
             txtDemissao.SelectedDate = funcionario.Demissao;
+        }
+
+        /**
+         * Validação que aceita apenas a entrada de números inteiros no TextBox
+         */
+        private void ApenasNumerosValidationTextBox(object sender, TextCompositionEventArgs e) {
+            e.Handled = !Int32.TryParse(e.Text, out int result);
+        }
+
+        /**
+         * Validação que aceita números e a vírgula no TextBox.
+         */
+        private void ApenasNumerosEVirgulaValidationTextBox(object sender, TextCompositionEventArgs e) {
+            Regex regex = new Regex("[^0-9,-]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

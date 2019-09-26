@@ -140,17 +140,13 @@
     <Compile Include="frmSobre.xaml.cs">
       <DependentUpon>frmSobre.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909261121496_AjustesNoProdutoParaControleDeEstoqueEAjustesNosCamposDasPessoas.cs" />
-    <Compile Include="Migrations\201909261121496_AjustesNoProdutoParaControleDeEstoqueEAjustesNosCamposDasPessoas.designer.cs">
-      <DependentUpon>201909261121496_AjustesNoProdutoParaControleDeEstoqueEAjustesNosCamposDasPessoas.cs</DependentUpon>
+    <Compile Include="Migrations\201909261914264_Banco.cs" />
+    <Compile Include="Migrations\201909261914264_Banco.designer.cs">
+      <DependentUpon>201909261914264_Banco.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909261203323_AlteradoCampoDeDataDemissaoParaNullable.cs" />
-    <Compile Include="Migrations\201909261203323_AlteradoCampoDeDataDemissaoParaNullable.designer.cs">
-      <DependentUpon>201909261203323_AlteradoCampoDeDataDemissaoParaNullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909261419160_RetiradoCampoStatusCompraEVenda.cs" />
-    <Compile Include="Migrations\201909261419160_RetiradoCampoStatusCompraEVenda.designer.cs">
-      <DependentUpon>201909261419160_RetiradoCampoStatusCompraEVenda.cs</DependentUpon>
+    <Compile Include="Migrations\201909262011179_Banco1.cs" />
+    <Compile Include="Migrations\201909262011179_Banco1.designer.cs">
+      <DependentUpon>201909262011179_Banco1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -274,14 +270,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201909261121496_AjustesNoProdutoParaControleDeEstoqueEAjustesNosCamposDasPessoas.resx">
-      <DependentUpon>201909261121496_AjustesNoProdutoParaControleDeEstoqueEAjustesNosCamposDasPessoas.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909261914264_Banco.resx">
+      <DependentUpon>201909261914264_Banco.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909261203323_AlteradoCampoDeDataDemissaoParaNullable.resx">
-      <DependentUpon>201909261203323_AlteradoCampoDeDataDemissaoParaNullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909261419160_RetiradoCampoStatusCompraEVenda.resx">
-      <DependentUpon>201909261419160_RetiradoCampoStatusCompraEVenda.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909262011179_Banco1.resx">
+      <DependentUpon>201909262011179_Banco1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
