@@ -20,7 +20,7 @@ namespace ControleDeEstoqueUP {
     /// <summary>
     /// Interaction logic for frmBaseCadastro.xaml
     /// </summary>
-    public partial class frmVenda : Window {
+    public partial class frmCompra : Window {
 
         /**
          * Operações:
@@ -48,7 +48,7 @@ namespace ControleDeEstoqueUP {
         int IdProduto;
 
 
-        public frmVenda() {
+        public frmCompra() {
             InitializeComponent();
             MudarOperacao(0);
             gridProdutos.ItemsSource = produtosDaCompraGrid;

@@ -15,9 +15,9 @@
                 <TextBox Name="txtCodigo" TextWrapping="Wrap" Text="" VerticalAlignment="center" IsEnabled="False" Width="85" HorizontalAlignment="Left" FontSize="16"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Name="lblFornecedor" Content="Fornecedor:" VerticalAlignment="center" HorizontalAlignment="Left" FontSize="18"/>
-                <TextBox Name="txtFornecedorID" LostFocus="TxtFornecedorID_LostFocus" MouseDoubleClick="TxtFornecedorID_MouseDoubleClick" PreviewTextInput="ApenasNumerosValidationTextBox" TextWrapping="Wrap" Text="" VerticalAlignment="center" Width="85" HorizontalAlignment="Left" FontSize="16"/>
-                <TextBox Name="txtFornecedorNome" TextWrapping="Wrap" Text="" Margin="10,0,0,0" VerticalAlignment="center" IsEnabled="False" Width="250" HorizontalAlignment="Left" FontSize="16"/>
+                <Label Name="lblCliente" Content="Cliente:" VerticalAlignment="center" HorizontalAlignment="Left" FontSize="18"/>
+                <TextBox Name="txtClienteID" LostFocus="TxtClienteID_LostFocus" MouseDoubleClick="TxtClienteID_MouseDoubleClick" PreviewTextInput="ApenasNumerosValidationTextBox" TextWrapping="Wrap" Text="" VerticalAlignment="center" Width="85" HorizontalAlignment="Left" FontSize="16"/>
+                <TextBox Name="txtClienteNome" TextWrapping="Wrap" Text="" Margin="10,0,0,0" VerticalAlignment="center" IsEnabled="False" Width="250" HorizontalAlignment="Left" FontSize="16"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Name="lblFuncionario" Content="Funcionário:" VerticalAlignment="center" HorizontalAlignment="Left" FontSize="18"/>

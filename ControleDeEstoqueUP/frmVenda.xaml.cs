@@ -20,7 +20,7 @@ namespace ControleDeEstoqueUP {
     /// <summary>
     /// Interaction logic for frmBaseCadastro.xaml
     /// </summary>
-    public partial class frmCompra : Window {
+    public partial class frmVenda : Window {
 
         /**
          * Operações:
@@ -30,28 +30,28 @@ namespace ControleDeEstoqueUP {
          *  3: Edição
          */
         int operacao;
-        CompraDAO compraDAO = new CompraDAO();
+        VendaDAO vendaDAO = new VendaDAO();
 
-        FornecedorDAO fornecedorDAO = new FornecedorDAO();
-        Fornecedor fornecedorCompra;
+        ClienteDAO clienteDAO= new ClienteDAO();
+        Cliente clienteVenda;
 
-        Funcionario funcionarioCompra = frmLogin.funcionarioLogado;
+        Funcionario funcionarioVenda;
 
-        ICollection<ProdutoCompra> produtosDaCompra= new List<ProdutoCompra>();
-        List<dynamic> produtosDaCompraGrid= new List<dynamic>();
+        ICollection<ProdutoVenda> produtosDaVenda= new List<ProdutoVenda>();
+        List<dynamic> produtosDaVendaGrid = new List<dynamic>();
 
         ProdutoDAO produtoDAO = new ProdutoDAO();
         Produto produtoEscolhido;
 
-        public int CompraPesquisa;
-        int IdFornecedor;
+        public int VendaPesquisa;
+        int IdCliente;
         int IdProduto;
 
 
-        public frmCompra() {
+        public frmVenda() {
             InitializeComponent();
             MudarOperacao(0);
-            gridProdutos.ItemsSource = produtosDaCompraGrid;
+            gridProdutos.ItemsSource = produtosDaVendaGrid;
         }
 
         /**
@@ -61,19 +61,20 @@ namespace ControleDeEstoqueUP {
         private void BtnAdicionar_Click(object sender, RoutedEventArgs e) {
             MudarOperacao(1);
             LimparCampos();
-            txtFuncionarioID.Text = funcionarioCompra.Id.ToString();
-            txtFuncionarioNome.Text = funcionarioCompra.Nome.ToString();
+            funcionarioVenda = frmLogin.funcionarioLogado;
+            txtFuncionarioID.Text = funcionarioVenda.Id.ToString();
+            txtFuncionarioNome.Text = funcionarioVenda.Nome.ToString();
         }
 
         private void BtnLocalizar_Click(object sender, RoutedEventArgs e) {
             var pesquisa = new frmPesquisaCompra();
             pesquisa.ShowDialog();
 
-            CompraPesquisa = pesquisa.compraId;
+            VendaPesquisa = pesquisa.compraId;
             // Se vier 0, então a pessoa fechou sem escolher nenhum item. Então ele não vai fazer nada.
-            if (CompraPesquisa != 0) {
-                Compra compra = compraDAO.BuscarCompraPorId(CompraPesquisa);
-                PopularCamposPelaCompra(compra);
+            if (VendaPesquisa != 0) {
+                Venda venda = vendaDAO.BuscarVendaPorId(VendaPesquisa);
+                PopularCamposPelaVenda(venda);
                 MudarOperacao(2);
             }
         }
@@ -87,9 +88,9 @@ namespace ControleDeEstoqueUP {
             if (string.IsNullOrWhiteSpace(txtCodigo.Text)) {
                 WPFUtils.MostrarCaixaDeTextoDeAlerta("Nenhuma compra selecionada!");
             } else {
-                if (WPFUtils.MostrarCaixaDeTextoDeConfirmação("Tem certeza que deseja excluir essa compra? Essa operação não poderá ser desfeita!")) {
-                    compraDAO.Excluir(Convert.ToInt32(txtCodigo.Text));
-                    WPFUtils.MostrarCaixaDeTextoDeInformação("Item excluído com sucesso!");
+                if (WPFUtils.MostrarCaixaDeTextoDeConfirmação("Tem certeza que deseja excluir essa venda? Essa operação não poderá ser desfeita e o saldo será deduzido na hora!")) {
+                    vendaDAO.Excluir(Convert.ToInt32(txtCodigo.Text));
+                    WPFUtils.MostrarCaixaDeTextoDeInformação("Venda excluída com sucesso!");
                     operacao = 0;
                     ModificarBotoesFormulario(operacao);
                     LimparCampos();
@@ -103,18 +104,18 @@ namespace ControleDeEstoqueUP {
             switch (operacao) {
                 case 1: //ADIÇÃO
                     if (ValidarCamposObrigatorios()) {
-                        var compra = CriarCompraComOsDadosDaTela();
-                        compraDAO.Inserir(compra);
-                        PopularCamposPelaCompra(compra);
-                        WPFUtils.MostrarCaixaDeTextoDeInformação("Compra cadastrada com sucesso!");
+                        var venda = CriarVendaComOsDadosDaTela();
+                        vendaDAO.Inserir(venda);
+                        PopularCamposPelaVenda(venda);
+                        WPFUtils.MostrarCaixaDeTextoDeInformação("Venda cadastrada com sucesso!");
                         MudarOperacao(2);
                     }
                     break;
                 case 3: //EDIÇÃO
                     if (ValidarCamposObrigatorios()) {
-                        var compra = CriarCompraComOsDadosDaTela();
-                        compraDAO.Editar(compra);
-                        WPFUtils.MostrarCaixaDeTextoDeInformação("Compra atualizada com sucesso!");
+                        var venda = CriarVendaComOsDadosDaTela();
+                        vendaDAO.Editar(venda);
+                        WPFUtils.MostrarCaixaDeTextoDeInformação("Venda atualizada com sucesso!");
                         MudarOperacao(2);
                     }
                     break;
@@ -136,9 +137,9 @@ namespace ControleDeEstoqueUP {
                 WPFUtils.MostrarCaixaDeTextoDeAlerta("Funcionário não escolhido!");
                 txtFuncionarioID.Focus();
                 return false;
-            } else if (string.IsNullOrWhiteSpace(txtFornecedorID.Text)) {
-                WPFUtils.MostrarCaixaDeTextoDeAlerta("Fornecedor não escolhido!");
-                txtFornecedorID.Focus();
+            } else if (string.IsNullOrWhiteSpace(txtClienteID.Text)) {
+                WPFUtils.MostrarCaixaDeTextoDeAlerta("Cliente não escolhido!");
+                txtClienteID.Focus();
                 return false;
             } else if (txtData.SelectedDate == null) {
                 WPFUtils.MostrarCaixaDeTextoDeAlerta("Nenhuma data selecionada!");
@@ -159,8 +160,8 @@ namespace ControleDeEstoqueUP {
             txtCodigo.Clear();
             txtCodigoProduto.Clear();
             txtData.SelectedDate = null;
-            txtFornecedorID.Clear();
-            txtFornecedorNome.Clear();
+            txtClienteID.Clear();
+            txtClienteNome.Clear();
             txtFuncionarioID.Clear();
             txtFuncionarioNome.Clear();
             txtNomeProduto.Clear();
@@ -168,8 +169,8 @@ namespace ControleDeEstoqueUP {
             txtTotal.Clear();
             txtValor.Clear();
             gridProdutos.ItemsSource = null;
-            produtosDaCompra.Clear();
-            produtosDaCompraGrid.Clear();
+            produtosDaVenda.Clear();
+            produtosDaVendaGrid.Clear();
         }
 
         /**
@@ -220,15 +221,15 @@ namespace ControleDeEstoqueUP {
         /**
          * Método que recebe os dados e cria uma nova compra
          */
-        private Compra CriarCompraComOsDadosDaTela() {
+        private Venda CriarVendaComOsDadosDaTela() {
             //O código está nulo ou vazio? A variável recebe 0, se está preenchido, recebe o valor que está lá.
             int id = string.IsNullOrEmpty(txtCodigo.Text) ? 0 : Convert.ToInt32(txtCodigo.Text);
-            var fornecedor = fornecedorCompra;
-            var funcionario = funcionarioCompra;
+            var cliente = clienteVenda;
+            var funcionario = funcionarioVenda;
             var data = txtData.SelectedDate.Value;
             var valorTotal = Convert.ToDecimal(txtTotal.Text);
-            var produtosCompra = produtosDaCompra;
-            return new Compra(fornecedor, funcionario, data, valorTotal, produtosCompra, id);
+            var produtosVenda = produtosDaVenda;
+            return new Venda(cliente, funcionario, data, valorTotal, produtosVenda, id);
         }
 
         /**
@@ -242,22 +243,22 @@ namespace ControleDeEstoqueUP {
         /**
          * Método que recebe uma compra e preenche na tela os campos com suas informações.
          */
-        private void PopularCamposPelaCompra(Compra compra) {
-            txtCodigo.Text = compra.Id.ToString();
-            txtFornecedorID.Text = compra.Fornecedor.Id.ToString();
-            txtFornecedorNome.Text = compra.Fornecedor.Nome.ToString();
-            txtFuncionarioID.Text = compra.Funcionario.Id.ToString();
-            txtFuncionarioNome.Text = compra.Funcionario.Nome.ToString();
-            txtData.SelectedDate = compra.Data;
-            txtTotal.Text = compra.Total.ToString();
-            PopularGridDeItensPelaCompra(compra);
+        private void PopularCamposPelaVenda(Venda venda) {
+            txtCodigo.Text = venda.Id.ToString();
+            txtClienteID.Text = venda.Cliente.Id.ToString();
+            txtClienteNome.Text = venda.Cliente.Nome.ToString();
+            txtFuncionarioID.Text = venda.Funcionario.Id.ToString();
+            txtFuncionarioNome.Text = venda.Funcionario.Nome.ToString();
+            txtData.SelectedDate = venda.Data;
+            txtTotal.Text = venda.Total.ToString();
+            PopularGridDeItensPelaVenda(venda);
         }
 
-        private void PopularGridDeItensPelaCompra(Compra compra) {
-            produtosDaCompra = compra.ProdutosCompra;
-            produtosDaCompraGrid.Clear();
-            foreach (var produtoCompra in produtosDaCompra) {
-                produtosDaCompraGrid.Add(new { ProdutoID = produtoCompra.Produto.Id, ProdutoNome = produtoCompra.Produto.Nome, produtoCompra.Quantidade, produtoCompra.Valor, Subtotal = Convert.ToDecimal(produtoCompra.Quantidade) * produtoCompra.Valor });
+        private void PopularGridDeItensPelaVenda(Venda venda) {
+            produtosDaVenda = venda.ProdutosVenda;
+            produtosDaVendaGrid.Clear();
+            foreach (var produtoVenda in produtosDaVenda) {
+                produtosDaVendaGrid.Add(new { ProdutoID = produtoVenda.Produto.Id, ProdutoNome = produtoVenda.Produto.Nome, produtoVenda.Quantidade, produtoVenda.Valor, Subtotal = Convert.ToDecimal(produtoVenda.Quantidade) * produtoVenda.Valor });
             }
             AtualizarGrid();
         }
@@ -289,19 +290,19 @@ namespace ControleDeEstoqueUP {
         /**
          * Quando se clica duas vezes no campo de ID do Fornecedor
          */
-        private void TxtFornecedorID_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
-            var pesquisa = new frmPesquisaFornecedor();
+        private void TxtClienteID_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
+            var pesquisa = new frmPesquisarCliente();
             pesquisa.ShowDialog();
-            IdFornecedor = pesquisa.fornecedorId;
-            if (IdFornecedor != 0) {
-                fornecedorCompra = fornecedorDAO.BuscarFornecedorPorId(IdFornecedor);
-                txtFornecedorID.Text = fornecedorCompra.Id.ToString();
-                txtFornecedorNome.Text = fornecedorCompra.Nome;
+            IdCliente = pesquisa.clienteId;
+            if (IdCliente != 0) {
+                clienteVenda = clienteDAO.BuscarClientePeloId(IdCliente);
+                txtClienteID.Text = clienteVenda.Id.ToString();
+                txtClienteNome.Text = clienteVenda.Nome;
             } else {
-                WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum fornecedor escolhido!");
-                fornecedorCompra = null;
-                txtFornecedorNome.Clear();
-                txtFornecedorID.Clear();
+                WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum cliente escolhido!");
+                clienteVenda = null;
+                txtClienteID.Clear();
+                txtClienteNome.Clear();
             }
             
         }
@@ -309,22 +310,22 @@ namespace ControleDeEstoqueUP {
         /**
          * Quando o campo de ID do Fornecedor perde o foco.
          */
-        private void TxtFornecedorID_LostFocus(object sender, RoutedEventArgs e) {
-            if (string.IsNullOrEmpty(txtFornecedorID.Text)) {
-                WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum fornecedor escolhido!");
-                fornecedorCompra = null;
-                txtFornecedorNome.Clear();
-                txtFornecedorID.Clear();
+        private void TxtClienteID_LostFocus(object sender, RoutedEventArgs e) {
+            if (string.IsNullOrEmpty(txtClienteID.Text)) {
+                WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum cliente escolhido!");
+                clienteVenda = null;
+                txtClienteNome.Clear();
+                txtClienteID.Clear();
             } else {
-                IdFornecedor = Convert.ToInt32(txtFornecedorID.Text);
-                fornecedorCompra = fornecedorDAO.BuscarFornecedorPorId(IdFornecedor);
-                if (fornecedorCompra == null) {
-                    WPFUtils.MostrarCaixaDeTextoDeErro("Código de fornecedor inválido!");
-                    fornecedorCompra = null;
-                    txtFornecedorNome.Clear();
-                    txtFornecedorID.Clear();
+                IdCliente = Convert.ToInt32(txtClienteID.Text);
+                clienteVenda = clienteDAO.BuscarClientePeloId(IdCliente);
+                if (clienteVenda == null) {
+                    WPFUtils.MostrarCaixaDeTextoDeErro("Código de cliente inválido!");
+                    clienteVenda = null;
+                    txtClienteNome.Clear();
+                    txtClienteID.Clear();
                 } else {
-                    txtFornecedorNome.Text = fornecedorCompra.Nome;
+                    txtClienteNome.Text = clienteVenda.Nome;
                 }
             }
         }
@@ -373,18 +374,30 @@ namespace ControleDeEstoqueUP {
 
         private void BtnAddItem_Click(object sender, RoutedEventArgs e) {
             if (ValidarCamposObrigatoriosDoProduto()) {
-                var produtoCompra = CriarProdutoCompraComOsDadosDaTela();
-                produtosDaCompra.Add(produtoCompra);
-                produtosDaCompraGrid.Add(new { ProdutoID = produtoCompra.Produto.Id, ProdutoNome = produtoCompra.Produto.Nome, produtoCompra.Quantidade, produtoCompra.Valor, Subtotal = Convert.ToDecimal(produtoCompra.Quantidade) * produtoCompra.Valor });
-                AtualizarGrid();
-                LimparCamposDoProduto();
-                RecalcularValorTotal();
-                txtCodigoProduto.Focus();
+                var produtoVenda = CriarProdutoVendaComOsDadosDaTela();
+                if (VerificarSaldoDoItem(produtoVenda.Produto, produtoVenda.Quantidade)) {
+                    produtosDaVenda.Add(produtoVenda);
+                    produtosDaVendaGrid.Add(new { ProdutoID = produtoVenda.Produto.Id, ProdutoNome = produtoVenda.Produto.Nome, produtoVenda.Quantidade, produtoVenda.Valor, Subtotal = Convert.ToDecimal(produtoVenda.Quantidade) * produtoVenda.Valor });
+                    AtualizarGrid();
+                    LimparCamposDoProduto();
+                    RecalcularValorTotal();
+                    txtCodigoProduto.Focus();
+                }
+            }
+        }
+
+        private bool VerificarSaldoDoItem(Produto produto, double quantidade) {
+            var saldo = produtoDAO.CalcularSaldoDoProduto(produto);
+            if (quantidade > saldo) {
+                WPFUtils.MostrarCaixaDeTextoDeErro($"Saldo indisponível! Esse produto tem apenas {saldo} no saldo e você está tentando vender {quantidade}");
+                return false;
+            } else {
+                return true;
             }
         }
 
         private void AtualizarGrid() {
-            gridProdutos.ItemsSource = produtosDaCompraGrid;
+            gridProdutos.ItemsSource = produtosDaVendaGrid;
             gridProdutos.Items.Refresh();
         }
 
@@ -413,11 +426,11 @@ namespace ControleDeEstoqueUP {
             txtValor.Clear();
         }
 
-        private ProdutoCompra CriarProdutoCompraComOsDadosDaTela() {
+        private ProdutoVenda CriarProdutoVendaComOsDadosDaTela() {
             var produto = produtoEscolhido;
             var quantidade = Convert.ToDouble(txtQuantidade.Text);
             var valor = Convert.ToDecimal(txtValor.Text);
-            return new ProdutoCompra(produto, quantidade, valor);
+            return new ProdutoVenda(produto, quantidade, valor);
         }
 
         private void BtnRemoveItem_Click(object sender, RoutedEventArgs e) {
@@ -425,8 +438,8 @@ namespace ControleDeEstoqueUP {
             if (gridProdutos.SelectedItem == null) {
                 WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum item foi selecionado!");
             } else {
-                produtosDaCompra.Remove(gridProdutos.SelectedValue as ProdutoCompra);
-                produtosDaCompraGrid.RemoveAt(gridProdutos.SelectedIndex);
+                produtosDaVenda.Remove(gridProdutos.SelectedValue as ProdutoVenda);
+                produtosDaVendaGrid.RemoveAt(gridProdutos.SelectedIndex);
                 AtualizarGrid();
                 RecalcularValorTotal();
             }
@@ -435,7 +448,7 @@ namespace ControleDeEstoqueUP {
 
         private void RecalcularValorTotal() {
             decimal valorTotal = 0;
-            foreach (var produto in produtosDaCompraGrid) {
+            foreach (var produto in produtosDaVendaGrid) {
                 valorTotal += produto.Subtotal;
             }
             txtTotal.Text = valorTotal.ToString("F2");
