@@ -102,9 +102,9 @@ namespace ControleDeEstoqueUP {
                 txtCEP.Focus();
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(txtCEP.Text)) {
-                WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe o CEP do Fornecedor!");
-                txtCEP.Focus();
+            if (string.IsNullOrWhiteSpace(txtTelefone.Text)) {
+                WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe o telefone do Fornecedor!");
+                txtTelefone.Focus();
                 return false;
             }
             return true;
