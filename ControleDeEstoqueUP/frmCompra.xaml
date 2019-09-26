@@ -26,7 +26,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Name="lblData" Content="Data da Compra:" VerticalAlignment="center" HorizontalAlignment="Left" FontSize="18"/>
-                <DatePicker Name="txtData"  VerticalAlignment="center" Width="125" HorizontalAlignment="Left" FontSize="16"/>
+                <DatePicker Name="txtData"  VerticalAlignment="center" Width="161" HorizontalAlignment="Left" FontSize="16"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Name="lblTotal" Content="Valor total:" VerticalAlignment="center" HorizontalAlignment="Left" FontSize="18"/>

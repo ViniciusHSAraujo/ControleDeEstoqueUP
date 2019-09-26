@@ -82,5 +82,21 @@ namespace ControleDeEstoqueUP.DAL {
         public Compra BuscarCompraPorId(int id) {
             return database.Compras.FirstOrDefault(c => c.Id == id);
         }
+
+        /*
+         * Método que irá Buscar as compras de um determinado item no Banco de Dados
+         */
+        public List<ProdutoCompra> BuscarComprasDeUmProduto(Produto produto) {
+            return database.ProdutosCompra.Where(pc => pc.Produto.Equals(produto)).ToList() ;
+        }
+
+
+        /*
+         * Método que irá Buscar as vendas de um determinado item no Banco de Dados
+         */
+        public List<ProdutoVenda> BuscarVendasDeUmProduto(Produto produto) {
+            return database.ProdutosVenda.Where(pv => pv.Produto.Equals(produto)).ToList();
+        }
+
     }
 }

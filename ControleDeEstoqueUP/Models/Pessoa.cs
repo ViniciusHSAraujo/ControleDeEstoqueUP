@@ -43,5 +43,13 @@ namespace ControleDeEstoqueUP.Models {
 
         public string Email { get; set; }
 
+        public override bool Equals(object obj) {
+            return obj is Pessoa pessoa &&
+                   Id == pessoa.Id;
+        }
+
+        public override int GetHashCode() {
+            return 2108858624 + Id.GetHashCode();
+        }
     }
 }

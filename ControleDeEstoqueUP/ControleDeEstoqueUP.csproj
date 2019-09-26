@@ -85,6 +85,9 @@
     <Compile Include="frmPesquisaFuncionario.xaml.cs">
       <DependentUpon>frmPesquisaFuncionario.xaml</DependentUpon>
     </Compile>
+    <Compile Include="frmPesquisaCompra.xaml.cs">
+      <DependentUpon>frmPesquisaCompra.xaml</DependentUpon>
+    </Compile>
     <Compile Include="frmPesquisarCliente.xaml.cs">
       <DependentUpon>frmPesquisarCliente.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,10 @@
     <Compile Include="Migrations\201909261203323_AlteradoCampoDeDataDemissaoParaNullable.designer.cs">
       <DependentUpon>201909261203323_AlteradoCampoDeDataDemissaoParaNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909261419160_RetiradoCampoStatusCompraEVenda.cs" />
+    <Compile Include="Migrations\201909261419160_RetiradoCampoStatusCompraEVenda.designer.cs">
+      <DependentUpon>201909261419160_RetiradoCampoStatusCompraEVenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -161,6 +168,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="frmPesquisaFuncionario.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="frmPesquisaCompra.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -260,6 +271,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909261203323_AlteradoCampoDeDataDemissaoParaNullable.resx">
       <DependentUpon>201909261203323_AlteradoCampoDeDataDemissaoParaNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909261419160_RetiradoCampoStatusCompraEVenda.resx">
+      <DependentUpon>201909261419160_RetiradoCampoStatusCompraEVenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

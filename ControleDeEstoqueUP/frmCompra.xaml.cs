@@ -66,10 +66,10 @@ namespace ControleDeEstoqueUP {
         }
 
         private void BtnLocalizar_Click(object sender, RoutedEventArgs e) {
-            var pesquisa = new frmPesquisaProduto();
+            var pesquisa = new frmPesquisaCompra();
             pesquisa.ShowDialog();
 
-            CompraPesquisa = pesquisa.produtoId;
+            CompraPesquisa = pesquisa.compraId;
             // Se vier 0, então a pessoa fechou sem escolher nenhum item. Então ele não vai fazer nada.
             if (CompraPesquisa != 0) {
                 Compra compra = compraDAO.BuscarCompraPorId(CompraPesquisa);
@@ -257,6 +257,7 @@ namespace ControleDeEstoqueUP {
             foreach (var produtoCompra in produtosDaCompra) {
                 produtosDaCompraGrid.Add(new { ProdutoID = produtoCompra.Produto.Id, ProdutoNome = produtoCompra.Produto.Nome, produtoCompra.Quantidade, produtoCompra.Valor, Subtotal = Convert.ToDecimal(produtoCompra.Quantidade) * produtoCompra.Valor });
             }
+            AtualizarGrid();
         }
 
         /**

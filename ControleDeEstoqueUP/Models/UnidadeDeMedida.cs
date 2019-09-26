@@ -26,5 +26,13 @@ namespace ControleDeEstoqueUP.Models{
             return Simbolo;
         }
 
+        public override bool Equals(object obj) {
+            return obj is UnidadeDeMedida medida &&
+                   Id == medida.Id;
+        }
+
+        public override int GetHashCode() {
+            return 2108858624 + Id.GetHashCode();
+        }
     }
 }

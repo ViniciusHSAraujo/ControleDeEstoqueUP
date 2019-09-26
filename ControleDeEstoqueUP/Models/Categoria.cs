@@ -17,9 +17,19 @@ namespace ControleDeEstoqueUP.Models{
 
         public string Nome { get; set; }
 
+        public override bool Equals(object obj) {
+            return obj is Categoria categoria &&
+                   Id == categoria.Id;
+        }
+
+        public override int GetHashCode() {
+            return 2108858624 + Id.GetHashCode();
+        }
 
         public override string ToString() {
             return Nome;
         }
+
+
     }
 }

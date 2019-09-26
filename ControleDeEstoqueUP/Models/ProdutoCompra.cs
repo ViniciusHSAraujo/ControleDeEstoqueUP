@@ -34,5 +34,14 @@ namespace ControleDeEstoqueUP.Models{
         public virtual Compra Compra { get; set; }
 
         public virtual Produto Produto { get; set; }
+
+        public override bool Equals(object obj) {
+            return obj is ProdutoCompra compra &&
+                   Id == compra.Id;
+        }
+
+        public override int GetHashCode() {
+            return 2108858624 + Id.GetHashCode();
+        }
     }
 }

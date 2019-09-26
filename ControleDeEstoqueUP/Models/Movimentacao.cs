@@ -10,8 +10,15 @@ namespace ControleDeEstoqueUP.Models {
 
         public decimal Total { get; set; }
 
-        public int Status { get; set; }
-
         public virtual Funcionario Funcionario { get; set; }
+
+        public override bool Equals(object obj) {
+            return obj is Movimentacao movimentacao &&
+                   Id == movimentacao.Id;
+        }
+
+        public override int GetHashCode() {
+            return 2108858624 + Id.GetHashCode();
+        }
     }
 }
