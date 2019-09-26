@@ -168,6 +168,8 @@ namespace ControleDeEstoqueUP {
             txtTotal.Clear();
             txtValor.Clear();
             gridProdutos.ItemsSource = null;
+            produtosDaCompra.Clear();
+            produtosDaCompraGrid.Clear();
         }
 
         /**

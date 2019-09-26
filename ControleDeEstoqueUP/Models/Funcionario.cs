@@ -38,5 +38,9 @@ namespace ControleDeEstoqueUP.Models {
             Admissao = admissao;
             Demissao = demissao;
         }
+
+        public override string ToString() {
+            return Nome;
+        }
     }
 }

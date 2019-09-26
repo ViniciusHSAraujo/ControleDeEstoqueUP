@@ -25,6 +25,8 @@ namespace ControleDeEstoqueUP {
         //ProdutoCompraDAO produtoCompraDAO = new ProdutoCompraDAO();
         //ProdutoVendaDAO produtoVendaDAO = new ProdutoVendaDAO();
 
+        CompraDAO compraDAO = new CompraDAO();
+
         public frmMovimentacaoProduto() {
             InitializeComponent();
         }
@@ -35,12 +37,26 @@ namespace ControleDeEstoqueUP {
                 case 1: //COMPRAS
                     Janela.Title = "Movimentação de Compras do Produto";
                     lblHeader.Content = $"Movimentação do produto {produto.Nome} (COMPRAS):";
-                    //gridMovimentacao = produtoCompraDAO.ListarComprasDeUmProduto(produto);
+                    headerCodCompraVenda.Header = "Cod. da Compra";
+                    var compras = compraDAO.BuscarComprasDeUmProduto(produto);
+                    List<dynamic> comprasGrid = new List<dynamic>();
+                    foreach (var produtoCompra in compras) {
+                        comprasGrid.Add(new { ID = produtoCompra.Compra.Id, ProdutoNome = produtoCompra.Produto.Nome, produtoCompra.Quantidade, produtoCompra.Valor, Subtotal = Convert.ToDecimal(produtoCompra.Quantidade) * produtoCompra.Valor });
+                    }
+                    gridMovimentacao.ItemsSource = comprasGrid;
+                    gridMovimentacao.Items.Refresh();
                 break;
                 case 2: //VENDAS
                     Janela.Title = "Movimentação de Vendas do Produto";
                     lblHeader.Content = $"Movimentação do produto {produto.Nome} (VENDAS):";
-                    //gridMovimentacao = produtoVendaDAO.ListarVendasDeUmProduto(produto);
+                    headerCodCompraVenda.Header = "Cod. da Venda";
+                    var vendas = compraDAO.BuscarVendasDeUmProduto(produto);
+                    List<dynamic> vendasGrid = new List<dynamic>();
+                    foreach (var produtoVenda in vendas) {
+                        vendasGrid.Add(new { ID = produtoVenda.Venda.Id, ProdutoNome = produtoVenda.Produto.Nome, produtoVenda.Quantidade, produtoVenda.Valor, Subtotal = Convert.ToDecimal(produtoVenda.Quantidade) * produtoVenda.Valor });
+                    }
+                    gridMovimentacao.ItemsSource = vendasGrid;
+                    gridMovimentacao.Items.Refresh();
                     break;
             }
         }

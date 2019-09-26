@@ -87,7 +87,7 @@ namespace ControleDeEstoqueUP.DAL {
          * Método que irá Buscar as compras de um determinado item no Banco de Dados
          */
         public List<ProdutoCompra> BuscarComprasDeUmProduto(Produto produto) {
-            return database.ProdutosCompra.Where(pc => pc.Produto.Equals(produto)).ToList() ;
+            return database.ProdutosCompra.Where(pc => pc.Produto.Id == produto.Id).ToList() ;
         }
 
 
@@ -95,7 +95,7 @@ namespace ControleDeEstoqueUP.DAL {
          * Método que irá Buscar as vendas de um determinado item no Banco de Dados
          */
         public List<ProdutoVenda> BuscarVendasDeUmProduto(Produto produto) {
-            return database.ProdutosVenda.Where(pv => pv.Produto.Equals(produto)).ToList();
+            return database.ProdutosVenda.Where(pv => pv.Produto.Id == produto.Id).ToList();
         }
 
     }

@@ -51,5 +51,9 @@ namespace ControleDeEstoqueUP.Models {
         public override int GetHashCode() {
             return 2108858624 + Id.GetHashCode();
         }
+
+        public override string ToString() {
+            return Nome;
+        }
     }
 }

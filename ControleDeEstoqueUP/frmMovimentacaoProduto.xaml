@@ -12,8 +12,14 @@
     <Grid>
         <Label x:Name="lblHeader" Content="Movimentação do item:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="14" Margin="10,1,0,0"/>
 
-        <DataGrid Name="gridMovimentacao" AutoGenerateColumns="True" ColumnWidth="*" Height="430" Margin="10,35,10,0" AlternatingRowBackground="Azure" VerticalAlignment="Top" SelectionMode="Single" IsReadOnly="True">
-
+        <DataGrid Name="gridMovimentacao" AutoGenerateColumns="False" ColumnWidth="*" Height="430" Margin="10,35,10,0" AlternatingRowBackground="Azure" VerticalAlignment="Top" SelectionMode="Single" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="headerCodCompraVenda" Header="Cod. Compra/Venda" Width="80" Binding="{Binding ID, StringFormat=000000}"/>
+                <DataGridTextColumn Header="Produto" Width="*" Binding="{Binding ProdutoNome}"/>
+                <DataGridTextColumn Header="Quantidade" Width="80" Binding="{Binding Quantidade}"/>
+                <DataGridTextColumn Header="Valor unitário" Width="82" Binding="{Binding Valor, StringFormat=C2}"/>
+                <DataGridTextColumn Header="Subtotal" Width="80" Binding="{Binding Subtotal, StringFormat=C2}"/>
+            </DataGrid.Columns>
         </DataGrid>
 
 
