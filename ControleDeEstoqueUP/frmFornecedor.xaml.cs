@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -60,10 +61,8 @@ namespace ControleDeEstoqueUP {
 
         private void BtnSalvar_Click(object sender, RoutedEventArgs e) {
             switch (operacao) {
-                case 1: //Adicionar
-                    if (string.IsNullOrWhiteSpace(txtRazaoSocial.Text)) {
-                        WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe a Razão Social do Fornecedor!");
-                    } else {
+                case 1: //Adicionar              
+                    if (ValidarCamposObrigatorios()) {
                         var fornecedor = CriarFornecedorComOsDadosTela();
                         fornecedor = fornecedorDAO.Inserir(fornecedor);
                         PreencherTelaPeloFornecedor(fornecedor);
@@ -72,9 +71,7 @@ namespace ControleDeEstoqueUP {
                     }
                     break;
                 case 3: // Editar
-                    if (string.IsNullOrWhiteSpace(txtRazaoSocial.Text)) {
-                        WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe a Razão Social do Fornecedor!");
-                    } else {
+                    if (ValidarCamposObrigatorios()) {
                         var fornecedor = CriarFornecedorComOsDadosTela();
                         fornecedorDAO.Editar(fornecedor);
                         WPFUtils.MostrarCaixaDeTextoDeInformação("Dados do fornecedor Atualizado com Sucesso!");
@@ -87,6 +84,30 @@ namespace ControleDeEstoqueUP {
         private void BtnCancelar_Click(object sender, RoutedEventArgs e) {
             MudarOperacao(0);
             LimparCampos();
+        }
+
+        private bool ValidarCamposObrigatorios() {
+            if (string.IsNullOrWhiteSpace(txtRazaoSocial.Text)) {
+                WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe a Razão Social do Fornecedor!");
+                txtRazaoSocial.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtCnpj.Text)) {
+                WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe o CNPJ do Fornecedor!");
+                txtCnpj.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtCEP.Text)) {
+                WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe o CEP do Fornecedor!");
+                txtCEP.Focus();
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtCEP.Text)) {
+                WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe o CEP do Fornecedor!");
+                txtCEP.Focus();
+                return false;
+            }
+            return true;
         }
         private void LimparCampos() {
             txtCodigo.Clear();
@@ -146,7 +167,7 @@ namespace ControleDeEstoqueUP {
             operacao = operac;
             ModificarBotoesFormulario(operacao);
         }
-        
+
 
 
         private Fornecedor CriarFornecedorComOsDadosTela() {
@@ -189,6 +210,20 @@ namespace ControleDeEstoqueUP {
                 PreencherTelaPeloFornecedor(fornecedor);
                 MudarOperacao(2);
             }
+        }
+        /**
+       * Validação que aceita apenas a entrada de números inteiros no TextBox
+       */
+        private void ApenasNumerosValidationTextBox(object sender, TextCompositionEventArgs e) {
+            e.Handled = !Int32.TryParse(e.Text, out int result);
+        }
+
+        /**
+         * Validação que aceita números e a vírgula no TextBox.
+         */
+        private void ApenasNumerosEVirgulaValidationTextBox(object sender, TextCompositionEventArgs e) {
+            Regex regex = new Regex("[^0-9,-]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

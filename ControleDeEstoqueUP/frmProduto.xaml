@@ -12,7 +12,7 @@
         <StackPanel Name="panelContent" Orientation="Vertical" Margin="15,15,15,100">
             <Label Name="lblCodigo" Content="Código:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18"/>
             <TextBox Name="txtCodigo" TextWrapping="Wrap" Text="" VerticalAlignment="Top" IsEnabled="False" Width="85" HorizontalAlignment="Left" FontSize="16"/>
-            <Label Name="lblNome" Content="Descrição do Produto:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18"/>
+            <Label Name="lblNome" Content="Nome do Produto:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18"/>
             <TextBox Name="txtNome" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="385" HorizontalAlignment="Left" FontSize="16"/>
             <Label Name="lblPrecoCusto" Content="Preço de Custo:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="18"/>
             <TextBox Name="txtPrecoCusto" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="385" HorizontalAlignment="Left" FontSize="16"/>

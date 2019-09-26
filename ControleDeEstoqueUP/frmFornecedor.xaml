@@ -11,25 +11,25 @@
             <Label Content="Código: " HorizontalAlignment="Left" Margin="30,16,0,0" VerticalAlignment="Top" Width="117" FontSize="18"/>
             <TextBox x:Name="txtCodigo" IsEnabled="False"  HorizontalAlignment="Left" Height="34" Margin="150,16,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="100"/>
             <Label Content="Razão Social: " HorizontalAlignment="Left" Margin="27,58,0,0" VerticalAlignment="Top" Width="117" FontSize="18"/>
-            <TextBox x:Name="txtRazaoSocial"  HorizontalAlignment="Left" Height="34" Margin="149,58,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="633"/>
+            <TextBox x:Name="txtRazaoSocial" TabIndex="1" HorizontalAlignment="Left" Height="34" Margin="149,58,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="633"/>
             <Label Content="CNPJ: " HorizontalAlignment="Left" Margin="27,110,0,0" VerticalAlignment="Top" Width="58" FontSize="18" RenderTransformOrigin="0.417,-0.838"/>
-            <TextBox x:Name="txtCnpj"  HorizontalAlignment="Left" Height="34" Margin="125,111,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="325"/>
+            <TextBox x:Name="txtCnpj" TabIndex="2" HorizontalAlignment="Left" Height="34" Margin="125,111,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="325"/>
             <Label Content="Endereço: " HorizontalAlignment="Left" Margin="27,172,0,0" VerticalAlignment="Top" Width="91" FontSize="18"/>
-            <TextBox x:Name="txtEndereco"  HorizontalAlignment="Left" Height="34" Margin="123,172,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="326"/>
+            <TextBox x:Name="txtEndereco" TabIndex="4" HorizontalAlignment="Left" Height="34" Margin="123,172,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="326"/>
             <Label Content="Bairro: " HorizontalAlignment="Left" Margin="475,172,0,0" VerticalAlignment="Top" Width="67" FontSize="18"/>
-            <TextBox x:Name="txtBairro"  HorizontalAlignment="Left" Height="34" Margin="550,172,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="230"/>
+            <TextBox x:Name="txtBairro" TabIndex="5" HorizontalAlignment="Left" Height="34" Margin="550,172,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="230"/>
             <Label Content="Cidade: " HorizontalAlignment="Left" Margin="27,229,0,0" VerticalAlignment="Top" Width="78" FontSize="18"/>
-            <TextBox x:Name="txtCidade"  HorizontalAlignment="Left" Height="34" Margin="123,229,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="326"/>
+            <TextBox x:Name="txtCidade" TabIndex="6" HorizontalAlignment="Left" Height="34" Margin="123,229,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="326"/>
             <Label Content="CEP: " HorizontalAlignment="Left" Margin="475,110,0,0" VerticalAlignment="Top" Width="53" FontSize="18"/>
-            <TextBox x:Name="txtCEP"  HorizontalAlignment="Left" Height="34" Margin="551,110,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="229"/>
+            <TextBox x:Name="txtCEP" PreviewTextInput="ApenasNumerosValidationTextBox" TabIndex="3" HorizontalAlignment="Left" Height="34" Margin="551,110,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="229"/>
             <Label Content="UF: " HorizontalAlignment="Left" Margin="474,225,0,0" VerticalAlignment="Top" Width="34" FontSize="18" RenderTransformOrigin="0.019,1.482"/>
-            <TextBox x:Name="txtUF"  HorizontalAlignment="Left" Height="34" Margin="550,225,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="70"/>
+            <TextBox x:Name="txtUF" TabIndex="7" HorizontalAlignment="Left" Height="34" Margin="550,225,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="70"/>
             <Label Content="E-mail: " HorizontalAlignment="Left" Margin="29,289,0,0" VerticalAlignment="Top" Width="71" FontSize="18"/>
-            <TextBox x:Name="txtEmail"  HorizontalAlignment="Left" Height="34" Margin="125,289,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="655"/>
+            <TextBox x:Name="txtEmail" TabIndex="8" HorizontalAlignment="Left" Height="34" Margin="125,289,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="655"/>
             <Label Content="Telefone: " HorizontalAlignment="Left" Margin="27,351,0,0" VerticalAlignment="Top" Width="78" FontSize="18"/>
-            <TextBox x:Name="txtTelefone"  HorizontalAlignment="Left" Height="34" Margin="123,351,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="252"/>
+            <TextBox x:Name="txtTelefone" PreviewTextInput="ApenasNumerosValidationTextBox" TabIndex="9" HorizontalAlignment="Left" Height="34" Margin="123,351,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="252"/>
             <Label Content="Celular: " HorizontalAlignment="Left" Margin="451,351,0,0" VerticalAlignment="Top" Width="78" FontSize="18"/>
-            <TextBox x:Name="txtCelular"  HorizontalAlignment="Left" Height="34" Margin="534,351,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="246"/>
+            <TextBox x:Name="txtCelular" PreviewTextInput="ApenasNumerosValidationTextBox" TabIndex="10" HorizontalAlignment="Left" Height="34" Margin="534,351,0,0" TextWrapping="Wrap" FontSize="18" VerticalAlignment="Top" Width="246"/>
         </Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10" Height="75" VerticalAlignment="Bottom">
             <Button Name="btnAdicionar" Width="100" Margin="10" Click="BtnAdicionar_Click" >
