@@ -225,5 +225,20 @@ namespace ControleDeEstoqueUP {
             txtCelular.Text = cliente.Celular.ToString();
             txtEmail.Text = cliente.Email.ToString();
         }
+
+        /**
+      * Validação que aceita apenas a entrada de números inteiros no TextBox
+      */
+        private void ApenasNumerosValidationTextBox(object sender, TextCompositionEventArgs e) {
+            e.Handled = !Int32.TryParse(e.Text, out int result);
+        }
+
+        /**
+         * Validação que aceita números e a vírgula no TextBox.
+         */
+        private void ApenasNumerosEVirgulaValidationTextBox(object sender, TextCompositionEventArgs e) {
+            Regex regex = new Regex("[^0-9,-]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
     }
 }
