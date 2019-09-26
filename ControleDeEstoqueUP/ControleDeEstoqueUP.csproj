@@ -71,6 +71,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DAL\ClienteDAO.cs" />
+    <Compile Include="DAL\VendaDAO.cs" />
     <Compile Include="DAL\CompraDAO.cs" />
     <Compile Include="DAL\FornecedorDAO.cs" />
     <Compile Include="DAL\FuncionarioDAO.cs" />
@@ -79,6 +80,9 @@
     <Compile Include="DAL\UnidadeMedidaDAO.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Data\SingletonContext.cs" />
+    <Compile Include="frmVenda.xaml.cs">
+      <DependentUpon>frmVenda.xaml</DependentUpon>
+    </Compile>
     <Compile Include="frmPesquisaFornecedor.xaml.cs">
       <DependentUpon>frmPesquisaFornecedor.xaml</DependentUpon>
     </Compile>
@@ -163,6 +167,10 @@
     <Compile Include="Models\Venda.cs" />
     <Compile Include="Utils\TextBoxValidations.cs" />
     <Compile Include="Utils\WPFUtils.cs" />
+    <Page Include="frmVenda.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="frmPesquisaFornecedor.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

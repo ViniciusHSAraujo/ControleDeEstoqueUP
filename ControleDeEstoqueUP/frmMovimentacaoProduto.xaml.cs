@@ -22,10 +22,8 @@ namespace ControleDeEstoqueUP {
     /// </summary>
     public partial class frmMovimentacaoProduto : Window {
 
-        //ProdutoCompraDAO produtoCompraDAO = new ProdutoCompraDAO();
-        //ProdutoVendaDAO produtoVendaDAO = new ProdutoVendaDAO();
-
         CompraDAO compraDAO = new CompraDAO();
+        VendaDAO vendaDAO = new VendaDAO();
 
         public frmMovimentacaoProduto() {
             InitializeComponent();
@@ -50,7 +48,7 @@ namespace ControleDeEstoqueUP {
                     Janela.Title = "Movimentação de Vendas do Produto";
                     lblHeader.Content = $"Movimentação do produto {produto.Nome} (VENDAS):";
                     headerCodCompraVenda.Header = "Cod. da Venda";
-                    var vendas = compraDAO.BuscarVendasDeUmProduto(produto);
+                    var vendas = vendaDAO.BuscarVendasDeUmProduto(produto);
                     List<dynamic> vendasGrid = new List<dynamic>();
                     foreach (var produtoVenda in vendas) {
                         vendasGrid.Add(new { ID = produtoVenda.Venda.Id, ProdutoNome = produtoVenda.Produto.Nome, produtoVenda.Quantidade, produtoVenda.Valor, Subtotal = Convert.ToDecimal(produtoVenda.Quantidade) * produtoVenda.Valor });

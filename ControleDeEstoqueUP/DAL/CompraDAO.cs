@@ -12,7 +12,7 @@ namespace ControleDeEstoqueUP.DAL {
 
         private static ApplicationDbContext database = SingletonContext.GetInstance();
 
-        ProdutoDAO produtoDAO = new ProdutoDAO();
+
         /*
          * Método que Realiza a inserção do Fornecedor no Banco de Dados
          */
@@ -27,12 +27,8 @@ namespace ControleDeEstoqueUP.DAL {
                 database.ProdutosCompra.AddRange(produtosCompra);
                 database.SaveChanges();
 
-                /*foreach (var produtoCompra in produtosCompra) {
-                    produtoDAO.AtualizarCustoDoProduto(produtoCompra.Produto);
-                }*/
-
                 return compra;
-            } catch (Exception e){
+            } catch (Exception e) {
                 throw new Exception("Erro ao cadastrar Compra:\n" + e.Message);
             }
         }
@@ -46,7 +42,7 @@ namespace ControleDeEstoqueUP.DAL {
                 compraBanco.Fornecedor = compra.Fornecedor;
                 compraBanco.Data = compra.Data;
                 database.SaveChanges();
-            }catch(Exception e) {
+            } catch (Exception e) {
                 throw new Exception("Ocorrou um erro ao editar o fornecedor:\n" + e.Message);
             }
         }
@@ -87,15 +83,7 @@ namespace ControleDeEstoqueUP.DAL {
          * Método que irá Buscar as compras de um determinado item no Banco de Dados
          */
         public List<ProdutoCompra> BuscarComprasDeUmProduto(Produto produto) {
-            return database.ProdutosCompra.Where(pc => pc.Produto.Id == produto.Id).ToList() ;
-        }
-
-
-        /*
-         * Método que irá Buscar as vendas de um determinado item no Banco de Dados
-         */
-        public List<ProdutoVenda> BuscarVendasDeUmProduto(Produto produto) {
-            return database.ProdutosVenda.Where(pv => pv.Produto.Id == produto.Id).ToList();
+            return database.ProdutosCompra.Where(pc => pc.Produto.Id == produto.Id).ToList();
         }
 
     }
