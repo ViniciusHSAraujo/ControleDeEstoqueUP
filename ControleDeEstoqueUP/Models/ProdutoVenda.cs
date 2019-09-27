@@ -9,21 +9,18 @@ namespace ControleDeEstoqueUP.Models{
         public ProdutoVenda() {
         }
 
-        public ProdutoVenda(Produto produto, double quantidade, decimal valor) {
-            Produto = produto;
-            Quantidade = quantidade;
+        public ProdutoVenda(SubProduto subProduto, decimal valor) {
+            SubProduto = subProduto;
             Valor = valor;
         }
 
         public int Id { get; set; }
 
-        public double Quantidade { get; set; }
-
         public decimal Valor { get; set; }
 
         public virtual Venda Venda { get; set; }
 
-        public virtual Produto Produto { get; set; }
+        public  SubProduto SubProduto { get; set; }
 
         public override bool Equals(object obj) {
             return obj is ProdutoVenda venda &&

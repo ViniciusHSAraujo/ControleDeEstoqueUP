@@ -6,8 +6,9 @@ using System.Text;
 namespace ControleDeEstoqueUP.Models{
     [Table("Vendas")]
     public class Venda : Movimentacao{
-        private decimal valorTotal;
-        private ICollection<ProdutoCompra> produtosCompra;
+
+        public Venda() {
+        }
 
         public Venda(Cliente cliente, Funcionario funcionario, DateTime data, decimal valorTotal, ICollection<ProdutoVenda> produtosVenda, int id) {
             Cliente = cliente;

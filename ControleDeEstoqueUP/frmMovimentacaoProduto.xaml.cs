@@ -51,7 +51,7 @@ namespace ControleDeEstoqueUP {
                     var vendas = vendaDAO.BuscarVendasDeUmProduto(produto);
                     List<dynamic> vendasGrid = new List<dynamic>();
                     foreach (var produtoVenda in vendas) {
-                        vendasGrid.Add(new { ID = produtoVenda.Venda.Id, ProdutoNome = produtoVenda.Produto.Nome, produtoVenda.Quantidade, produtoVenda.Valor, Subtotal = Convert.ToDecimal(produtoVenda.Quantidade) * produtoVenda.Valor });
+                        vendasGrid.Add(new { ID = produtoVenda.Venda.Id, ProdutoNome = produtoVenda.SubProduto.Produto.Nome,produtoVenda.Valor });
                     }
                     gridMovimentacao.ItemsSource = vendasGrid;
                     gridMovimentacao.Items.Refresh();

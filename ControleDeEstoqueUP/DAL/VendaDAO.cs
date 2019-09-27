@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using ControleDeEstoqueUP.Data;
 using ControleDeEstoqueUP.Models;
 using ControleDeEstoqueUP.Utils;
@@ -17,13 +18,13 @@ namespace ControleDeEstoqueUP.DAL {
          */
         public Venda Inserir(Venda venda) {
             try {
-                database.Vendas.Add(venda);
-                database.SaveChanges();
                 var produtosVenda = venda.ProdutosVenda;
                 foreach (var produtoVenda in produtosVenda) {
-                    produtoVenda.Venda = venda;
+                    var prod = database.SubProdutos.Find(produtoVenda.SubProduto.Id);
+                    prod.Status = false;
+                    database.SaveChanges();
                 }
-                database.ProdutosVenda.AddRange(produtosVenda);
+                database.Vendas.Add(venda);
                 database.SaveChanges();
 
                 return venda;
@@ -82,7 +83,7 @@ namespace ControleDeEstoqueUP.DAL {
          * Método que irá Buscar as compras de um determinado item no Banco de Dados
          */
         public List<ProdutoVenda> BuscarVendasDeUmProduto(Produto produto) {
-            return database.ProdutosVenda.Where(pv => pv.Produto.Id == produto.Id).ToList();
+            return database.ProdutosVenda.Where(pv => pv.SubProduto.Produto.Id == produto.Id).ToList();
         }
 
     }

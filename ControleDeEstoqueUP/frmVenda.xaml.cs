@@ -41,11 +41,12 @@ namespace ControleDeEstoqueUP {
         List<dynamic> produtosDaVendaGrid = new List<dynamic>();
 
         ProdutoDAO produtoDAO = new ProdutoDAO();
-        Produto produtoEscolhido;
+        SubProdutoDAO subProdutoDAO = new SubProdutoDAO();
+        SubProduto subProdutoEscolhido;
 
         public int VendaPesquisa;
         int IdCliente;
-        int IdProduto;
+        int IdSubProduto;
 
 
         public frmVenda() {
@@ -165,7 +166,6 @@ namespace ControleDeEstoqueUP {
             txtFuncionarioID.Clear();
             txtFuncionarioNome.Clear();
             txtNomeProduto.Clear();
-            txtQuantidade.Clear();
             txtTotal.Clear();
             txtValor.Clear();
             gridProdutos.ItemsSource = null;
@@ -258,7 +258,7 @@ namespace ControleDeEstoqueUP {
             produtosDaVenda = venda.ProdutosVenda;
             produtosDaVendaGrid.Clear();
             foreach (var produtoVenda in produtosDaVenda) {
-                produtosDaVendaGrid.Add(new { ProdutoID = produtoVenda.Produto.Id, ProdutoNome = produtoVenda.Produto.Nome, produtoVenda.Quantidade, produtoVenda.Valor, Subtotal = Convert.ToDecimal(produtoVenda.Quantidade) * produtoVenda.Valor });
+                produtosDaVendaGrid.Add(new { ProdutoID = produtoVenda.SubProduto.Produto.Id, ProdutoNome = produtoVenda.SubProduto.Produto.Nome, produtoVenda.Valor });
             }
             AtualizarGrid();
         }
@@ -334,19 +334,21 @@ namespace ControleDeEstoqueUP {
          * Quando se clica duas vezes no campo de ID do Produto
          */
         private void TxtCodigoProduto_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
-            var pesquisa = new frmPesquisaProduto();
+            var pesquisa = new frmPesquisaProdutoEspecifico();
             pesquisa.ShowDialog();
-            IdProduto = pesquisa.produtoId;
-            if (IdProduto != 0) {
-                produtoEscolhido = produtoDAO.BuscarProdutoPeloId(IdProduto);
-                txtCodigoProduto.Text = produtoEscolhido.Id.ToString();
-                txtNomeProduto.Text = produtoEscolhido.Nome;
-                txtValor.Text = produtoEscolhido.ValorVenda.ToString("F2");
+            IdSubProduto = pesquisa.subProdutoId;
+            if (IdSubProduto != 0) {
+                subProdutoEscolhido = subProdutoDAO.BuscarSubProdutoPeloId(IdSubProduto);
+                txtCodigoProduto.Text = subProdutoEscolhido.Id.ToString();
+                txtNomeProduto.Text = subProdutoEscolhido.Produto.Nome;
+                txtValor.Text = subProdutoEscolhido.Produto.ValorVenda.ToString("F2");
+                txtSKU.Text = subProdutoEscolhido.SKU;
             } else {
                 WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum produto escolhido!");
-                produtoEscolhido = null;
+                subProdutoEscolhido = null;
                 txtCodigoProduto.Clear();
                 txtNomeProduto.Clear();
+                txtSKU.Clear();
             }
         }
 
@@ -356,19 +358,22 @@ namespace ControleDeEstoqueUP {
         private void TxtCodigoProduto_LostFocus(object sender, RoutedEventArgs e) {
             if (string.IsNullOrEmpty(txtCodigoProduto.Text)) {
                 WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum produto escolhido!");
-                produtoEscolhido = null;
+                subProdutoEscolhido = null;
                 txtCodigoProduto.Clear();
                 txtNomeProduto.Clear();
+                txtSKU.Clear();
             } else {
-                IdProduto = Convert.ToInt32(txtCodigoProduto.Text);
-                produtoEscolhido = produtoDAO.BuscarProdutoPeloId(IdProduto);
-                if (produtoEscolhido == null) {
+                IdSubProduto = Convert.ToInt32(txtCodigoProduto.Text);
+                subProdutoEscolhido = subProdutoDAO.BuscarSubProdutoPeloId(IdSubProduto);
+                if (subProdutoEscolhido == null) {
                     WPFUtils.MostrarCaixaDeTextoDeErro("Código de produto inválido!");
-                    produtoEscolhido = null;
+                    subProdutoEscolhido = null;
                     txtCodigoProduto.Clear();
                     txtNomeProduto.Clear();
+                    txtSKU.Clear();
                 } else {
-                    txtNomeProduto.Text = produtoEscolhido.Nome;
+                    txtNomeProduto.Text = subProdutoEscolhido.Produto.Nome;
+                    txtSKU.Text = subProdutoEscolhido.SKU;
                 }
             }
         }
@@ -376,24 +381,12 @@ namespace ControleDeEstoqueUP {
         private void BtnAddItem_Click(object sender, RoutedEventArgs e) {
             if (ValidarCamposObrigatoriosDoProduto()) {
                 var produtoVenda = CriarProdutoVendaComOsDadosDaTela();
-                if (VerificarSaldoDoItem(produtoVenda.Produto, produtoVenda.Quantidade)) {
                     produtosDaVenda.Add(produtoVenda);
-                    produtosDaVendaGrid.Add(new { ProdutoID = produtoVenda.Produto.Id, ProdutoNome = produtoVenda.Produto.Nome, produtoVenda.Quantidade, produtoVenda.Valor, Subtotal = Convert.ToDecimal(produtoVenda.Quantidade) * produtoVenda.Valor });
+                    produtosDaVendaGrid.Add(new { ProdutoID = produtoVenda.SubProduto.Id, ProdutoNome = produtoVenda.SubProduto.Produto.Nome, SKU = produtoVenda.SubProduto.SKU,produtoVenda.Valor });
                     AtualizarGrid();
                     LimparCamposDoProduto();
                     RecalcularValorTotal();
                     txtCodigoProduto.Focus();
-                }
-            }
-        }
-
-        private bool VerificarSaldoDoItem(Produto produto, double quantidade) {
-            var saldo = produtoDAO.CalcularSaldoDoProduto(produto);
-            if (quantidade > saldo) {
-                WPFUtils.MostrarCaixaDeTextoDeErro($"Saldo indisponível! Esse produto tem apenas {saldo} no saldo e você está tentando vender {quantidade}");
-                return false;
-            } else {
-                return true;
             }
         }
 
@@ -407,10 +400,6 @@ namespace ControleDeEstoqueUP {
                 WPFUtils.MostrarCaixaDeTextoDeAlerta("Nenhum produto escolhido!");
                 txtCodigoProduto.Focus();
                 return false;
-            } else if (string.IsNullOrWhiteSpace(txtQuantidade.Text)) {
-                WPFUtils.MostrarCaixaDeTextoDeAlerta("Quantidade não definida!");
-                txtQuantidade.Focus();
-                return false;
             } else if (string.IsNullOrWhiteSpace(txtValor.Text)) {
                 WPFUtils.MostrarCaixaDeTextoDeAlerta("Valor do produto não definido!");
                 txtValor.Focus();
@@ -423,15 +412,13 @@ namespace ControleDeEstoqueUP {
         private void LimparCamposDoProduto() {
             txtCodigoProduto.Clear();
             txtNomeProduto.Clear();
-            txtQuantidade.Clear();
             txtValor.Clear();
         }
 
         private ProdutoVenda CriarProdutoVendaComOsDadosDaTela() {
-            var produto = produtoEscolhido;
-            var quantidade = Convert.ToDouble(txtQuantidade.Text);
+            var subproduto = subProdutoEscolhido;
             var valor = Convert.ToDecimal(txtValor.Text);
-            return new ProdutoVenda(produto, quantidade, valor);
+            return new ProdutoVenda(subproduto, valor);
         }
 
         private void BtnRemoveItem_Click(object sender, RoutedEventArgs e) {
@@ -450,7 +437,7 @@ namespace ControleDeEstoqueUP {
         private void RecalcularValorTotal() {
             decimal valorTotal = 0;
             foreach (var produto in produtosDaVendaGrid) {
-                valorTotal += produto.Subtotal;
+                valorTotal += produto.Valor;
             }
             txtTotal.Text = valorTotal.ToString("F2");
         }

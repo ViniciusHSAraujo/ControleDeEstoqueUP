@@ -81,6 +81,9 @@
     <Compile Include="DAL\UnidadeMedidaDAO.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Data\SingletonContext.cs" />
+    <Compile Include="frmPesquisaProdutoEspecifico.xaml.cs">
+      <DependentUpon>frmPesquisaProdutoEspecifico.xaml</DependentUpon>
+    </Compile>
     <Compile Include="frmVenda.xaml.cs">
       <DependentUpon>frmVenda.xaml</DependentUpon>
     </Compile>
@@ -149,6 +152,10 @@
     <Compile Include="Migrations\201909270043085_AddTabelaSubProduto.designer.cs">
       <DependentUpon>201909270043085_AddTabelaSubProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909271523454_AlteracoesSubProduto.cs" />
+    <Compile Include="Migrations\201909271523454_AlteracoesSubProduto.designer.cs">
+      <DependentUpon>201909271523454_AlteracoesSubProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -165,6 +172,10 @@
     <Compile Include="Models\Venda.cs" />
     <Compile Include="Utils\TextBoxValidations.cs" />
     <Compile Include="Utils\WPFUtils.cs" />
+    <Page Include="frmPesquisaProdutoEspecifico.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="frmVenda.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -277,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909270043085_AddTabelaSubProduto.resx">
       <DependentUpon>201909270043085_AddTabelaSubProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909271523454_AlteracoesSubProduto.resx">
+      <DependentUpon>201909271523454_AlteracoesSubProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

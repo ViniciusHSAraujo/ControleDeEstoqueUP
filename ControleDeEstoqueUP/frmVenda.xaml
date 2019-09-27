@@ -45,8 +45,8 @@
                         <TextBox Name="txtNomeProduto" TextWrapping="Wrap" Text="" VerticalAlignment="center" IsEnabled="False" Width="251" HorizontalAlignment="Left" FontSize="16"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="3">
-                        <Label Name="lblQuantidade" Content="Quantidade:   " VerticalAlignment="center" HorizontalAlignment="Left" FontSize="18"/>
-                        <TextBox Name="txtQuantidade" PreviewTextInput="ApenasNumerosEVirgulaValidationTextBox" TextWrapping="Wrap" Text="" VerticalAlignment="center" Width="85" HorizontalAlignment="Left" FontSize="16"/>
+                        <Label Name="lblSKU" Content="SKU:" VerticalAlignment="center" HorizontalAlignment="Left" FontSize="18"/>
+                        <TextBox Name="txtSKU" PreviewTextInput="ApenasNumerosEVirgulaValidationTextBox" IsEnabled="False" TextWrapping="Wrap" Text="" VerticalAlignment="center" Width="205" HorizontalAlignment="Left" FontSize="16"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="3">
                         <Label Name="lblValor" Content="Valor unitário:" VerticalAlignment="center" HorizontalAlignment="Left" FontSize="18"/>
@@ -73,9 +73,8 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Cod. Produto" Width="80" Binding="{Binding ProdutoID, StringFormat=000000}"/>
                             <DataGridTextColumn Header="Desc. Produto" Width="*" Binding="{Binding ProdutoNome}"/>
-                            <DataGridTextColumn Header="Quantidade" Width="80" Binding="{Binding Quantidade}"/>
+                            <DataGridTextColumn Header="SKU" Width="80" Binding="{Binding SKU}"/>
                             <DataGridTextColumn Header="Valor unitário" Width="82" Binding="{Binding Valor, StringFormat=C2}"/>
-                            <DataGridTextColumn Header="Subtotal" Width="80" Binding="{Binding Subtotal, StringFormat=C2}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </StackPanel>

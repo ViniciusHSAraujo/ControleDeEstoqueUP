@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ControleDeEstoqueUP.Models {
     [Table("SubProduto")]
-    class SubProduto {
+    public class SubProduto {
 
         public SubProduto() {
         }
@@ -29,7 +29,7 @@ namespace ControleDeEstoqueUP.Models {
 
         public int Id { get; set; }
 
-        public Produto Produto { get; set; }
+        public virtual Produto Produto { get; set; }
 
         public string SKU { get; set; }
 
