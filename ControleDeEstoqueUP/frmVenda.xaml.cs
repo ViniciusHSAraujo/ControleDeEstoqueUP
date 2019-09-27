@@ -326,7 +326,6 @@ namespace ControleDeEstoqueUP {
                     txtClienteID.Clear();
                 } else {
                     txtClienteNome.Text = clienteVenda.Nome;
-                    txtValor.Text = produtoEscolhido.ValorVenda.ToString("2F");
                 }
             }
         }
@@ -342,7 +341,7 @@ namespace ControleDeEstoqueUP {
                 produtoEscolhido = produtoDAO.BuscarProdutoPeloId(IdProduto);
                 txtCodigoProduto.Text = produtoEscolhido.Id.ToString();
                 txtNomeProduto.Text = produtoEscolhido.Nome;
-                txtValor.Text = produtoEscolhido.ValorVenda.ToString("2F");
+                txtValor.Text = produtoEscolhido.ValorVenda.ToString("F2");
             } else {
                 WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum produto escolhido!");
                 produtoEscolhido = null;

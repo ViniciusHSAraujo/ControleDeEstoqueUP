@@ -28,6 +28,7 @@ namespace ControleDeEstoqueUP.Data {
         public DbSet<Fornecedor> Fornecedores { get; set; }
         public DbSet<Funcionario> Funcionarios { get; set; }
         public DbSet<Produto> Produtos { get; set; }
+        public DbSet<SubProduto> SubProdutos { get; set; }
         public DbSet<ProdutoCompra> ProdutosCompra { get; set; }
         public DbSet<ProdutoVenda> ProdutosVenda { get; set; }
         public DbSet<UnidadeDeMedida> UnidadeDeMedidas { get; set; }

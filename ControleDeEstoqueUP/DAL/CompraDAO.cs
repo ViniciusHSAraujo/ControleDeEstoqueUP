@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static ControleSeuEstoque.Utils.WPFUtils;
+
 
 namespace ControleDeEstoqueUP.DAL {
     class CompraDAO {
@@ -20,16 +22,24 @@ namespace ControleDeEstoqueUP.DAL {
             try {
                 database.Compras.Add(compra);
                 database.SaveChanges();
-                var produtosCompra = compra.ProdutosCompra;
-                foreach (var produtoCompra in produtosCompra) {
-                    produtoCompra.Compra = compra;
-                }
-                database.ProdutosCompra.AddRange(produtosCompra);
-                database.SaveChanges();
-
+                InserirSubProdutosNoEstoque(compra);
                 return compra;
             } catch (Exception e) {
                 throw new Exception("Erro ao cadastrar Compra:\n" + e.Message);
+            }
+        }
+
+        public void InserirSubProdutosNoEstoque(Compra compra) {
+            var produtosComprados = new List<ProdutoCompra>();
+            produtosComprados = compra.ProdutosCompra.ToList();
+            foreach (var produtocompra in produtosComprados) {
+                for (int i = 0; i < produtocompra.Quantidade; i++) {
+                    SubProduto subproduto = new SubProduto(produtocompra.Produto);
+                    database.SubProdutos.Add(subproduto);
+                    database.SaveChanges();
+                    subproduto.SKU = $"{subproduto.Produto.Id}{Encode(subproduto.Id)}";
+                    database.SaveChanges();
+                }
             }
         }
 

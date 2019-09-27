@@ -170,6 +170,7 @@ namespace ControleDeEstoqueUP {
             gridProdutos.ItemsSource = null;
             produtosDaCompra.Clear();
             produtosDaCompraGrid.Clear();
+            produtoDAO = new ProdutoDAO();
         }
 
         /**
@@ -297,7 +298,6 @@ namespace ControleDeEstoqueUP {
                 fornecedorCompra = fornecedorDAO.BuscarFornecedorPorId(IdFornecedor);
                 txtFornecedorID.Text = fornecedorCompra.Id.ToString();
                 txtFornecedorNome.Text = fornecedorCompra.Nome;
-                txtValor.Text = produtoEscolhido.ValorPago.ToString("2F");
             } else {
                 WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum fornecedor escolhido!");
                 fornecedorCompra = null;
@@ -326,7 +326,6 @@ namespace ControleDeEstoqueUP {
                     txtFornecedorID.Clear();
                 } else {
                     txtFornecedorNome.Text = fornecedorCompra.Nome;
-                    txtValor.Text = produtoEscolhido.ValorPago.ToString("2F");
                 }
             }
         }
@@ -342,6 +341,7 @@ namespace ControleDeEstoqueUP {
                 produtoEscolhido = produtoDAO.BuscarProdutoPeloId(IdProduto);
                 txtCodigoProduto.Text = produtoEscolhido.Id.ToString();
                 txtNomeProduto.Text = produtoEscolhido.Nome;
+                txtValor.Text = produtoEscolhido.ValorPago.ToString("F2");
             } else {
                 WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum produto escolhido!");
                 produtoEscolhido = null;
@@ -367,6 +367,7 @@ namespace ControleDeEstoqueUP {
                     produtoEscolhido = null;
                     txtCodigoProduto.Clear();
                     txtNomeProduto.Clear();
+                    txtValor.Text = produtoEscolhido.ValorPago.ToString("F2");
                 } else {
                     txtNomeProduto.Text = produtoEscolhido.Nome;
                 }

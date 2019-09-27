@@ -71,6 +71,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DAL\ClienteDAO.cs" />
+    <Compile Include="DAL\SubProdutoDAO.cs" />
     <Compile Include="DAL\VendaDAO.cs" />
     <Compile Include="DAL\CompraDAO.cs" />
     <Compile Include="DAL\FornecedorDAO.cs" />
@@ -140,9 +141,13 @@
     <Compile Include="frmSobre.xaml.cs">
       <DependentUpon>frmSobre.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909262208389_Banco.cs" />
-    <Compile Include="Migrations\201909262208389_Banco.designer.cs">
-      <DependentUpon>201909262208389_Banco.cs</DependentUpon>
+    <Compile Include="Migrations\201909262336295_banco.cs" />
+    <Compile Include="Migrations\201909262336295_banco.designer.cs">
+      <DependentUpon>201909262336295_banco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909270043085_AddTabelaSubProduto.cs" />
+    <Compile Include="Migrations\201909270043085_AddTabelaSubProduto.designer.cs">
+      <DependentUpon>201909270043085_AddTabelaSubProduto.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -155,6 +160,7 @@
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\ProdutoCompra.cs" />
     <Compile Include="Models\ProdutoVenda.cs" />
+    <Compile Include="Models\SubProduto.cs" />
     <Compile Include="Models\UnidadeDeMedida.cs" />
     <Compile Include="Models\Venda.cs" />
     <Compile Include="Utils\TextBoxValidations.cs" />
@@ -266,8 +272,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201909262208389_Banco.resx">
-      <DependentUpon>201909262208389_Banco.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909262336295_banco.resx">
+      <DependentUpon>201909262336295_banco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909270043085_AddTabelaSubProduto.resx">
+      <DependentUpon>201909270043085_AddTabelaSubProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

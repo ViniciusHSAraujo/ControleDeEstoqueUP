@@ -10,53 +10,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ControleDeEstoqueUP.DAL {
-    class ProdutoDAO {
+    class SubProdutoDAO {
 
         private static ApplicationDbContext database = SingletonContext.GetInstance();
 
         /**
          * Método que faz a inserção da categoria no banco de dados.
          */
-        public Produto Inserir(Produto produto) {
+        public SubProduto Inserir(SubProduto subProduto) {
             try {
-                database.Produtos.Add(produto);
+                database.SubProdutos.Add(subProduto);
                 database.SaveChanges();
-                return produto;
+                return subProduto;
             } catch (Exception e) {
                 throw new Exception("Ocorreu um erro ao cadastrar:\n" + e.Message);
-            }
-
-        }
-
-
-        /**
-         * Método que recebe uma categoria (editada) e realiza as edições da mesma no banco de dados.
-         */
-        public void Editar(Produto produto) {
-            try {
-                Produto produtoBanco = database.Produtos.FirstOrDefault(p => p.Id == produto.Id);
-                produtoBanco.Nome = produto.Nome;
-                produtoBanco.ValorVenda = produto.ValorVenda;
-                produtoBanco.Categoria = produto.Categoria;
-                database.SaveChanges();
-
-            } catch (Exception e) {
-                throw new Exception("Ocorreu um erro ao cadastrar:\n" + e.Message);
-            }
-
-        }
-
-        /**
-         * Método que recebe uma categoria (editada) e realiza as edições da mesma no banco de dados.
-         */
-        public void Excluir(int id) {
-            try {
-                var produto = database.Produtos.FirstOrDefault(p => p.Id == id);
-                database.Produtos.Remove(produto);
-                database.SaveChanges();
-
-            } catch (Exception e) {
-                throw new Exception("Ocorreu um erro ao inativar:\n" + e.Message);
             }
 
         }
@@ -73,8 +40,9 @@ namespace ControleDeEstoqueUP.DAL {
         }
 
         public double CalcularSaldoDoProduto(Produto produto) {
-            var qtde = database.SubProdutos.Where(sp => sp.Produto.Id == produto.Id && sp.Status).Count();
-            return qtde;
+            var compras = database.ProdutosCompra.Where(pc => pc.Produto.Id == produto.Id).Select(pc => pc.Quantidade).DefaultIfEmpty(0).Sum();
+            var vendas = database.ProdutosVenda.Where(pv => pv.Produto.Id == produto.Id).Select(pv => pv.Quantidade).DefaultIfEmpty(0).Sum();
+            return compras - vendas;
         }
         public void AtualizarCustoDoProduto(Produto produto) {
                 //TODO
