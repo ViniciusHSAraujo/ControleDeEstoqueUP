@@ -81,6 +81,9 @@
     <Compile Include="DAL\UnidadeMedidaDAO.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Data\SingletonContext.cs" />
+    <Compile Include="frmPesquisaVenda.xaml.cs">
+      <DependentUpon>frmPesquisaVenda.xaml</DependentUpon>
+    </Compile>
     <Compile Include="frmPesquisaProdutoEspecifico.xaml.cs">
       <DependentUpon>frmPesquisaProdutoEspecifico.xaml</DependentUpon>
     </Compile>
@@ -172,6 +175,10 @@
     <Compile Include="Models\Venda.cs" />
     <Compile Include="Utils\TextBoxValidations.cs" />
     <Compile Include="Utils\WPFUtils.cs" />
+    <Page Include="frmPesquisaVenda.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="frmPesquisaProdutoEspecifico.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

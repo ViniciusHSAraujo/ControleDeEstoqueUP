@@ -20,7 +20,7 @@ namespace ControleDeEstoqueUP.Models{
 
         public virtual Venda Venda { get; set; }
 
-        public  SubProduto SubProduto { get; set; }
+        public virtual SubProduto SubProduto { get; set; }
 
         public override bool Equals(object obj) {
             return obj is ProdutoVenda venda &&
