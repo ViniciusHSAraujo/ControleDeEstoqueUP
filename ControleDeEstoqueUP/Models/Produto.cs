@@ -1,25 +1,22 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
-namespace ControleDeEstoqueUP.Models{
+namespace ControleDeEstoqueUP.Models {
     [Table("Produtos")]
-    public class Produto{
+    public class Produto {
 
         public Produto() {
         }
 
         public Produto(string nome, decimal valorvenda, UnidadeDeMedida unidadeDeMedida, Categoria categoria, int id = 0, decimal valorPago = 0) {
-            this.Nome = nome;
-            this.ValorVenda = valorvenda;
-            this.UnidadeDeMedida = unidadeDeMedida;
-            this.Categoria = categoria;
-            this.Id = id;
-            this.ValorPago = valorPago;
+            Nome = nome;
+            ValorVenda = valorvenda;
+            UnidadeDeMedida = unidadeDeMedida;
+            Categoria = categoria;
+            Id = id;
+            ValorPago = valorPago;
         }
 
-		public int Id { get; set; }
+        public int Id { get; set; }
 
         public string Nome { get; set; }
 

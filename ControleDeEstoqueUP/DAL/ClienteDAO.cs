@@ -1,16 +1,13 @@
 ﻿using ControleDeEstoqueUP.Data;
 using ControleDeEstoqueUP.Models;
-using ControleDeEstoqueUP.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControleDeEstoqueUP.DAL {
-    class ClienteDAO {
+    internal class ClienteDAO {
 
-        private static ApplicationDbContext database = SingletonContext.GetInstance();
+        private static readonly ApplicationDbContext database = SingletonContext.GetInstance();
 
         /**
          * Método que faz a inserção de um cliente no banco de dados.
@@ -56,7 +53,7 @@ namespace ControleDeEstoqueUP.DAL {
          */
         public void Excluir(int id) {
             try {
-                var cliente = database.Clientes.FirstOrDefault(c => c.Id == id);
+                Cliente cliente = database.Clientes.FirstOrDefault(c => c.Id == id);
                 database.Clientes.Remove(cliente);
                 database.SaveChanges();
 

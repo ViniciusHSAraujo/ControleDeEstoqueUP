@@ -1,30 +1,19 @@
 ﻿using ControleDeEstoqueUP.DAL;
 using ControleDeEstoqueUP.Models;
 using ControleDeEstoqueUP.Utils;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ControleDeEstoqueUP {
     /// <summary>
     /// Interaction logic for frmBasePesquisa.xaml
     /// </summary>
     public partial class frmPesquisaProdutoEspecifico : Window {
-
-        ProdutoDAO produtoDAO = new ProdutoDAO();
-        SubProdutoDAO subProdutoDAO = new SubProdutoDAO();
-        private List<SubProduto> produtosDisponiveis;
+        private readonly ProdutoDAO produtoDAO = new ProdutoDAO();
+        private readonly SubProdutoDAO subProdutoDAO = new SubProdutoDAO();
+        private readonly List<SubProduto> produtosDisponiveis;
 
         public int subProdutoId;
 
@@ -62,7 +51,7 @@ namespace ControleDeEstoqueUP {
             if (gridResultados.SelectedItem == null) {
                 WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum item selecionado.");
             } else {
-                var selecao = gridResultados.SelectedItem;
+                object selecao = gridResultados.SelectedItem;
                 SubProduto spro = selecao as SubProduto;
 
                 subProdutoId = spro.Id;

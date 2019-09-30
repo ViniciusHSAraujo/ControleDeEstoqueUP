@@ -4,17 +4,9 @@ using ControleDeEstoqueUP.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ControleDeEstoqueUP {
     /// <summary>
@@ -29,24 +21,20 @@ namespace ControleDeEstoqueUP {
          *  2: Busca
          *  3: Edição
          */
-        int operacao;
-        VendaDAO vendaDAO = new VendaDAO();
-
-        ClienteDAO clienteDAO= new ClienteDAO();
-        Cliente clienteVenda;
-
-        Funcionario funcionarioVenda;
-
-        List<ProdutoVenda> produtosDaVenda = new List<ProdutoVenda>();
-        List<dynamic> produtosDaVendaGrid = new List<dynamic>();
-
-        ProdutoDAO produtoDAO = new ProdutoDAO();
-        SubProdutoDAO subProdutoDAO = new SubProdutoDAO();
-        SubProduto subProdutoEscolhido;
+        private int operacao;
+        private readonly VendaDAO vendaDAO = new VendaDAO();
+        private readonly ClienteDAO clienteDAO = new ClienteDAO();
+        private Cliente clienteVenda;
+        private Funcionario funcionarioVenda;
+        private List<ProdutoVenda> produtosDaVenda = new List<ProdutoVenda>();
+        private readonly List<dynamic> produtosDaVendaGrid = new List<dynamic>();
+        private readonly ProdutoDAO produtoDAO = new ProdutoDAO();
+        private readonly SubProdutoDAO subProdutoDAO = new SubProdutoDAO();
+        private SubProduto subProdutoEscolhido;
 
         public int VendaPesquisa;
-        int IdCliente;
-        int IdSubProduto;
+        private int IdCliente;
+        private int IdSubProduto;
 
 
         public frmVenda() {
@@ -68,7 +56,7 @@ namespace ControleDeEstoqueUP {
         }
 
         private void BtnLocalizar_Click(object sender, RoutedEventArgs e) {
-            var pesquisa = new frmPesquisaVenda();
+            frmPesquisaVenda pesquisa = new frmPesquisaVenda();
             pesquisa.ShowDialog();
 
             VendaPesquisa = pesquisa.vendaId;
@@ -80,7 +68,7 @@ namespace ControleDeEstoqueUP {
             }
         }
 
-        
+
         private void BtnEditar_Click(object sender, RoutedEventArgs e) {
             MudarOperacao(3);
         }
@@ -105,7 +93,7 @@ namespace ControleDeEstoqueUP {
             switch (operacao) {
                 case 1: //ADIÇÃO
                     if (ValidarCamposObrigatorios()) {
-                        var venda = CriarVendaComOsDadosDaTela();
+                        Venda venda = CriarVendaComOsDadosDaTela();
                         vendaDAO.Inserir(venda);
                         PopularCamposPelaVenda(venda);
                         WPFUtils.MostrarCaixaDeTextoDeInformação("Venda cadastrada com sucesso!");
@@ -114,7 +102,7 @@ namespace ControleDeEstoqueUP {
                     break;
                 case 3: //EDIÇÃO
                     if (ValidarCamposObrigatorios()) {
-                        var venda = CriarVendaComOsDadosDaTela();
+                        Venda venda = CriarVendaComOsDadosDaTela();
                         vendaDAO.Editar(venda);
                         WPFUtils.MostrarCaixaDeTextoDeInformação("Venda atualizada com sucesso!");
                         MudarOperacao(2);
@@ -152,7 +140,7 @@ namespace ControleDeEstoqueUP {
             } else {
                 return true;
             }
-        }  
+        }
 
         /**
          * Método que limpa os campos da tela.
@@ -228,11 +216,11 @@ namespace ControleDeEstoqueUP {
         private Venda CriarVendaComOsDadosDaTela() {
             //O código está nulo ou vazio? A variável recebe 0, se está preenchido, recebe o valor que está lá.
             int id = string.IsNullOrEmpty(txtCodigo.Text) ? 0 : Convert.ToInt32(txtCodigo.Text);
-            var cliente = clienteVenda;
-            var funcionario = funcionarioVenda;
-            var data = txtData.SelectedDate.Value;
-            var valorTotal = Convert.ToDecimal(txtTotal.Text);
-            var produtosVenda = produtosDaVenda;
+            Cliente cliente = clienteVenda;
+            Funcionario funcionario = funcionarioVenda;
+            DateTime data = txtData.SelectedDate.Value;
+            decimal valorTotal = Convert.ToDecimal(txtTotal.Text);
+            List<ProdutoVenda> produtosVenda = produtosDaVenda;
             return new Venda(cliente, funcionario, data, valorTotal, produtosVenda, id);
         }
 
@@ -261,7 +249,7 @@ namespace ControleDeEstoqueUP {
         private void PopularGridDeItensPelaVenda(Venda venda) {
             produtosDaVenda = venda.ProdutosVenda.ToList();
             produtosDaVendaGrid.Clear();
-            foreach (var produtoVenda in produtosDaVenda) {
+            foreach (ProdutoVenda produtoVenda in produtosDaVenda) {
                 produtosDaVendaGrid.Add(new { ProdutoID = produtoVenda.SubProduto.Id, ProdutoNome = produtoVenda.SubProduto.Produto.Nome, produtoVenda.SubProduto.Produto.UnidadeDeMedida.Simbolo, produtoVenda.SubProduto.SKU, produtoVenda.Valor });
             }
             AtualizarGrid();
@@ -271,7 +259,7 @@ namespace ControleDeEstoqueUP {
          * Validação que aceita apenas a entrada de números inteiros no TextBox
          */
         private void ApenasNumerosValidationTextBox(object sender, TextCompositionEventArgs e) {
-            e.Handled = !Int32.TryParse(e.Text, out int result);
+            e.Handled = !int.TryParse(e.Text, out int result);
         }
 
         /**
@@ -295,7 +283,7 @@ namespace ControleDeEstoqueUP {
          * Quando se clica duas vezes no campo de ID do Fornecedor
          */
         private void TxtClienteID_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
-            var pesquisa = new frmPesquisarCliente();
+            frmPesquisarCliente pesquisa = new frmPesquisarCliente();
             pesquisa.ShowDialog();
             IdCliente = pesquisa.clienteId;
             if (IdCliente != 0) {
@@ -308,7 +296,7 @@ namespace ControleDeEstoqueUP {
                 txtClienteID.Clear();
                 txtClienteNome.Clear();
             }
-            
+
         }
 
         /**
@@ -338,7 +326,7 @@ namespace ControleDeEstoqueUP {
          * Quando se clica duas vezes no campo de ID do Produto
          */
         private void TxtCodigoProduto_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
-            var pesquisa = new frmPesquisaProdutoEspecifico();
+            frmPesquisaProdutoEspecifico pesquisa = new frmPesquisaProdutoEspecifico();
             pesquisa.ShowDialog();
             IdSubProduto = pesquisa.subProdutoId;
             if (IdSubProduto != 0) {
@@ -402,13 +390,13 @@ namespace ControleDeEstoqueUP {
 
         private void BtnAddItem_Click(object sender, RoutedEventArgs e) {
             if (ValidarCamposObrigatoriosDoProduto()) {
-                var produtoVenda = CriarProdutoVendaComOsDadosDaTela();
-                    produtosDaVenda.Add(produtoVenda);
-                    produtosDaVendaGrid.Add(new { ProdutoID = produtoVenda.SubProduto.Id, ProdutoNome = produtoVenda.SubProduto.Produto.Nome, produtoVenda.SubProduto.Produto.UnidadeDeMedida.Simbolo, produtoVenda.SubProduto.SKU,produtoVenda.Valor });
-                    AtualizarGrid();
-                    LimparCamposDoProduto();
-                    RecalcularValorTotal();
-                    txtCodigoProduto.Focus();
+                ProdutoVenda produtoVenda = CriarProdutoVendaComOsDadosDaTela();
+                produtosDaVenda.Add(produtoVenda);
+                produtosDaVendaGrid.Add(new { ProdutoID = produtoVenda.SubProduto.Id, ProdutoNome = produtoVenda.SubProduto.Produto.Nome, produtoVenda.SubProduto.Produto.UnidadeDeMedida.Simbolo, produtoVenda.SubProduto.SKU, produtoVenda.Valor });
+                AtualizarGrid();
+                LimparCamposDoProduto();
+                RecalcularValorTotal();
+                txtCodigoProduto.Focus();
             }
         }
 
@@ -439,8 +427,8 @@ namespace ControleDeEstoqueUP {
         }
 
         private ProdutoVenda CriarProdutoVendaComOsDadosDaTela() {
-            var subproduto = subProdutoEscolhido;
-            var valor = Convert.ToDecimal(txtValor.Text);
+            SubProduto subproduto = subProdutoEscolhido;
+            decimal valor = Convert.ToDecimal(txtValor.Text);
             return new ProdutoVenda(subproduto, valor);
         }
 
@@ -459,7 +447,7 @@ namespace ControleDeEstoqueUP {
 
         private void RecalcularValorTotal() {
             decimal valorTotal = 0;
-            foreach (var produto in produtosDaVendaGrid) {
+            foreach (dynamic produto in produtosDaVendaGrid) {
                 valorTotal += produto.Valor;
             }
             txtTotal.Text = valorTotal.ToString("F2");

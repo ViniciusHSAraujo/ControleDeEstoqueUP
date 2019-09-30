@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 using System.Windows.Input;
 
 namespace ControleDeEstoqueUP.Utils {
@@ -12,7 +7,7 @@ namespace ControleDeEstoqueUP.Utils {
          * Validação que aceita apenas a entrada de números inteiros no TextBox
          */
         private void ApenasNumerosValidationTextBox(object sender, TextCompositionEventArgs e) {
-            e.Handled = !Int32.TryParse(e.Text, out int result);
+            e.Handled = !int.TryParse(e.Text, out int result);
         }
 
         /**

@@ -1,16 +1,13 @@
 ﻿using ControleDeEstoqueUP.Data;
 using ControleDeEstoqueUP.Models;
-using ControleDeEstoqueUP.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControleDeEstoqueUP.DAL {
-    class UnidadeMedidaDAO {
+    internal class UnidadeMedidaDAO {
 
-        private static ApplicationDbContext database = SingletonContext.GetInstance();
+        private static readonly ApplicationDbContext database = SingletonContext.GetInstance();
 
         /*
          * Método que Realiza a inserção da Unidade de Medida no Banco de Dados
@@ -45,10 +42,10 @@ namespace ControleDeEstoqueUP.DAL {
          */
         public void Excluir(int id) {
             try {
-                var unidadeMedida = database.UnidadeDeMedidas.FirstOrDefault(un => un.Id == id);
+                UnidadeDeMedida unidadeMedida = database.UnidadeDeMedidas.FirstOrDefault(un => un.Id == id);
                 database.UnidadeDeMedidas.Remove(unidadeMedida);
                 database.SaveChanges();
-            }catch(Exception e) {
+            } catch (Exception e) {
                 throw new Exception("Erro ao Excluir a Unidade de Medida:\n" + e.Message);
             }
         }

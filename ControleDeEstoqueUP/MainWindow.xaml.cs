@@ -1,5 +1,4 @@
-﻿using ControleDeEstoqueUP.Models;
-using ControleDeEstoqueUP.Utils;
+﻿using ControleDeEstoqueUP.Utils;
 using System.Windows;
 
 namespace ControleDeEstoqueUP {
@@ -28,47 +27,47 @@ namespace ControleDeEstoqueUP {
         }
 
         private void MiClientes_Click(object sender, RoutedEventArgs e) {
-            var w = new frmCliente();
+            frmCliente w = new frmCliente();
             w.ShowDialog();
         }
 
         private void MiFornecedores_Click(object sender, RoutedEventArgs e) {
-            var w = new frmFornecedor();
+            frmFornecedor w = new frmFornecedor();
             w.ShowDialog();
         }
 
         private void MiFuncionarios_Click(object sender, RoutedEventArgs e) {
-            var w = new frmFuncionario();
+            frmFuncionario w = new frmFuncionario();
             w.ShowDialog();
         }
 
         private void MiProdutos_Click(object sender, RoutedEventArgs e) {
-            var w = new frmProduto();
+            frmProduto w = new frmProduto();
             w.ShowDialog();
         }
 
         private void MiCategorias_Click(object sender, RoutedEventArgs e) {
-            var w = new frmCategoria();
+            frmCategoria w = new frmCategoria();
             w.ShowDialog();
         }
 
         private void MiUnidades_Click(object sender, RoutedEventArgs e) {
-            var w = new frmUnidadeMed();
+            frmUnidadeMed w = new frmUnidadeMed();
             w.ShowDialog();
         }
 
         private void MiSobre_Click(object sender, RoutedEventArgs e) {
-            var w = new frmSobre();
+            frmSobre w = new frmSobre();
             w.ShowDialog();
         }
 
         private void MiCompras_Click(object sender, RoutedEventArgs e) {
-            var w = new frmCompra();
+            frmCompra w = new frmCompra();
             w.ShowDialog();
         }
 
         private void MiVendas_Click(object sender, RoutedEventArgs e) {
-            var w = new frmVenda();
+            frmVenda w = new frmVenda();
             w.ShowDialog();
         }
 

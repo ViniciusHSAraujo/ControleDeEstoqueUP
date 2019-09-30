@@ -3,18 +3,9 @@ using ControleDeEstoqueUP.Models;
 using ControleDeEstoqueUP.Utils;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ControleDeEstoqueUP {
     /// <summary>
@@ -29,13 +20,12 @@ namespace ControleDeEstoqueUP {
          *  2: Busca
          *  3: Edição
          */
-        int operacao;
-        ProdutoDAO produtoDAO = new ProdutoDAO();
-        CategoriaDAO categoriaDAO = new CategoriaDAO();
-        UnidadeMedidaDAO unidadeDeMedidaDAO = new UnidadeMedidaDAO();
-
-        List<Categoria> categorias;
-        List<UnidadeDeMedida> unidades;
+        private int operacao;
+        private readonly ProdutoDAO produtoDAO = new ProdutoDAO();
+        private readonly CategoriaDAO categoriaDAO = new CategoriaDAO();
+        private readonly UnidadeMedidaDAO unidadeDeMedidaDAO = new UnidadeMedidaDAO();
+        private List<Categoria> categorias;
+        private List<UnidadeDeMedida> unidades;
 
         public int ProdutoPesquisa;
 
@@ -55,19 +45,19 @@ namespace ControleDeEstoqueUP {
         }
 
         private void BtnLocalizar_Click(object sender, RoutedEventArgs e) {
-            var pesquisa = new frmPesquisaProduto();
+            frmPesquisaProduto pesquisa = new frmPesquisaProduto();
             pesquisa.ShowDialog();
 
             ProdutoPesquisa = pesquisa.produtoId;
             // Se vier 0, então a pessoa fechou sem escolher nenhum item. Então ele não vai fazer nada.
             if (ProdutoPesquisa != 0) {
-                Produto produto= produtoDAO.BuscarProdutoPeloId(ProdutoPesquisa);
+                Produto produto = produtoDAO.BuscarProdutoPeloId(ProdutoPesquisa);
                 PopularCamposPeloProduto(produto);
                 MudarOperacao(2);
             }
         }
 
-        
+
         private void BtnEditar_Click(object sender, RoutedEventArgs e) {
             AtualizarCategoriasEUnidades();
             MudarOperacao(3);
@@ -93,7 +83,7 @@ namespace ControleDeEstoqueUP {
             switch (operacao) {
                 case 1: //ADIÇÃO
                     if (ValidarCamposObrigatorios()) {
-                        var produto = CriarProdutoComOsDadosDaTela();
+                        Produto produto = CriarProdutoComOsDadosDaTela();
                         produto = produtoDAO.Inserir(produto);
                         PopularCamposPeloProduto(produto);
                         WPFUtils.MostrarCaixaDeTextoDeInformação("Produto cadastrado com sucesso!");
@@ -102,7 +92,7 @@ namespace ControleDeEstoqueUP {
                     break;
                 case 3: //EDIÇÃO
                     if (ValidarCamposObrigatorios()) {
-                        var produto = CriarProdutoComOsDadosDaTela();
+                        Produto produto = CriarProdutoComOsDadosDaTela();
                         cbUnidadeDeMedida.IsEnabled = false;
                         produtoDAO.Editar(produto);
                         WPFUtils.MostrarCaixaDeTextoDeInformação("Produto atualizado com sucesso!");
@@ -218,9 +208,9 @@ namespace ControleDeEstoqueUP {
             string nome = txtNome.Text;
             decimal valorPago = string.IsNullOrEmpty(txtPrecoCusto.Text) ? 0 : Convert.ToDecimal(txtPrecoCusto.Text);
             decimal valorvenda = string.IsNullOrEmpty(txtPrecoVenda.Text) ? 0 : Convert.ToDecimal(txtPrecoVenda.Text);
-            UnidadeDeMedida unidadeDeMedida = (UnidadeDeMedida) cbUnidadeDeMedida.SelectedValue;
-            Categoria categoria = (Categoria) cbCategoria.SelectedValue;
-            return new Produto(nome, valorvenda, unidadeDeMedida,categoria,id,valorPago);
+            UnidadeDeMedida unidadeDeMedida = (UnidadeDeMedida)cbUnidadeDeMedida.SelectedValue;
+            Categoria categoria = (Categoria)cbCategoria.SelectedValue;
+            return new Produto(nome, valorvenda, unidadeDeMedida, categoria, id, valorPago);
         }
 
         /**
@@ -256,19 +246,19 @@ namespace ControleDeEstoqueUP {
 
         private void BtnCompras_Click(object sender, RoutedEventArgs e) {
             Produto p = CriarProdutoComOsDadosDaTela();
-            var w = new frmMovimentacaoProduto(p, 1);
+            frmMovimentacaoProduto w = new frmMovimentacaoProduto(p, 1);
             w.ShowDialog();
         }
 
         private void BtnVendas_Click(object sender, RoutedEventArgs e) {
             Produto p = CriarProdutoComOsDadosDaTela();
-            var w = new frmMovimentacaoProduto(p, 2);
+            frmMovimentacaoProduto w = new frmMovimentacaoProduto(p, 2);
             w.ShowDialog();
         }
 
         private void BtnEstoque_Click(object sender, RoutedEventArgs e) {
             Produto p = CriarProdutoComOsDadosDaTela();
-            var w = new frmDisponibilidadeProduto(p);
+            frmDisponibilidadeProduto w = new frmDisponibilidadeProduto(p);
             w.ShowDialog();
         }
 
@@ -276,7 +266,7 @@ namespace ControleDeEstoqueUP {
          * Validação que aceita apenas a entrada de números inteiros no TextBox
          */
         private void ApenasNumerosValidationTextBox(object sender, TextCompositionEventArgs e) {
-            e.Handled = !Int32.TryParse(e.Text, out int result);
+            e.Handled = !int.TryParse(e.Text, out int result);
         }
 
         /**

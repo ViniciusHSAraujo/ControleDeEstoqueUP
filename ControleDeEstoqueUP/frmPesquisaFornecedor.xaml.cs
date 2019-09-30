@@ -1,28 +1,18 @@
 ﻿using ControleDeEstoqueUP.DAL;
 using ControleDeEstoqueUP.Models;
 using ControleDeEstoqueUP.Utils;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ControleDeEstoqueUP {
     /// <summary>
     /// Lógica interna para fmrPesquisaFornecedor.xaml
     /// </summary>
     public partial class frmPesquisaFornecedor : Window {
-
-        FornecedorDAO fornecedorDAO = new FornecedorDAO();
-        private List<Fornecedor> fornecedores;
+        private readonly FornecedorDAO fornecedorDAO = new FornecedorDAO();
+        private readonly List<Fornecedor> fornecedores;
 
         public int fornecedorId;
         public frmPesquisaFornecedor() {
@@ -49,10 +39,10 @@ namespace ControleDeEstoqueUP {
         }
 
         private void BtnAbrir_Click(object sender, RoutedEventArgs e) {
-            if(gridResultados.SelectedItem == null) {
+            if (gridResultados.SelectedItem == null) {
                 WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum Fornecedor Selecionado!");
             } else {
-                var selecao = gridResultados.SelectedItem;
+                object selecao = gridResultados.SelectedItem;
                 Fornecedor forne = selecao as Fornecedor;
 
                 fornecedorId = forne.Id;

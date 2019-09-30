@@ -1,10 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ControleDeEstoqueUP.Models {
-    public abstract class Movimentacao{
-		public int Id { get; set; }
+    public abstract class Movimentacao {
+        public int Id { get; set; }
 
         public DateTime Data { get; set; }
 

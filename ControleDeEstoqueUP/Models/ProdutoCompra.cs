@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
-namespace ControleDeEstoqueUP.Models{
+namespace ControleDeEstoqueUP.Models {
     [Table("ProdutosCompra")]
-    public class ProdutoCompra{
+    public class ProdutoCompra {
 
         public ProdutoCompra() {
         }

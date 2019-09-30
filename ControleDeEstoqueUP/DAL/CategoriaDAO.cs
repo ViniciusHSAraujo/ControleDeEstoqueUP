@@ -1,16 +1,13 @@
 ﻿using ControleDeEstoqueUP.Data;
 using ControleDeEstoqueUP.Models;
-using ControleDeEstoqueUP.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControleDeEstoqueUP.DAL {
-    class CategoriaDAO {
+    internal class CategoriaDAO {
 
-        private static ApplicationDbContext database = SingletonContext.GetInstance();
+        private static readonly ApplicationDbContext database = SingletonContext.GetInstance();
 
         /**
          * Método que faz a inserção da categoria no banco de dados.
@@ -47,7 +44,7 @@ namespace ControleDeEstoqueUP.DAL {
          */
         public void Excluir(int id) {
             try {
-                var categoria = database.Categorias.FirstOrDefault(c => c.Id == id);
+                Categoria categoria = database.Categorias.FirstOrDefault(c => c.Id == id);
                 database.Categorias.Remove(categoria);
                 database.SaveChanges();
 

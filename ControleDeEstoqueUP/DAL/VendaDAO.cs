@@ -1,26 +1,23 @@
 ﻿
-using System;
 using ControleDeEstoqueUP.Data;
 using ControleDeEstoqueUP.Models;
-using ControleDeEstoqueUP.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControleDeEstoqueUP.DAL {
-    class VendaDAO {
+    internal class VendaDAO {
 
-        private static ApplicationDbContext database = SingletonContext.GetInstance();
+        private static readonly ApplicationDbContext database = SingletonContext.GetInstance();
 
         /*
          * Método que Realiza a inserção da venda no Banco de Dados
          */
         public Venda Inserir(Venda venda) {
             try {
-                var produtosVenda = venda.ProdutosVenda;
-                foreach (var produtoVenda in produtosVenda) {
-                    var prod = database.SubProdutos.Find(produtoVenda.SubProduto.Id);
+                ICollection<ProdutoVenda> produtosVenda = venda.ProdutosVenda;
+                foreach (ProdutoVenda produtoVenda in produtosVenda) {
+                    SubProduto prod = database.SubProdutos.Find(produtoVenda.SubProduto.Id);
                     prod.Status = false;
                     database.SaveChanges();
                 }
@@ -53,7 +50,7 @@ namespace ControleDeEstoqueUP.DAL {
 
         public void Excluir(int id) {
             try {
-                var venda = database.Vendas.FirstOrDefault(v => v.Id == id);
+                Venda venda = database.Vendas.FirstOrDefault(v => v.Id == id);
 
                 List<ProdutoVenda> produtosDaVenda = database.ProdutosVenda.Where(pv => pv.Venda.Id == venda.Id).ToList();
                 database.ProdutosVenda.RemoveRange(produtosDaVenda);

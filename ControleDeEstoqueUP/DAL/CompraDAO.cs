@@ -1,18 +1,15 @@
-﻿using System;
-using ControleDeEstoqueUP.Data;
+﻿using ControleDeEstoqueUP.Data;
 using ControleDeEstoqueUP.Models;
-using ControleDeEstoqueUP.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static ControleDeEstoqueUP.Utils.WPFUtils;
 
 
 namespace ControleDeEstoqueUP.DAL {
-    class CompraDAO {
+    internal class CompraDAO {
 
-        private static ApplicationDbContext database = SingletonContext.GetInstance();
+        private static readonly ApplicationDbContext database = SingletonContext.GetInstance();
 
 
         /*
@@ -30,9 +27,9 @@ namespace ControleDeEstoqueUP.DAL {
         }
 
         public void InserirSubProdutosNoEstoque(Compra compra) {
-            var produtosComprados = new List<ProdutoCompra>();
+            List<ProdutoCompra> produtosComprados = new List<ProdutoCompra>();
             produtosComprados = compra.ProdutosCompra.ToList();
-            foreach (var produtocompra in produtosComprados) {
+            foreach (ProdutoCompra produtocompra in produtosComprados) {
                 for (int i = 0; i < produtocompra.Quantidade; i++) {
                     SubProduto subproduto = new SubProduto(produtocompra.Produto);
                     database.SubProdutos.Add(subproduto);
@@ -63,7 +60,7 @@ namespace ControleDeEstoqueUP.DAL {
 
         public void Excluir(int id) {
             try {
-                var compra = database.Compras.FirstOrDefault(c => c.Id == id);
+                Compra compra = database.Compras.FirstOrDefault(c => c.Id == id);
 
                 List<ProdutoCompra> produtosDaCompra = database.ProdutosCompra.Where(pc => pc.Compra.Id == compra.Id).ToList();
                 database.ProdutosCompra.RemoveRange(produtosDaCompra);

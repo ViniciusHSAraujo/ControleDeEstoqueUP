@@ -1,10 +1,4 @@
-﻿using static ControleDeEstoqueUP.Utils.WPFUtils;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ControleDeEstoqueUP.Models {
     [Table("SubProduto")]
@@ -35,9 +29,7 @@ namespace ControleDeEstoqueUP.Models {
 
         public bool Status { get; set; }
 
-        public string StatusString {
-            get { return Status == true ? "Disponível" : "Vendido"; }
-        }
+        public string StatusString => Status == true ? "Disponível" : "Vendido";
 
     }
 }

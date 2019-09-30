@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
-namespace ControleDeEstoqueUP.Models{
+namespace ControleDeEstoqueUP.Models {
     [Table("Compras")]
-    public class Compra : Movimentacao{
+    public class Compra : Movimentacao {
 
         public Compra() {
         }
@@ -18,7 +17,7 @@ namespace ControleDeEstoqueUP.Models{
             ProdutosCompra = produtosCompra;
         }
 
-		public virtual ICollection<ProdutoCompra> ProdutosCompra { get; set; }
+        public virtual ICollection<ProdutoCompra> ProdutosCompra { get; set; }
 
         public virtual Fornecedor Fornecedor { get; set; }
     }

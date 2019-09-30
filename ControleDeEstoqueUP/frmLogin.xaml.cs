@@ -1,28 +1,17 @@
-﻿using ControleDeEstoqueUP.Models;
+﻿using ControleDeEstoqueUP.DAL;
+using ControleDeEstoqueUP.Models;
 using ControleDeEstoqueUP.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Security;
-using ControleDeEstoqueUP.DAL;
 
 namespace ControleDeEstoqueUP {
     /// <summary>
     /// Interaction logic for frmLogin.xaml
     /// </summary>
     public partial class frmLogin : Window {
-        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        private readonly FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         public static Funcionario funcionarioLogado;
 
         public frmLogin() {
@@ -32,7 +21,7 @@ namespace ControleDeEstoqueUP {
 
         private void btnLogin_Click(object sender, RoutedEventArgs e) {
 
-            var senha = txtSenha.Password;
+            string senha = txtSenha.Password;
 
             if (string.IsNullOrWhiteSpace(txtCodigoFuncionario.Text)) {
                 WPFUtils.MostrarCaixaDeTextoDeErro("É necessário preencher o código do funcionário!");
@@ -48,7 +37,7 @@ namespace ControleDeEstoqueUP {
                 }
 
                 if (funcionarioLogado != null) {
-                    var w = new MainWindow();
+                    MainWindow w = new MainWindow();
                     formLogin.Visibility = Visibility.Hidden;
                     w.ShowDialog();
                     formLogin.Close();
@@ -62,7 +51,7 @@ namespace ControleDeEstoqueUP {
          * Validação que aceita apenas a entrada de números inteiros no TextBox
          */
         private void ApenasNumerosValidationTextBox(object sender, TextCompositionEventArgs e) {
-            e.Handled = !Int32.TryParse(e.Text, out int result);
+            e.Handled = !int.TryParse(e.Text, out int result);
         }
 
         /**

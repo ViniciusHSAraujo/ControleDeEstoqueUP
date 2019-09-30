@@ -2,19 +2,9 @@
 using ControleDeEstoqueUP.Models;
 using ControleDeEstoqueUP.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ControleDeEstoqueUP {
     /// <summary>
@@ -26,8 +16,8 @@ namespace ControleDeEstoqueUP {
             MudarOperacao(0);
         }
 
-        int operacao;
-        FornecedorDAO fornecedorDAO = new FornecedorDAO();
+        private int operacao;
+        private readonly FornecedorDAO fornecedorDAO = new FornecedorDAO();
 
         public int FornecedorPesquisar;
 
@@ -63,7 +53,7 @@ namespace ControleDeEstoqueUP {
             switch (operacao) {
                 case 1: //Adicionar              
                     if (ValidarCamposObrigatorios()) {
-                        var fornecedor = CriarFornecedorComOsDadosTela();
+                        Fornecedor fornecedor = CriarFornecedorComOsDadosTela();
                         fornecedor = fornecedorDAO.Inserir(fornecedor);
                         PreencherTelaPeloFornecedor(fornecedor);
                         WPFUtils.MostrarCaixaDeTextoDeInformação("Fornecedor Cadastrado com Sucesso!");
@@ -72,7 +62,7 @@ namespace ControleDeEstoqueUP {
                     break;
                 case 3: // Editar
                     if (ValidarCamposObrigatorios()) {
-                        var fornecedor = CriarFornecedorComOsDadosTela();
+                        Fornecedor fornecedor = CriarFornecedorComOsDadosTela();
                         fornecedorDAO.Editar(fornecedor);
                         WPFUtils.MostrarCaixaDeTextoDeInformação("Dados do fornecedor Atualizado com Sucesso!");
                         MudarOperacao(2);
@@ -201,7 +191,7 @@ namespace ControleDeEstoqueUP {
         }
 
         private void BtnLocalizar_Click(object sender, RoutedEventArgs e) {
-            var pesquisa = new frmPesquisaFornecedor();
+            frmPesquisaFornecedor pesquisa = new frmPesquisaFornecedor();
             pesquisa.ShowDialog();
 
             FornecedorPesquisar = pesquisa.fornecedorId;
@@ -216,7 +206,7 @@ namespace ControleDeEstoqueUP {
        * Validação que aceita apenas a entrada de números inteiros no TextBox
        */
         private void ApenasNumerosValidationTextBox(object sender, TextCompositionEventArgs e) {
-            e.Handled = !Int32.TryParse(e.Text, out int result);
+            e.Handled = !int.TryParse(e.Text, out int result);
         }
 
         /**

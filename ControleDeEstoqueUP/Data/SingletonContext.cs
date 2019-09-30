@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ControleDeEstoqueUP.Data {
-    class SingletonContext {
+﻿namespace ControleDeEstoqueUP.Data {
+    internal class SingletonContext {
         private SingletonContext() { }
         private static ApplicationDbContext database;
 

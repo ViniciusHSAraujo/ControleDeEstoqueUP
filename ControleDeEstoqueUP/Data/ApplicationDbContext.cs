@@ -1,14 +1,8 @@
 ﻿using ControleDeEstoqueUP.Models;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControleDeEstoqueUP.Data {
-    class ApplicationDbContext : DbContext {
+    internal class ApplicationDbContext : DbContext {
         //protected ApplicationDbContext(DbCompiledModel model) : base(model) {
         //}
 

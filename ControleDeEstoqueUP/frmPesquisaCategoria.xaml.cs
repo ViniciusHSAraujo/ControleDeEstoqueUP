@@ -1,29 +1,18 @@
 ﻿using ControleDeEstoqueUP.DAL;
 using ControleDeEstoqueUP.Models;
 using ControleDeEstoqueUP.Utils;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ControleDeEstoqueUP {
     /// <summary>
     /// Interaction logic for frmBasePesquisa.xaml
     /// </summary>
     public partial class frmPesquisaCategoria : Window {
-
-        CategoriaDAO categoriaDAO = new CategoriaDAO();
-        private List<Categoria> categorias;
+        private readonly CategoriaDAO categoriaDAO = new CategoriaDAO();
+        private readonly List<Categoria> categorias;
 
         public int categoriaId;
 
@@ -55,7 +44,7 @@ namespace ControleDeEstoqueUP {
             if (gridResultados.SelectedItem == null) {
                 WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum item selecionado.");
             } else {
-                var selecao = gridResultados.SelectedItem;
+                object selecao = gridResultados.SelectedItem;
                 Categoria cat = selecao as Categoria;
 
                 categoriaId = cat.Id;

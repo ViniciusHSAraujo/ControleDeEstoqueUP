@@ -1,28 +1,17 @@
 ﻿using ControleDeEstoqueUP.DAL;
 using ControleDeEstoqueUP.Models;
 using ControleDeEstoqueUP.Utils;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ControleDeEstoqueUP {
     /// <summary>
     /// Interaction logic for frmPesquisaFuncionario.xaml
     /// </summary>
     public partial class frmPesquisaFuncionario : Window {
-
-        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-        private List<Funcionario> funcionarios;
+        private readonly FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        private readonly List<Funcionario> funcionarios;
 
         public int funcionarioId;
         public frmPesquisaFuncionario() {
@@ -51,7 +40,7 @@ namespace ControleDeEstoqueUP {
             if (gridResultados.SelectedItem == null) {
                 WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum item selecionado.");
             } else {
-                var selecao = gridResultados.SelectedItem;
+                object selecao = gridResultados.SelectedItem;
                 Funcionario fun = selecao as Funcionario;
 
                 funcionarioId = fun.Id;

@@ -2,27 +2,15 @@
 using ControleDeEstoqueUP.Models;
 using ControleDeEstoqueUP.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ControleDeEstoqueUP {
     /// <summary>
     /// Lógica interna para formCadastroUnidade.xaml
     /// </summary>
     public partial class frmUnidadeMed : Window {
-
-        int operacao;
-        UnidadeMedidaDAO unidadeDAO = new UnidadeMedidaDAO();
+        private int operacao;
+        private readonly UnidadeMedidaDAO unidadeDAO = new UnidadeMedidaDAO();
         public int UnidadeMedidaPesquisa;
 
         public frmUnidadeMed() {
@@ -36,7 +24,7 @@ namespace ControleDeEstoqueUP {
         }
 
         private void BtnLocalizar_Click(object sender, RoutedEventArgs e) {
-            var pesquisa = new frmPesquisaUnidadeMed();
+            frmPesquisaUnidadeMed pesquisa = new frmPesquisaUnidadeMed();
             pesquisa.ShowDialog();
 
             UnidadeMedidaPesquisa = pesquisa.unidadeID;
@@ -80,7 +68,7 @@ namespace ControleDeEstoqueUP {
                     if (string.IsNullOrWhiteSpace(txtNome.Text)) {
                         WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe um Nome para a Unidade de Medida!");
                     } else {
-                        var unidadeMedida = CriarUnidadeMedidaComDadosTela();
+                        UnidadeDeMedida unidadeMedida = CriarUnidadeMedidaComDadosTela();
                         unidadeMedida = unidadeDAO.Inserir(unidadeMedida);
                         txtCodigo.Text = unidadeMedida.Id.ToString();
                         WPFUtils.MostrarCaixaDeTextoDeInformação("Unidade de Medida Cadastrada Com Sucesso!");
@@ -91,7 +79,7 @@ namespace ControleDeEstoqueUP {
                     if (string.IsNullOrWhiteSpace(txtNome.Text)) {
                         WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe o Nome da Unidade de Medida!");
                     } else {
-                        var unidadeMedida = CriarUnidadeMedidaComDadosTela();
+                        UnidadeDeMedida unidadeMedida = CriarUnidadeMedidaComDadosTela();
                         unidadeDAO.Editar(unidadeMedida);
                         WPFUtils.MostrarCaixaDeTextoDeInformação("Unidade de Medida Atualizada Com Sucesso!");
                         MudarOperacao(2);

@@ -1,27 +1,17 @@
 ﻿using ControleDeEstoqueUP.DAL;
 using ControleDeEstoqueUP.Models;
 using ControleDeEstoqueUP.Utils;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ControleDeEstoqueUP {
     /// <summary>
     /// Interaction logic for frmPesquisarCliente.xaml
     /// </summary>
     public partial class frmPesquisarCliente : Window {
-        ClienteDAO clienteDAO = new ClienteDAO();
-        private List<Cliente> clientes;
+        private readonly ClienteDAO clienteDAO = new ClienteDAO();
+        private readonly List<Cliente> clientes;
 
         public int clienteId;
         public frmPesquisarCliente() {
@@ -51,7 +41,7 @@ namespace ControleDeEstoqueUP {
             if (gridResultados.SelectedItem == null) {
                 WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum item selecionado.");
             } else {
-                var selecao = gridResultados.SelectedItem;
+                object selecao = gridResultados.SelectedItem;
                 Cliente cli = selecao as Cliente;
 
                 clienteId = cli.Id;

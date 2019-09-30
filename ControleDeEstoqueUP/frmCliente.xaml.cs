@@ -2,19 +2,9 @@
 using ControleDeEstoqueUP.Models;
 using ControleDeEstoqueUP.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ControleDeEstoqueUP {
     /// <summary>
@@ -28,8 +18,8 @@ namespace ControleDeEstoqueUP {
          *  2: Busca
          *  3: Edição
          */
-        int operacao;
-        ClienteDAO clienteDAO = new ClienteDAO();
+        private int operacao;
+        private readonly ClienteDAO clienteDAO = new ClienteDAO();
         private int ClientePesquisa;
         public frmCliente() {
             InitializeComponent();
@@ -43,7 +33,7 @@ namespace ControleDeEstoqueUP {
         }
 
         private void btnLocalizar_Click(object sender, RoutedEventArgs e) {
-            var pesquisa = new frmPesquisarCliente();
+            frmPesquisarCliente pesquisa = new frmPesquisarCliente();
             pesquisa.ShowDialog();
 
             ClientePesquisa = pesquisa.clienteId;
@@ -79,7 +69,7 @@ namespace ControleDeEstoqueUP {
             switch (operacao) {
                 case 1: //ADIÇÃO
                     if (ValidarCamposObrigatorios()) {
-                        var cliente = CriarClienteComOsDadosDaTela();
+                        Cliente cliente = CriarClienteComOsDadosDaTela();
                         cliente = clienteDAO.Inserir(cliente);
                         PopularCamposPeloCliente(cliente);
                         WPFUtils.MostrarCaixaDeTextoDeInformação("Cliente cadastrado com sucesso!");
@@ -88,7 +78,7 @@ namespace ControleDeEstoqueUP {
                     break;
                 case 3: //EDIÇÃO
                     if (ValidarCamposObrigatorios()) {
-                        var cliente = CriarClienteComOsDadosDaTela();
+                        Cliente cliente = CriarClienteComOsDadosDaTela();
                         clienteDAO.Editar(cliente);
                         WPFUtils.MostrarCaixaDeTextoDeInformação("Cliente atualizado com sucesso!");
                         MudarOperacao(2);
@@ -232,7 +222,7 @@ namespace ControleDeEstoqueUP {
       * Validação que aceita apenas a entrada de números inteiros no TextBox
       */
         private void ApenasNumerosValidationTextBox(object sender, TextCompositionEventArgs e) {
-            e.Handled = !Int32.TryParse(e.Text, out int result);
+            e.Handled = !int.TryParse(e.Text, out int result);
         }
 
         /**

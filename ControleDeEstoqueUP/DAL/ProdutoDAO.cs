@@ -2,17 +2,14 @@
 
 using ControleDeEstoqueUP.Data;
 using ControleDeEstoqueUP.Models;
-using ControleDeEstoqueUP.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControleDeEstoqueUP.DAL {
-    class ProdutoDAO {
+    internal class ProdutoDAO {
 
-        private static ApplicationDbContext database = SingletonContext.GetInstance();
+        private static readonly ApplicationDbContext database = SingletonContext.GetInstance();
 
         /**
          * Método que faz a inserção da categoria no banco de dados.
@@ -51,7 +48,7 @@ namespace ControleDeEstoqueUP.DAL {
          */
         public void Excluir(int id) {
             try {
-                var produto = database.Produtos.FirstOrDefault(p => p.Id == id);
+                Produto produto = database.Produtos.FirstOrDefault(p => p.Id == id);
                 database.Produtos.Remove(produto);
                 database.SaveChanges();
 
@@ -73,22 +70,22 @@ namespace ControleDeEstoqueUP.DAL {
         }
 
         public double CalcularSaldoDoProduto(Produto produto) {
-            var qtde = database.SubProdutos.Where(sp => sp.Produto.Id == produto.Id && sp.Status).Count();
+            int qtde = database.SubProdutos.Where(sp => sp.Produto.Id == produto.Id && sp.Status).Count();
             return qtde;
         }
         public void AtualizarCustoDoProduto(Produto produto) {
-                //TODO
-                var custoTotal = 0.00;
-                var quantidadeComprada = 0.00;
+            //TODO
+            double custoTotal = 0.00;
+            double quantidadeComprada = 0.00;
 
-                var compras = database.ProdutosCompra.Where(pc => pc.Produto.Id == produto.Id).ToList();
-                foreach (var compra in compras) {
-                    custoTotal += compra.Quantidade * Convert.ToDouble(compra.Valor);
-                    quantidadeComprada += compra.Quantidade;
-                }
+            List<ProdutoCompra> compras = database.ProdutosCompra.Where(pc => pc.Produto.Id == produto.Id).ToList();
+            foreach (ProdutoCompra compra in compras) {
+                custoTotal += compra.Quantidade * Convert.ToDouble(compra.Valor);
+                quantidadeComprada += compra.Quantidade;
+            }
 
-                produto.ValorPago = Convert.ToDecimal(custoTotal / quantidadeComprada);
-                database.SaveChanges();
+            produto.ValorPago = Convert.ToDecimal(custoTotal / quantidadeComprada);
+            database.SaveChanges();
         }
     }
 }

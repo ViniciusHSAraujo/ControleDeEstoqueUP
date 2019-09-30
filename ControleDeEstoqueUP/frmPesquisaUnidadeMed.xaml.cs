@@ -1,28 +1,18 @@
 ﻿using ControleDeEstoqueUP.DAL;
 using ControleDeEstoqueUP.Models;
 using ControleDeEstoqueUP.Utils;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ControleDeEstoqueUP {
     /// <summary>
     /// Lógica interna para fmrPesquisaUnidadeMed.xaml
     /// </summary>
     public partial class frmPesquisaUnidadeMed : Window {
-
-        UnidadeMedidaDAO unidadeDAO = new UnidadeMedidaDAO();
-        private List<UnidadeDeMedida> unidades;
+        private readonly UnidadeMedidaDAO unidadeDAO = new UnidadeMedidaDAO();
+        private readonly List<UnidadeDeMedida> unidades;
         public int unidadeID;
         public frmPesquisaUnidadeMed() {
             InitializeComponent();
@@ -31,10 +21,10 @@ namespace ControleDeEstoqueUP {
         }
 
         private void BtnAbrir_Click(object sender, RoutedEventArgs e) {
-            if(gridResultados.SelectedItems == null) {
+            if (gridResultados.SelectedItems == null) {
                 WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum Item Selecionado!");
-            } else{
-                var selecao = gridResultados.SelectedItem;
+            } else {
+                object selecao = gridResultados.SelectedItem;
                 UnidadeDeMedida uni = selecao as UnidadeDeMedida;
 
                 unidadeID = uni.Id;

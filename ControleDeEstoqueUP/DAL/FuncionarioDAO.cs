@@ -1,16 +1,13 @@
 ﻿using ControleDeEstoqueUP.Data;
 using ControleDeEstoqueUP.Models;
-using ControleDeEstoqueUP.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControleDeEstoqueUP.DAL {
-    class FuncionarioDAO {
+    internal class FuncionarioDAO {
 
-        private static ApplicationDbContext database = SingletonContext.GetInstance();
+        private static readonly ApplicationDbContext database = SingletonContext.GetInstance();
 
         /**
          * Método que faz a inserção de um funcionário no banco de dados.
@@ -61,7 +58,7 @@ namespace ControleDeEstoqueUP.DAL {
          */
         public void Excluir(int id) {
             try {
-                var funcionario = database.Funcionarios.FirstOrDefault(f => f.Id == id);
+                Funcionario funcionario = database.Funcionarios.FirstOrDefault(f => f.Id == id);
                 database.Funcionarios.Remove(funcionario);
                 database.SaveChanges();
 

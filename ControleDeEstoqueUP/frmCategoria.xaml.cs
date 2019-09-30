@@ -2,18 +2,7 @@
 using ControleDeEstoqueUP.Models;
 using ControleDeEstoqueUP.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ControleDeEstoqueUP {
     /// <summary>
@@ -28,8 +17,8 @@ namespace ControleDeEstoqueUP {
          *  2: Busca
          *  3: Edição
          */
-        int operacao;
-        CategoriaDAO categoriaDAO = new CategoriaDAO();
+        private int operacao;
+        private readonly CategoriaDAO categoriaDAO = new CategoriaDAO();
 
         public int CategoriaPesquisa;
 
@@ -48,7 +37,7 @@ namespace ControleDeEstoqueUP {
         }
 
         private void BtnLocalizar_Click(object sender, RoutedEventArgs e) {
-            var pesquisa = new frmPesquisaCategoria();
+            frmPesquisaCategoria pesquisa = new frmPesquisaCategoria();
             pesquisa.ShowDialog();
 
             CategoriaPesquisa = pesquisa.categoriaId;
@@ -63,7 +52,7 @@ namespace ControleDeEstoqueUP {
             }
         }
 
-        
+
         private void BtnEditar_Click(object sender, RoutedEventArgs e) {
             MudarOperacao(3);
         }
@@ -90,7 +79,7 @@ namespace ControleDeEstoqueUP {
                     if (string.IsNullOrWhiteSpace(txtNome.Text)) {
                         WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe um nome para a categoria!");
                     } else {
-                        var categoria = CriarCategoriaComOsDadosDaTela();
+                        Categoria categoria = CriarCategoriaComOsDadosDaTela();
                         categoria = categoriaDAO.Inserir(categoria);
                         txtCodigo.Text = categoria.Id.ToString();
                         WPFUtils.MostrarCaixaDeTextoDeInformação("Categoria cadastrada com sucesso!");
@@ -101,7 +90,7 @@ namespace ControleDeEstoqueUP {
                     if (string.IsNullOrWhiteSpace(txtNome.Text)) {
                         WPFUtils.MostrarCaixaDeTextoDeAlerta("Informe um nome para a categoria!");
                     } else {
-                        var categoria = CriarCategoriaComOsDadosDaTela();
+                        Categoria categoria = CriarCategoriaComOsDadosDaTela();
                         categoriaDAO.Editar(categoria);
                         WPFUtils.MostrarCaixaDeTextoDeInformação("Categoria atualizada com sucesso!");
                         MudarOperacao(2);

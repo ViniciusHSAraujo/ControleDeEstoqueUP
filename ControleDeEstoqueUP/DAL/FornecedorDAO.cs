@@ -1,16 +1,13 @@
-﻿using System;
-using ControleDeEstoqueUP.Data;
+﻿using ControleDeEstoqueUP.Data;
 using ControleDeEstoqueUP.Models;
-using ControleDeEstoqueUP.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControleDeEstoqueUP.DAL {
-    class FornecedorDAO {
+    internal class FornecedorDAO {
 
-        private static ApplicationDbContext database = SingletonContext.GetInstance();
+        private static readonly ApplicationDbContext database = SingletonContext.GetInstance();
 
         /*
          * Método que Realiza a inserção do Fornecedor no Banco de Dados
@@ -20,7 +17,7 @@ namespace ControleDeEstoqueUP.DAL {
                 database.Fornecedores.Add(fornecedor);
                 database.SaveChanges();
                 return fornecedor;
-            } catch (Exception e){
+            } catch (Exception e) {
                 throw new Exception("Erro ao cadastrar Fornecedor:\n" + e.Message);
             }
         }
@@ -42,7 +39,7 @@ namespace ControleDeEstoqueUP.DAL {
                 fornecedorBanco.Telefone = fornecedor.Telefone;
                 fornecedorBanco.Celular = fornecedor.Celular;
                 database.SaveChanges();
-            }catch(Exception e) {
+            } catch (Exception e) {
                 throw new Exception("Ocorrou um erro ao editar o fornecedor:\n" + e.Message);
             }
         }
@@ -53,7 +50,7 @@ namespace ControleDeEstoqueUP.DAL {
 
         public void Excluir(int id) {
             try {
-                var fornecedor = database.Fornecedores.FirstOrDefault(f => f.Id == id);
+                Fornecedor fornecedor = database.Fornecedores.FirstOrDefault(f => f.Id == id);
                 database.Fornecedores.Remove(fornecedor);
                 database.SaveChanges();
             } catch (Exception e) {
