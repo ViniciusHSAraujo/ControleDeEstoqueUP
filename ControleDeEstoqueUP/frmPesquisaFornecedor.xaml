@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ControleDeEstoqueUP"
         mc:Ignorable="d"
-        Title="Pesquisar Fornecedores" Height="512" Width="330">
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
+        Title="Pesquisa de Fornecedores" Height="512" Width="330">
     <Grid>
         <Button x:Name="btnLocalizar" Height="28" Margin="215,32,10,0" Click="BtnLocalizar_Click" VerticalAlignment="Top" >
             <DockPanel>

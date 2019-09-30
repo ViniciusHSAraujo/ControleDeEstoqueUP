@@ -37,7 +37,7 @@ namespace ControleDeEstoqueUP {
 
         Funcionario funcionarioVenda;
 
-        ICollection<ProdutoVenda> produtosDaVenda= new List<ProdutoVenda>();
+        List<ProdutoVenda> produtosDaVenda = new List<ProdutoVenda>();
         List<dynamic> produtosDaVendaGrid = new List<dynamic>();
 
         ProdutoDAO produtoDAO = new ProdutoDAO();
@@ -186,6 +186,7 @@ namespace ControleDeEstoqueUP {
                     btnSalvar.IsEnabled = false;
                     btnCancelar.IsEnabled = false;
                     panelContent.IsEnabled = false;
+                    panelAdicionarProdutos.IsEnabled = false;
                     break;
                 case 1: //ADIÇÃO: BOTÕES DE SALVAR E CANCELAR ATIVOS. TELA ATIVA.
                     btnAdicionar.IsEnabled = false;
@@ -195,6 +196,7 @@ namespace ControleDeEstoqueUP {
                     btnSalvar.IsEnabled = true;
                     btnCancelar.IsEnabled = true;
                     panelContent.IsEnabled = true;
+                    panelAdicionarProdutos.IsEnabled = true;
                     break;
                 case 2: //PRODUTO EM TELA: BOTÕES DE EXCLUIR, EDITAR, CANCELAR ATIVOS. TELA BLOQUEADA.
                     btnAdicionar.IsEnabled = false;
@@ -204,6 +206,7 @@ namespace ControleDeEstoqueUP {
                     btnSalvar.IsEnabled = false;
                     btnCancelar.IsEnabled = true;
                     panelContent.IsEnabled = false;
+                    panelAdicionarProdutos.IsEnabled = false;
                     break;
                 case 3: //EDIÇÃO: BOTÕES DE SALVAR E CANCELAR ATIVOS. TELA ATIVA.
                     btnAdicionar.IsEnabled = false;
@@ -213,6 +216,7 @@ namespace ControleDeEstoqueUP {
                     btnSalvar.IsEnabled = true;
                     btnCancelar.IsEnabled = true;
                     panelContent.IsEnabled = true;
+                    panelAdicionarProdutos.IsEnabled = false;
                     break;
 
             }
@@ -255,10 +259,10 @@ namespace ControleDeEstoqueUP {
         }
 
         private void PopularGridDeItensPelaVenda(Venda venda) {
-            produtosDaVenda = venda.ProdutosVenda;
+            produtosDaVenda = venda.ProdutosVenda.ToList();
             produtosDaVendaGrid.Clear();
             foreach (var produtoVenda in produtosDaVenda) {
-                produtosDaVendaGrid.Add(new { ProdutoID = produtoVenda.SubProduto.Id, ProdutoNome = produtoVenda.SubProduto.Produto.Nome, produtoVenda.SubProduto.SKU, produtoVenda.Valor });
+                produtosDaVendaGrid.Add(new { ProdutoID = produtoVenda.SubProduto.Id, ProdutoNome = produtoVenda.SubProduto.Produto.Nome, produtoVenda.SubProduto.Produto.UnidadeDeMedida.Simbolo, produtoVenda.SubProduto.SKU, produtoVenda.Valor });
             }
             AtualizarGrid();
         }
@@ -400,7 +404,7 @@ namespace ControleDeEstoqueUP {
             if (ValidarCamposObrigatoriosDoProduto()) {
                 var produtoVenda = CriarProdutoVendaComOsDadosDaTela();
                     produtosDaVenda.Add(produtoVenda);
-                    produtosDaVendaGrid.Add(new { ProdutoID = produtoVenda.SubProduto.Id, ProdutoNome = produtoVenda.SubProduto.Produto.Nome, SKU = produtoVenda.SubProduto.SKU,produtoVenda.Valor });
+                    produtosDaVendaGrid.Add(new { ProdutoID = produtoVenda.SubProduto.Id, ProdutoNome = produtoVenda.SubProduto.Produto.Nome, produtoVenda.SubProduto.Produto.UnidadeDeMedida.Simbolo, produtoVenda.SubProduto.SKU,produtoVenda.Valor });
                     AtualizarGrid();
                     LimparCamposDoProduto();
                     RecalcularValorTotal();

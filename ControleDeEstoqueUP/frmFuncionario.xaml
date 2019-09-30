@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ControleDeEstoqueUP"
         mc:Ignorable="d"
-        Title="frmFuncionario" Height="600" Width="800">
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
+        Title="Cadastro de Funcionários" Height="600" Width="800">
     <Grid>
         <Grid Name="gridTela">
             <Label Content="Código: " HorizontalAlignment="Left" Margin="30,16,0,0" VerticalAlignment="Top" Width="75" FontSize="18"/>

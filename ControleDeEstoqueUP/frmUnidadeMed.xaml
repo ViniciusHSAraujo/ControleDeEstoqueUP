@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ControleDeEstoqueUP"
         mc:Ignorable="d"
-        Title="Cadastro de Unidade de Medida" Height="600" Width="850">
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
+        Title="Cadastro de Unidades de Medidas" Height="600" Width="850">
     <Grid>
         <Grid Name="gridConteudo">
             <Label Content="Código: " HorizontalAlignment="Left" Margin="62,45,0,0" VerticalAlignment="Top" Width="91" FontSize="18"/>

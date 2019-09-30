@@ -37,7 +37,7 @@ namespace ControleDeEstoqueUP {
 
         Funcionario funcionarioCompra = frmLogin.funcionarioLogado;
 
-        ICollection<ProdutoCompra> produtosDaCompra = new List<ProdutoCompra>();
+        List<ProdutoCompra> produtosDaCompra = new List<ProdutoCompra>();
         List<dynamic> produtosDaCompraGrid = new List<dynamic>();
 
         ProdutoDAO produtoDAO = new ProdutoDAO();
@@ -166,6 +166,7 @@ namespace ControleDeEstoqueUP {
             txtNomeProduto.Clear();
             txtQuantidade.Clear();
             txtTotal.Clear();
+            txtUnidade.Clear();
             txtValor.Clear();
             gridProdutos.ItemsSource = null;
             produtosDaCompra.Clear();
@@ -186,6 +187,7 @@ namespace ControleDeEstoqueUP {
                     btnSalvar.IsEnabled = false;
                     btnCancelar.IsEnabled = false;
                     panelContent.IsEnabled = false;
+                    panelAdicionarProdutos.IsEnabled = false;
                     break;
                 case 1: //ADIÇÃO: BOTÕES DE SALVAR E CANCELAR ATIVOS. TELA ATIVA.
                     btnAdicionar.IsEnabled = false;
@@ -195,6 +197,7 @@ namespace ControleDeEstoqueUP {
                     btnSalvar.IsEnabled = true;
                     btnCancelar.IsEnabled = true;
                     panelContent.IsEnabled = true;
+                    panelAdicionarProdutos.IsEnabled = true;
                     break;
                 case 2: //PRODUTO EM TELA: BOTÕES DE EXCLUIR, EDITAR, CANCELAR ATIVOS. TELA BLOQUEADA.
                     btnAdicionar.IsEnabled = false;
@@ -204,6 +207,7 @@ namespace ControleDeEstoqueUP {
                     btnSalvar.IsEnabled = false;
                     btnCancelar.IsEnabled = true;
                     panelContent.IsEnabled = false;
+                    panelAdicionarProdutos.IsEnabled = false;
                     break;
                 case 3: //EDIÇÃO: BOTÕES DE SALVAR E CANCELAR ATIVOS. TELA ATIVA.
                     btnAdicionar.IsEnabled = false;
@@ -213,6 +217,7 @@ namespace ControleDeEstoqueUP {
                     btnSalvar.IsEnabled = true;
                     btnCancelar.IsEnabled = true;
                     panelContent.IsEnabled = true;
+                    panelAdicionarProdutos.IsEnabled = false;
                     break;
 
             }
@@ -255,7 +260,7 @@ namespace ControleDeEstoqueUP {
         }
 
         private void PopularGridDeItensPelaCompra(Compra compra) {
-            produtosDaCompra = compra.ProdutosCompra;
+            produtosDaCompra = compra.ProdutosCompra.ToList();
             produtosDaCompraGrid.Clear();
             foreach (var produtoCompra in produtosDaCompra) {
                 produtosDaCompraGrid.Add(new { ProdutoID = produtoCompra.Produto.Id, ProdutoNome = produtoCompra.Produto.Nome, produtoCompra.Quantidade, produtoCompra.Valor, Subtotal = Convert.ToDecimal(produtoCompra.Quantidade) * produtoCompra.Valor });
@@ -341,12 +346,12 @@ namespace ControleDeEstoqueUP {
                 produtoEscolhido = produtoDAO.BuscarProdutoPeloId(IdProduto);
                 txtCodigoProduto.Text = produtoEscolhido.Id.ToString();
                 txtNomeProduto.Text = produtoEscolhido.Nome;
+                txtUnidade.Text = produtoEscolhido.UnidadeDeMedida.Simbolo;
                 txtValor.Text = produtoEscolhido.ValorPago.ToString("F2");
             } else {
                 WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum produto escolhido!");
                 produtoEscolhido = null;
-                txtCodigoProduto.Clear();
-                txtNomeProduto.Clear();
+                LimparCamposDoProduto();
             }
         }
 
@@ -357,19 +362,18 @@ namespace ControleDeEstoqueUP {
             if (string.IsNullOrEmpty(txtCodigoProduto.Text)) {
                 WPFUtils.MostrarCaixaDeTextoDeErro("Nenhum produto escolhido!");
                 produtoEscolhido = null;
-                txtCodigoProduto.Clear();
-                txtNomeProduto.Clear();
+                LimparCamposDoProduto();
             } else {
                 IdProduto = Convert.ToInt32(txtCodigoProduto.Text);
                 produtoEscolhido = produtoDAO.BuscarProdutoPeloId(IdProduto);
                 if (produtoEscolhido == null) {
                     WPFUtils.MostrarCaixaDeTextoDeErro("Código de produto inválido!");
                     produtoEscolhido = null;
-                    txtCodigoProduto.Clear();
-                    txtNomeProduto.Clear();
-                    txtValor.Text = produtoEscolhido.ValorPago.ToString("F2");
+                    LimparCamposDoProduto();
                 } else {
                     txtNomeProduto.Text = produtoEscolhido.Nome;
+                    txtUnidade.Text = produtoEscolhido.UnidadeDeMedida.Simbolo;
+                    txtValor.Text = produtoEscolhido.ValorPago.ToString("F2");
                 }
             }
         }
@@ -414,6 +418,7 @@ namespace ControleDeEstoqueUP {
             txtNomeProduto.Clear();
             txtQuantidade.Clear();
             txtValor.Clear();
+            txtUnidade.Clear();
         }
 
         private ProdutoCompra CriarProdutoCompraComOsDadosDaTela() {

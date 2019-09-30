@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ControleDeEstoqueUP"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize"
         Title="Cadastro de Fornecedores" Height="600" Width="850">
     <Grid>
         <Grid Name="gridTela">

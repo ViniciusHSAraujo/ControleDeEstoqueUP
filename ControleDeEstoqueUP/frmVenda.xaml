@@ -73,6 +73,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Cod. Produto" Width="80" Binding="{Binding ProdutoID, StringFormat=000000}"/>
                             <DataGridTextColumn Header="Desc. Produto" Width="*" Binding="{Binding ProdutoNome}"/>
+                            <DataGridTextColumn Header="Unid." Width="40" Binding="{Binding Unidade}"/>
                             <DataGridTextColumn Header="SKU" Width="80" Binding="{Binding SKU}"/>
                             <DataGridTextColumn Header="Valor unitário" Width="82" Binding="{Binding Valor, StringFormat=C2}"/>
                         </DataGrid.Columns>

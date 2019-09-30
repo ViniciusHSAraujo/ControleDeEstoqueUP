@@ -46,7 +46,8 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="3">
                         <Label Name="lblQuantidade" Content="Quantidade:   " VerticalAlignment="center" HorizontalAlignment="Left" FontSize="18"/>
-                        <TextBox Name="txtQuantidade" PreviewTextInput="ApenasNumerosEVirgulaValidationTextBox" TextWrapping="Wrap" Text="" VerticalAlignment="center" Width="85" HorizontalAlignment="Left" FontSize="16"/>
+                        <TextBox x:Name="txtQuantidade" PreviewTextInput="ApenasNumerosEVirgulaValidationTextBox" TextWrapping="Wrap" Text="" VerticalAlignment="center" Width="85" HorizontalAlignment="Left" FontSize="16"/>
+                        <TextBox x:Name="txtUnidade" TextWrapping="Wrap" IsEnabled="False" Margin="5,0,0,0" VerticalAlignment="center" Width="39" HorizontalAlignment="Left" FontSize="16"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="3">
                         <Label Name="lblValor" Content="Valor unitário:" VerticalAlignment="center" HorizontalAlignment="Left" FontSize="18"/>
