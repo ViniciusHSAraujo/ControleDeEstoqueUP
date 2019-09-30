@@ -26,6 +26,12 @@
             <ComboBox Name="cbUnidadeDeMedida" VerticalAlignment="Top" HorizontalAlignment="Left" Width="60" FontSize="18"/>
         </StackPanel>
         <StackPanel Name="panelBotoesCompraEVenda" Orientation="Vertical" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,100">
+            <Button Name="btnEstoque" Width="100" Margin="0,0,70,10" Click="BtnEstoque_Click" >
+                <DockPanel>
+                    <Label Content="Estoque" DockPanel.Dock="Right" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <Image  Source="resources/package-search.png" Margin="0,0,0,0" Width="30" DockPanel.Dock="Left" />
+                </DockPanel>
+            </Button>
             <Button Name="btnCompras" Width="100" Margin="0,0,70,10" Click="BtnCompras_Click" >
                 <DockPanel>
                     <Label Content="Compras" DockPanel.Dock="Right" VerticalAlignment="Center" FontWeight="Bold"/>

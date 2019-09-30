@@ -81,6 +81,9 @@
     <Compile Include="DAL\UnidadeMedidaDAO.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Data\SingletonContext.cs" />
+    <Compile Include="frmDisponibilidadeProduto.xaml.cs">
+      <DependentUpon>frmDisponibilidadeProduto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="frmPesquisaVenda.xaml.cs">
       <DependentUpon>frmPesquisaVenda.xaml</DependentUpon>
     </Compile>
@@ -175,6 +178,10 @@
     <Compile Include="Models\Venda.cs" />
     <Compile Include="Utils\TextBoxValidations.cs" />
     <Compile Include="Utils\WPFUtils.cs" />
+    <Page Include="frmDisponibilidadeProduto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="frmPesquisaVenda.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -337,6 +344,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\CEUP.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\package-search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

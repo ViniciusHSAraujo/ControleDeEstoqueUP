@@ -1,5 +1,5 @@
 ﻿using ControleDeEstoqueUP.Models;
-using ControleSeuEstoque.Utils;
+using ControleDeEstoqueUP.Utils;
 using System.Windows;
 
 namespace ControleDeEstoqueUP {

@@ -1,4 +1,4 @@
-﻿using static ControleSeuEstoque.Utils.WPFUtils;
+﻿using static ControleDeEstoqueUP.Utils.WPFUtils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -34,6 +34,10 @@ namespace ControleDeEstoqueUP.Models {
         public string SKU { get; set; }
 
         public bool Status { get; set; }
+
+        public string StatusString {
+            get { return Status == true ? "Disponível" : "Vendido"; }
+        }
 
     }
 }

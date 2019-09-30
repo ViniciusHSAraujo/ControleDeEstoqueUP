@@ -20,7 +20,7 @@
         <ComboBox Name="ParametroEscolha" Margin="10,70,111,0" FontSize="14" Height="28" VerticalAlignment="Top">
             <ComboBoxItem Name="psqGeral" Content="Geral" IsSelected="True"/>
             <ComboBoxItem Name="psqID" Content="ID"/>
-            <ComboBoxItem Name="psqNomeFornecedor" Content="Nome do Fornecedor"/>
+            <ComboBoxItem Name="psqNomeCliente" Content="Nome do Cliente"/>
             <ComboBoxItem Name="psqNomeFuncionario" Content="Nome do Funcionário"/>
             <ComboBoxItem Name="psqData" Content="Data da Compra"/>
         </ComboBox>

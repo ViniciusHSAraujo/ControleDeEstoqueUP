@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace ControleSeuEstoque.Utils {
+namespace ControleDeEstoqueUP.Utils {
     public static class WPFUtils {
 
         /**

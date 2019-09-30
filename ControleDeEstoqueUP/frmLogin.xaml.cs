@@ -1,5 +1,5 @@
 ﻿using ControleDeEstoqueUP.Models;
-using ControleSeuEstoque.Utils;
+using ControleDeEstoqueUP.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;

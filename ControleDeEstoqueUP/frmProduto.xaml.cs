@@ -1,6 +1,6 @@
 ﻿using ControleDeEstoqueUP.DAL;
 using ControleDeEstoqueUP.Models;
-using ControleSeuEstoque.Utils;
+using ControleDeEstoqueUP.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -266,6 +266,11 @@ namespace ControleDeEstoqueUP {
             w.ShowDialog();
         }
 
+        private void BtnEstoque_Click(object sender, RoutedEventArgs e) {
+            Produto p = CriarProdutoComOsDadosDaTela();
+            var w = new frmDisponibilidadeProduto(p);
+            w.ShowDialog();
+        }
 
         /**
          * Validação que aceita apenas a entrada de números inteiros no TextBox
@@ -281,5 +286,6 @@ namespace ControleDeEstoqueUP {
             Regex regex = new Regex("[^0-9,-]+");
             e.Handled = regex.IsMatch(e.Text);
         }
+
     }
 }
