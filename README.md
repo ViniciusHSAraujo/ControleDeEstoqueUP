@@ -12,6 +12,23 @@ O controle de acesso do sistema se dará por meio de uma senha que deverá ser d
 
 Além de ter de forma automatizada a atualização dos saldos dos itens no estoque, o usuário pode definir qual é custo médio de seus produtos, e com isso definir com melhor precisão o preço de venda de seus itens, evitando prejuízos e aumentando a lucratividade.
 
+## Demonstração
+Login
+
+![Login](https://image.prntscr.com/image/_1F-COKcRyuZ6Qvr1i-uHQ.png)
+
+Cadastro
+
+![Cadastro](https://image.prntscr.com/image/s5wY1V44TBKb5PKd3I6u5Q.png)
+
+Pesquisa
+
+![Pesquisa](https://image.prntscr.com/image/KybB_LDnRYKOTYmOaDyNgw.png)
+
+Compra
+
+![Compra](https://image.prntscr.com/image/DFnHeTiITD6-gkNZc29hcA.png)
+
 ## Instalação
 
 Faça o download do código fonte em sua máquina, abra o projeto no VisualStudio (utilizado o 2019 para o desenvolvimento) e crie o banco de dados com o Entity Framework:
